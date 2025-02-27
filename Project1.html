@@ -175,9 +175,60 @@
         height: auto;
       }
     }
+
+    .modal {
+  display: none; /* ✅ This keeps it hidden on page load */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+}
+
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
   </style>
 </head>
 <body>
+  <script>
+   function openModal(imageSrc) {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+
+  modalImg.src = imageSrc;
+  modal.style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("imageModal").style.display = "none";
+}
+
+// Ensure modal is hidden on page load (in case of refresh issues)
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("imageModal").style.display = "none";
+});
+
+
+  </script>
   <!-- Navbar -->
   <nav class="nav">
     <div class="logo">Qefser Karpuzi</div>
@@ -197,16 +248,17 @@
   <!-- Project Section -->
   <section class="project container">
     <div class="image-grid">
-      <a href="eli.png" data-lightbox="project-gallery" data-title="Screenshot of Project 1 showing the main dashboard">
-        <img src="eli.png" alt="Screenshot of Project 1 showing the main dashboard">
-      </a>
-      <a href="eli12.png" data-lightbox="project-gallery" data-title="Screenshot of Project 2 showcasing key features">
-        <img src="eli12.png" alt="Screenshot of Project 2 showcasing key features">
-      </a>
-      <a href="elicon.png" data-lightbox="project-gallery" data-title="Screenshot of Project 3 with final design">
-        <img src="elicon.png" alt="Screenshot of Project 3 with final design">
-      </a>
+      <img src="eli.png" alt="Screenshot 1" onclick="openModal('eli.png')">
+      <img src="eli12.png" alt="Screenshot 2" onclick="openModal('eli12.png')">
+      <img src="elicon.png" alt="Screenshot 3" onclick="openModal('elicon.png')">
     </div>
+    
+    <!-- Custom Modal -->
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImg">
+    </div>
+    
     <div class="project-description">
       <p>
         <strong>Eli Proprete - Cleaning Company Website & Admin Dashboard</strong>

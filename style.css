@@ -62,22 +62,21 @@
  
 
   .profile-picture {
-border-radius: 50%;
-width: 250px;
-height: 250px;
-object-fit: cover;
-margin-bottom: 20px;
-margin-top: 50px; 
-border: 10px solid rgb(255, 255, 255);
-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-transition: transform 0.3s;
-}
-
-
-  .profile-picture:hover {
-    transform: scale(1.05);
+    border-radius: 50%;
+    width: 400px;  /* Make the image bigger */
+    height: 400px;  /* Make the image bigger */
+    object-fit: cover;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    border: 10px solid rgb(255, 255, 255);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
   }
-
+  
+  .profile-picture:hover {
+    transform: scale(1.1);  /* Slightly more zoom on hover */
+  }
+  
   h1 {
     font-size: 4rem;
     margin-bottom: 15px;

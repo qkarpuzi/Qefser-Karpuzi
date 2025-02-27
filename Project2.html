@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Qefser Karpuzi - Project 1 Description">
   <meta name="keywords" content="Qefser Karpuzi, web development, portfolio, project 1, modern website">
-  <title>Project 3 - Qefser Karpuzi</title>
+  <title>Project 2 - Qefser Karpuzi</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
   <style>
@@ -175,6 +175,35 @@
         height: auto;
       }
     }
+
+    .modal {
+      display: none; /* Hidden initially */
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      max-width: 80%;
+      max-height: 80vh;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -190,41 +219,91 @@
 
   <!-- Header Section -->
   <header class="header">
-    <h1>Project 3</h1>
+    <h1>Project 2</h1>
     <p class="description">A detailed look into one of my projects.</p>
   </header>
 
   <!-- Project Section -->
   <section class="project container">
     <div class="image-grid">
-      <a href="01.png" data-lightbox="project-gallery" data-title="Screenshot of Project 1 showing the main dashboard">
-        <img src="01.png"Screenshot of Project 1 showing the main dashboard">
-      </a>
-      <a href="02.png" data-lightbox="project-gallery" data-title="Screenshot of Project 2 showcasing key features">
-        <img src="02.png" alt="Screenshot of Project 2 showcasing key features">
-      </a>
-      <a href="03.png" data-lightbox="project-gallery" data-title="Screenshot of Project 3 with final design">
-        <img src="03.png" alt="Screenshot of Project 3 with final design">
-      </a>
+      <img src="01.png" alt="Screenshot 1" onclick="openModal('01.png')">
+      <img src="02.png" alt="Screenshot 2" onclick="openModal('02.png')">
+      <img src="03.png" alt="Screenshot 3" onclick="openModal('03.png')">
+    </div>
+
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImg">
     </div>
     <div class="project-description">
       <p>
-        FurniCraft - Dine Eksperter på Skreddersydde Møbler
-
-        This webpage showcases FurniCraft, a company specializing in custom furniture solutions. The hero section introduces the company with a compelling background image and slogan, "Vi skaper ditt drømmehus etter mål." The site features sections on their services, including complete renovations and professional team details, as well as an "About Us" section with company information. The feedback section highlights customer testimonials, and the contact section provides a form for inquiries along with contact details. The design is sleek with a modern color palette, and responsive adjustments ensure a great viewing experience on all devices.</p>
-      
-        <br>
-        <p>Tools Used:
-
-
-          Tools Used
-HTML5 - The core structure and content of the website are built using HTML5, providing a semantic and organized layout.
-CSS3 - The styling and layout of the website are managed with CSS3, including responsive design and modern styling features such as flexbox and grid systems.
-Media Queries - Used for creating responsive designs that adjust to various screen sizes, enhancing user experience across devices.
-Google Fonts - Custom fonts like 'Playfair Display' and 'Raleway' are used to enhance typography and visual appeal.
-Image URLs - High-quality images from sources like Freepik, Pixabay, and other image repositories are used to visually represent services and content.
-          </p>
-          <p>This project demonstrates my skills in web development, focusing on user interaction and responsive design.</p>
+        This website is meticulously crafted with a focus on providing a seamless, modern, and highly responsive user experience. It is developed using industry-standard web technologies such as HTML5, CSS3, and JavaScript, ensuring a high-quality, performance-optimized interface that adapts effortlessly to various screen sizes and devices.
+    </p>
+    
+    <p>
+        <strong>Key Features:</strong>
+    </p>
+    
+    <p>
+        <strong>Responsive and Adaptive Design</strong>: Utilizing media queries to ensure optimal performance and layout on all devices, from mobile phones to large desktop screens.
+    </p>
+    
+    <p>
+        <strong>Flexible Layout</strong>: The website is structured with Flexbox, allowing content to dynamically adjust and maintain a consistent and organized presentation.
+    </p>
+    
+    <p>
+        <strong>Modern Styling and Visuals</strong>: The design is enhanced with CSS3 properties such as box shadows, rounded borders, and subtle transitions to create a smooth and engaging user experience.
+    </p>
+    
+    <p>
+        <strong>Custom Typography and Icons</strong>: Carefully selected Google Fonts and Font Awesome icons are integrated to enhance both the visual appeal and accessibility of the site, ensuring easy navigation and readability.
+    </p>
+    
+    <p>
+        <strong>Interactive Elements</strong>: Dynamic features such as smooth hover effects, interactive buttons, and sliding carousels enhance the interactivity of the site.
+    </p>
+    
+    <p>
+        <strong>Technologies & Tools Used:</strong>
+    </p>
+    
+    <p>
+        <strong>HTML5</strong>: For semantic structure and content accessibility.
+    </p>
+    
+    <p>
+        <strong>CSS3</strong>: To create modern layouts, transitions, and responsive designs.
+    </p>
+    
+    <p>
+        <strong>JavaScript</strong>: For dynamic interactivity and improved user engagement.
+    </p>
+    
+    <p>
+        <strong>Flexbox</strong>: To create flexible, responsive layouts with ease.
+    </p>
+    
+    <p>
+        <strong>Google Fonts</strong>: To ensure readability and consistency in typography.
+    </p>
+    
+    <p>
+        <strong>Font Awesome</strong>: For scalable and customizable icons that improve navigation and usability.
+    </p>
+    
+    <p>
+        <strong>Visual Studio Code</strong>: Used as the primary code editor for efficient development.
+    </p>
+    
+    <p>
+        <strong>GitHub</strong>: Version control to manage and collaborate on the project.
+    </p>
+    
+    <p>
+        The website's design is a testament to modern web standards, prioritizing both aesthetics and functionality. It is crafted with attention to detail, offering users a visually appealing and highly intuitive experience, whether browsing from a desktop, tablet, or smartphone. The combination of responsive design, modern styling, and the latest web technologies ensures a polished and professional online presence.
+    </p>
+    
     </div>
     <a href="https://qkarpuzi.github.io/V.Z-Entreprenor/" class="button" target="_blank">View Live Project</a>
   </section>
@@ -234,6 +313,22 @@ Image URLs - High-quality images from sources like Freepik, Pixabay, and other i
     <p>&copy; 2024 Qefser Karpuzi. All rights reserved.</p>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <script>
+    function openModal(imageSrc) {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImg");
+      modalImg.src = imageSrc;
+      modal.style.display = "flex"; // Show modal
+    }
+
+    function closeModal() {
+      document.getElementById("imageModal").style.display = "none"; // Hide modal
+    }
+
+    // Ensure modal is hidden on page load (in case of refresh issues)
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("imageModal").style.display = "none";
+    });
+  </script>
 </body>
 </html>
