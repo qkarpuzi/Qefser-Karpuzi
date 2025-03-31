@@ -3,233 +3,553 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Qefser Karpuzi - Project 1 Description">
-  <meta name="keywords" content="Qefser Karpuzi, web development, portfolio, project 1, modern website">
-  <title>Project 1 - Qefser Karpuzi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <meta name="description" content="Eli Proprete - Professional Cleaning Company Website & Admin Dashboard developed by Qefser Karpuzi">
+  <meta property="og:title" content="Eli Proprete | Qefser Karpuzi Portfolio">
+  <meta property="og:description" content="Professional Cleaning Company Website & Admin Dashboard developed by Qefser Karpuzi">
+  <meta property="og:image" content="eli.png">
+  <meta property="og:url" content="your-portfolio-url/project1.html">
+  <title>Eli Proprete Project | Qefser Karpuzi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Basic Reset */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --light-gray: #e2e8f0;
+    }
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
-    /* Body */
+    
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-
-    /* Container */
+    
     .container {
+      width: 90%;
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
-
-    /* Navbar */
+    
+    /* Navigation */
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #2c3e50;
-      padding: 15px 30px;
-      position: sticky;
+      padding: 20px 0;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       z-index: 1000;
+      transition: all 0.3s ease;
     }
-
-    .nav .logo {
-      color: white;
-      font-size: 2rem;
-      font-weight: 600;
+    
+    .nav.scrolled {
+      padding: 15px 0;
+      background-color: rgba(255, 255, 255, 0.98);
     }
-
-    .nav ul {
-      list-style: none;
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
       display: flex;
-      margin: 0;
-      padding: 0;
+      align-items: center;
+      gap: 10px;
     }
-
+    
+    .logo::before {
+      content: "{ }";
+      color: var(--secondary);
+      font-weight: bold;
+    }
+    
+    .nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
     .nav ul li {
-      margin: 0 15px;
+      margin-left: 30px;
     }
-
+    
     .nav ul li a {
-      color: white;
       text-decoration: none;
-      font-size: 1.2rem;
-      transition: color 0.3s, border-bottom 0.3s;
+      color: var(--dark);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
     }
-
-    .nav ul li a.active,
+    
     .nav ul li a:hover {
-      color: #3498db;
-      border-bottom: 2px solid #3498db;
+      color: var(--primary);
     }
-
-    /* Header Section */
-    .header {
-      text-align: center;
-      background: linear-gradient(to right, #1a233a, #3498db);
-      color: white;
-      padding: 120px 20px;
+    
+    .nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
     }
-
-    h1 {
-      font-size: 4.5rem;
-      margin-bottom: 15px;
+    
+    .nav ul li a:hover::after {
+      width: 100%;
     }
-
-    .description {
-      font-size: 1.8rem;
-      color: #ecf0f1;
-      margin-top: 15px;
+    
+    .nav ul li a.active {
+      color: var(--primary);
     }
-
-    /* Project Section */
-    .project {
-      background-color: #fff;
-      padding: 60px 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      margin: 40px auto;
-      text-align: center;
+    
+    .nav ul li a.active::after {
+      width: 100%;
     }
-
-    .project img {
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      transition: transform 0.3s, opacity 0.3s;
+    
+    /* Project Hero Section */
+    .project-hero {
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+      position: relative;
+      overflow: hidden;
+      margin-top: 80px;
     }
-
-    .project img:hover {
-      opacity: 0.8;
-      transform: scale(1.02);
+    
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+      z-index: -1;
     }
-
-    .project .image-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    
+    .project-hero-content {
+      max-width: 800px;
+    }
+    
+    .project-hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      color: var(--dark);
+    }
+    
+    .project-hero p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 30px;
+    }
+    
+    .project-meta {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .meta-item i {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    
+    .project-cta {
+      display: flex;
       gap: 15px;
     }
-
-    .project .image-grid img {
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      border: 2px solid var(--primary);
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
+    }
+    
+    .btn-primary:hover {
+      background-color: transparent;
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+    
+    /* Project Gallery */
+    .project-gallery {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .gallery-item {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      cursor: pointer;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Project Details */
+    .project-details {
+      padding: 80px 0;
+      background-color: #f8fafc;
+    }
+    
+    .details-container {
+      display: flex;
+      gap: 50px;
+    }
+    
+    .details-content {
+      flex: 2;
+    }
+    
+    .details-sidebar {
+      flex: 1;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background-color: var(--secondary);
+      border-radius: 2px;
+    }
+    
+    .project-text {
+      margin-bottom: 30px;
+    }
+    
+    .project-text p {
+      margin-bottom: 20px;
+      color: var(--gray);
+    }
+    
+    .features-list {
+      margin: 30px 0;
+    }
+    
+    .features-list h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .features-list ul {
+      list-style: none;
+    }
+    
+    .features-list li {
+      margin-bottom: 15px;
+      padding-left: 25px;
+      position: relative;
+      color: var(--gray);
+    }
+    
+    .features-list li::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+    
+    .tech-stack {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+    }
+    
+    .tech-stack h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .tech-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .tech-item {
+      background-color: var(--light-gray);
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--primary-dark);
+    }
+    
+    .project-info {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    .info-item {
+      margin-bottom: 20px;
+    }
+    
+    .info-item h4 {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 5px;
+    }
+    
+    .info-item p {
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    .info-item a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .info-item a:hover {
+      color: var(--primary-dark);
+    }
+    
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+    
+    .modal-content {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 8px;
+      position: relative;
+    }
+    
+    .modal-content img {
       width: 100%;
       height: auto;
+      max-height: 80vh;
+      object-fit: contain;
     }
-
-    .project-description {
-      font-size: 1.6rem;
-      margin-top: 20px;
-      line-height: 1.7;
-    }
-
-    .project a.button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #3498db;
+    
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
       color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 1.2rem;
-      transition: background-color 0.3s;
+      font-size: 3rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-
-    .project a.button:hover {
-      background-color: #2980b9;
+    
+    .close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
     }
-
+    
     /* Footer */
-    .footer {
-      background-color: #2c3e50;
+    footer {
+      background-color: var(--dark);
       color: white;
+      padding: 50px 0 20px;
+      position: relative;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .footer-left p {
+      color: var(--light-gray);
+    }
+    
+    .social-links {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .social-links a:hover {
+      color: var(--secondary);
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
       text-align: center;
-      padding: 40px 20px;
-      margin-top: 80px;
-      border-top: 2px solid #3498db;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--light-gray);
+      font-size: 0.9rem;
     }
-
-    .footer p {
-      font-size: 1rem;
-    }
-
+    
     /* Responsive Design */
-    @media (max-width: 768px) {
-      .header h1 {
-        font-size: 3rem;
+    @media (max-width: 992px) {
+      .details-container {
+        flex-direction: column;
       }
-
-      .description {
-        font-size: 1.4rem;
-      }
-
-      .project img {
-        width: 100%;
-        height: auto;
+      
+      .project-hero h1 {
+        font-size: 2.5rem;
       }
     }
-
-    .modal {
-  display: none; /* ✅ This keeps it hidden on page load */
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  align-items: center;
-  justify-content: center;
-}
-
-
-.modal-content {
-  max-width: 80%;
-  max-height: 80vh;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-}
-
+    
+    @media (max-width: 768px) {
+      .nav ul {
+        display: none;
+      }
+      
+      .project-hero {
+        height: auto;
+        padding: 120px 0 80px;
+      }
+      
+      .project-meta {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .project-cta {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .project-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <script>
-   function openModal(imageSrc) {
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImg");
-
-  modalImg.src = imageSrc;
-  modal.style.display = "flex";
-}
-
-function closeModal() {
-  document.getElementById("imageModal").style.display = "none";
-}
-
-// Ensure modal is hidden on page load (in case of refresh issues)
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("imageModal").style.display = "none";
-});
-
-
-  </script>
-  <!-- Navbar -->
+  <!-- Navigation -->
   <nav class="nav">
     <div class="logo">Qefser Karpuzi</div>
     <ul>
@@ -239,62 +559,209 @@ document.addEventListener("DOMContentLoaded", function () {
     </ul>
   </nav>
 
-  <!-- Header Section -->
-  <header class="header">
-    <h1>Project 1</h1>
-    <p class="description">A detailed look into one of my projects.</p>
-  </header>
-
-  <!-- Project Section -->
-  <section class="project container">
-    <div class="image-grid">
-      <img src="eli.png" alt="Screenshot 1" onclick="openModal('eli.png')">
-      <img src="eli12.png" alt="Screenshot 2" onclick="openModal('eli12.png')">
-      <img src="elicon.png" alt="Screenshot 3" onclick="openModal('elicon.png')">
+  <!-- Project Hero Section -->
+  <section class="project-hero">
+    <div class="container">
+      <div class="project-hero-content">
+        <h1>Eli Proprete</h1>
+        <p>A comprehensive cleaning service platform with admin dashboard, booking system, and customer management.</p>
+        
+        <div class="project-meta">
+          <div class="meta-item">
+            <i class="fas fa-tag"></i>
+            <span>Web Development</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-calendar"></i>
+            <span>Completed: 2025</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-user"></i>
+            <span>Client: Eli Proprete</span>
+          </div>
+        </div>
+        
+        <div class="project-cta">
+          <a href="https://eliiproprete.com/" class="btn btn-primary" target="_blank">
+            <i class="fas fa-external-link-alt"></i> View Live Project
+          </a>
+          <a href="index.html#portfolio" class="btn btn-outline">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+          </a>
+        </div>
+      </div>
     </div>
-    
-    <!-- Custom Modal -->
-    <div id="imageModal" class="modal">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <img class="modal-content" id="modalImg">
-    </div>
-    
-    <div class="project-description">
-      <p>
-        <strong>Eli Proprete - Cleaning Company Website & Admin Dashboard</strong>
-    </p>
-    
-    <p>
-        Eli Proprete is a fully functional web application designed for managing a cleaning service business. The platform includes a user-friendly front-end and a powerful admin dashboard for seamless management. Built with PHP, HTML, CSS, JavaScript, and SQL, the system handles everything from service bookings to user management.
-    </p>
-    
-    <p><strong>Key Features:</strong></p>
-    <ul>
-        <strong>Admin Dashboard:</strong> A robust system for managing bookings, users, services, and other business operations.</li>
-        <strong>Database Integration:</strong> Secure and efficient data handling using SQL.</li>
-        <strong>Full-Stack Development:</strong> The entire system, including front-end and back-end, was developed to ensure a smooth user experience and effective business management.</li>
-    </ul>
-    
-    <p><strong>Tools Used:</strong></p>
-    <ul>
-        <strong>PHP, HTML, CSS, JavaScript:</strong> For developing a fully functional website.</li>
-        <strong>SQL:</strong> For secure database management and efficient data storage.</li>
-        <strong>Responsive Design:</strong> Ensures a smooth experience on both desktop and mobile devices.</li>
-    </ul>
-    
-    <p>
-        This project showcases my expertise in full-stack web development, database management, and system functionality.
-    </p>
-    
-    </div>
-    <a href="https://eliiproprete.com/" class="button" target="_blank">View Live Project</a>
   </section>
 
-  <!-- Footer Section -->
-  <footer class="footer">
-    <p>&copy; 2025 Qefser Karpuzi. All rights reserved.</p>
+  <!-- Project Gallery -->
+  <section class="project-gallery">
+    <div class="container">
+      <h2 class="section-title">Project Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="eli.png" alt="Eli Proprete Homepage" onclick="openModal('eli.png')">
+        </div>
+        <div class="gallery-item">
+          <img src="eli12.png" alt="Eli Proprete Services Page" onclick="openModal('eli12.png')">
+        </div>
+        <div class="gallery-item">
+          <img src="elicon.png" alt="Eli Proprete Admin Dashboard" onclick="openModal('elicon.png')">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Details -->
+  <section class="project-details">
+    <div class="container">
+      <div class="details-container">
+        <div class="details-content">
+          <h2 class="section-title">Project Details</h2>
+          
+          <div class="project-text">
+            <p>Eli Proprete is a professional cleaning service company based in Kosovo that needed a modern, functional website to showcase their services and manage their growing client base. The project required both a customer-facing website and a comprehensive admin dashboard to handle bookings, employees, and service management.</p>
+            
+            <p>As the lead developer on this project, I designed and implemented a complete solution that streamlined their business operations while providing an excellent user experience for their customers. The system handles everything from initial contact to service completion with automated notifications and real-time updates.</p>
+          </div>
+          
+          <div class="features-list">
+            <h3>Key Features</h3>
+            <ul>
+              <li><strong>Responsive Website:</strong> Fully optimized for all devices with intuitive navigation and service presentation</li>
+              <li><strong>Online Booking System:</strong> Customers can book services with date/time selection and automated confirmations</li>
+              <li><strong>Admin Dashboard:</strong> Comprehensive backend for managing bookings, employees, services, and customer data</li>
+              <li><strong>User Authentication:</strong> Secure login system for administrators and staff with role-based permissions</li>
+              <li><strong>Service Management:</strong> Dynamic service catalog with customizable options and pricing</li>
+              <li><strong>Database Integration:</strong> MySQL database with optimized queries and secure data handling</li>
+              <li><strong>Email Notifications:</strong> Automated emails for booking confirmations, reminders, and status updates</li>
+            </ul>
+          </div>
+          
+          <div class="features-list">
+            <h3>Technical Implementation</h3>
+            <ul>
+              <li><strong>Frontend:</strong> Built with semantic HTML5, CSS3, and vanilla JavaScript for optimal performance</li>
+              <li><strong>Backend:</strong> Custom PHP framework handling business logic, data processing, and API endpoints</li>
+              <li><strong>Database:</strong> MySQL relational database with proper indexing and optimized queries</li>
+              <li><strong>Security:</strong> Implemented input validation, prepared statements, and encryption for sensitive data</li>
+              <li><strong>Performance:</strong> Optimized assets and implemented caching for fast loading times</li>
+              <li><strong>Hosting:</strong> Configured secure Linux hosting environment with automated backups</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="details-sidebar">
+          <div class="tech-stack">
+            <h3>Technologies Used</h3>
+            <div class="tech-items">
+              <span class="tech-item">PHP</span>
+              <span class="tech-item">MySQL</span>
+              <span class="tech-item">JavaScript</span>
+              <span class="tech-item">HTML5</span>
+              <span class="tech-item">CSS3</span>
+              <span class="tech-item">jQuery</span>
+              <span class="tech-item">Bootstrap</span>
+              <span class="tech-item">AJAX</span>
+              <span class="tech-item">Linux</span>
+            </div>
+          </div>
+          
+          <div class="project-info">
+            <h3>Project Information</h3>
+            
+            <div class="info-item">
+              <h4>Client</h4>
+              <p>Eli Proprete</p>
+            </div>
+            
+            <div class="info-item">
+              <h4>Category</h4>
+              <p>Business Website & Dashboard</p>
+            </div>
+            
+            <div class="info-item">
+              <h4>Completion Date</h4>
+              <p>June 2023</p>
+            </div>
+            
+            <div class="info-item">
+              <h4>Project URL</h4>
+              <p><a href="https://eliiproprete.com/" target="_blank">eliiproprete.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <p>&copy; 2025 Qefser Karpuzi. All Rights Reserved.</p>
+        </div>
+        <div class="footer-right">
+          <ul class="social-links">
+            <li><a href="https://github.com/qkarpuzi" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://x.com/qefserkarpuzi_" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="mailto:qefserkarpuzibusiness@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>Designed & Developed by Qefser Karpuzi</p>
+      </div>
+    </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <script>
+    // Navigation scroll effect
+    window.addEventListener('scroll', function() {
+      const nav = document.querySelector('.nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+    
+    // Modal functionality
+    function openModal(imageSrc) {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImg");
+      
+      modalImg.src = imageSrc;
+      modal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+    
+    function closeModal() {
+      const modal = document.getElementById("imageModal");
+      modal.classList.remove("show");
+      document.body.style.overflow = "auto";
+    }
+    
+    // Close modal when clicking outside the image
+    document.getElementById("imageModal").addEventListener("click", function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+    
+    // Close modal with ESC key
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
