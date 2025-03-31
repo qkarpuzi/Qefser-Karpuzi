@@ -3,211 +3,555 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Qefser Karpuzi - Project 1 Description">
-  <meta name="keywords" content="Qefser Karpuzi, web development, portfolio, project 1, modern website">
-  <title>Project 2 - Qefser Karpuzi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <meta name="description" content="V.Z-Entreprenor - Professional Construction Company Website developed by Qefser Karpuzi">
+  <meta property="og:title" content="V.Z-Entreprenor | Qefser Karpuzi Portfolio">
+  <meta property="og:description" content="Professional Construction Company Website developed by Qefser Karpuzi">
+  <meta property="og:image" content="01.png">
+  <meta property="og:url" content="your-portfolio-url/project2.html">
+  <title>V.Z-Entreprenor Project | Qefser Karpuzi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Basic Reset */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --light-gray: #e2e8f0;
+    }
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
-    /* Body */
+    
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-
-    /* Container */
+    
     .container {
+      width: 90%;
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
-
-    /* Navbar */
+    
+    /* Navigation */
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #2c3e50;
-      padding: 15px 30px;
-      position: sticky;
+      padding: 20px 0;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       z-index: 1000;
+      transition: all 0.3s ease;
     }
-
-    .nav .logo {
-      color: white;
-      font-size: 2rem;
-      font-weight: 600;
+    
+    .nav.scrolled {
+      padding: 15px 0;
+      background-color: rgba(255, 255, 255, 0.98);
     }
-
-    .nav ul {
-      list-style: none;
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
       display: flex;
-      margin: 0;
-      padding: 0;
+      align-items: center;
+      gap: 10px;
     }
-
+    
+    .logo::before {
+      content: "{ }";
+      color: var(--secondary);
+      font-weight: bold;
+    }
+    
+    .nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
     .nav ul li {
-      margin: 0 15px;
+      margin-left: 30px;
     }
-
+    
     .nav ul li a {
-      color: white;
       text-decoration: none;
-      font-size: 1.2rem;
-      transition: color 0.3s, border-bottom 0.3s;
+      color: var(--dark);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
     }
-
-    .nav ul li a.active,
+    
     .nav ul li a:hover {
-      color: #3498db;
-      border-bottom: 2px solid #3498db;
+      color: var(--primary);
     }
-
-    /* Header Section */
-    .header {
-      text-align: center;
-      background: linear-gradient(to right, #1a233a, #3498db);
-      color: white;
-      padding: 120px 20px;
+    
+    .nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
     }
-
-    h1 {
-      font-size: 4.5rem;
-      margin-bottom: 15px;
+    
+    .nav ul li a:hover::after {
+      width: 100%;
     }
-
-    .description {
-      font-size: 1.8rem;
-      color: #ecf0f1;
-      margin-top: 15px;
+    
+    .nav ul li a.active {
+      color: var(--primary);
     }
-
-    /* Project Section */
-    .project {
-      background-color: #fff;
-      padding: 60px 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      margin: 40px auto;
-      text-align: center;
+    
+    .nav ul li a.active::after {
+      width: 100%;
     }
-
-    .project img {
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      transition: transform 0.3s, opacity 0.3s;
+    
+    /* Project Hero Section */
+    .project-hero {
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+      position: relative;
+      overflow: hidden;
+      margin-top: 80px;
     }
-
-    .project img:hover {
-      opacity: 0.8;
-      transform: scale(1.02);
+    
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+      z-index: -1;
     }
-
-    .project .image-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    
+    .project-hero-content {
+      max-width: 800px;
+    }
+    
+    .project-hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      color: var(--dark);
+    }
+    
+    .project-hero p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 30px;
+    }
+    
+    .project-meta {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .meta-item i {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    
+    .project-cta {
+      display: flex;
       gap: 15px;
     }
-
-    .project .image-grid img {
-      width: 100%;
-      height: auto;
-    }
-
-    .project-description {
-      font-size: 1.6rem;
-      margin-top: 20px;
-      line-height: 1.7;
-    }
-
-    .project a.button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #3498db;
-      color: white;
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
       text-decoration: none;
-      border-radius: 6px;
-      font-size: 1.2rem;
-      transition: background-color 0.3s;
+      transition: all 0.3s ease;
     }
-
-    .project a.button:hover {
-      background-color: #2980b9;
-    }
-
-    /* Footer */
-    .footer {
-      background-color: #2c3e50;
+    
+    .btn-primary {
+      background-color: var(--primary);
       color: white;
-      text-align: center;
-      padding: 40px 20px;
-      margin-top: 80px;
-      border-top: 2px solid #3498db;
+      border: 2px solid var(--primary);
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
     }
-
-    .footer p {
+    
+    .btn-primary:hover {
+      background-color: transparent;
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+    
+    /* Project Gallery */
+    .project-gallery {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .gallery-item {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      cursor: pointer;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Project Details */
+    .project-details {
+      padding: 80px 0;
+      background-color: #f8fafc;
+    }
+    
+    .details-container {
+      display: flex;
+      gap: 50px;
+    }
+    
+    .details-content {
+      flex: 2;
+    }
+    
+    .details-sidebar {
+      flex: 1;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background-color: var(--secondary);
+      border-radius: 2px;
+    }
+    
+    .project-text {
+      margin-bottom: 30px;
+    }
+    
+    .project-text p {
+      margin-bottom: 20px;
+      color: var(--gray);
+    }
+    
+    .features-list {
+      margin: 30px 0;
+    }
+    
+    .features-list h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .features-list ul {
+      list-style: none;
+    }
+    
+    .features-list li {
+      margin-bottom: 15px;
+      padding-left: 25px;
+      position: relative;
+      color: var(--gray);
+    }
+    
+    .features-list li::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+    
+    .tech-stack {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+    }
+    
+    .tech-stack h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .tech-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .tech-item {
+      background-color: var(--light-gray);
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--primary-dark);
+    }
+    
+    .project-info {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    .info-item {
+      margin-bottom: 20px;
+    }
+    
+    .info-item h4 {
       font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 5px;
     }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .header h1 {
-        font-size: 3rem;
-      }
-
-      .description {
-        font-size: 1.4rem;
-      }
-
-      .project img {
-        width: 100%;
-        height: auto;
-      }
+    
+    .info-item p {
+      font-weight: 500;
+      color: var(--dark);
     }
-
+    
+    .info-item a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .info-item a:hover {
+      color: var(--primary-dark);
+    }
+    
+    /* Modal */
     .modal {
-      display: none; /* Hidden initially */
+      display: none;
       position: fixed;
-      z-index: 1000;
+      z-index: 2000;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.9);
       align-items: center;
       justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
-
+    
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+    
     .modal-content {
-      max-width: 80%;
-      max-height: 80vh;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 8px;
+      position: relative;
     }
-
+    
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+    
     .close {
       position: absolute;
       top: 20px;
       right: 30px;
-      font-size: 2rem;
       color: white;
+      font-size: 3rem;
+      font-weight: bold;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 50px 0 20px;
+      position: relative;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .footer-left p {
+      color: var(--light-gray);
+    }
+    
+    .social-links {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .social-links a:hover {
+      color: var(--secondary);
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--light-gray);
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .details-container {
+        flex-direction: column;
+      }
+      
+      .project-hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav ul {
+        display: none;
+      }
+      
+      .project-hero {
+        height: auto;
+        padding: 120px 0 80px;
+      }
+      
+      .project-meta {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .project-cta {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .project-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- Navigation -->
   <nav class="nav">
     <div class="logo">Qefser Karpuzi</div>
     <ul>
@@ -217,117 +561,207 @@
     </ul>
   </nav>
 
-  <!-- Header Section -->
-  <header class="header">
-    <h1>Project 2</h1>
-    <p class="description">A detailed look into one of my projects.</p>
-  </header>
-
-  <!-- Project Section -->
-  <section class="project container">
-    <div class="image-grid">
-      <img src="01.png" alt="Screenshot 1" onclick="openModal('01.png')">
-      <img src="02.png" alt="Screenshot 2" onclick="openModal('02.png')">
-      <img src="03.png" alt="Screenshot 3" onclick="openModal('03.png')">
+  <!-- Project Hero Section -->
+  <section class="project-hero">
+    <div class="container">
+      <div class="project-hero-content">
+        <h1>V.Z-Entreprenor</h1>
+        <p>A modern, responsive website for a construction company based in Oslo, Norway.</p>
+        
+        <div class="project-meta">
+          <div class="meta-item">
+            <i class="fas fa-tag"></i>
+            <span>Web Development</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-calendar"></i>
+            <span>Completed: 2024</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-user"></i>
+            <span>Client: V.Z-Entreprenor</span>
+          </div>
+        </div>
+        
+        <div class="project-cta">
+          <a href="https://qkarpuzi.github.io/V.Z-Entreprenor/" class="btn btn-primary" target="_blank">
+            <i class="fas fa-external-link-alt"></i> View Live Project
+          </a>
+          <a href="index.html#portfolio" class="btn btn-outline">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+          </a>
+        </div>
+      </div>
     </div>
-
-    <div id="imageModal" class="modal">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <img class="modal-content" id="modalImg">
-    </div>
-    <div class="project-description">
-      <p>
-        This website is meticulously crafted with a focus on providing a seamless, modern, and highly responsive user experience. It is developed using industry-standard web technologies such as HTML5, CSS3, and JavaScript, ensuring a high-quality, performance-optimized interface that adapts effortlessly to various screen sizes and devices.
-    </p>
-    
-    <p>
-        <strong>Key Features:</strong>
-    </p>
-    
-    <p>
-        <strong>Responsive and Adaptive Design</strong>: Utilizing media queries to ensure optimal performance and layout on all devices, from mobile phones to large desktop screens.
-    </p>
-    
-    <p>
-        <strong>Flexible Layout</strong>: The website is structured with Flexbox, allowing content to dynamically adjust and maintain a consistent and organized presentation.
-    </p>
-    
-    <p>
-        <strong>Modern Styling and Visuals</strong>: The design is enhanced with CSS3 properties such as box shadows, rounded borders, and subtle transitions to create a smooth and engaging user experience.
-    </p>
-    
-    <p>
-        <strong>Custom Typography and Icons</strong>: Carefully selected Google Fonts and Font Awesome icons are integrated to enhance both the visual appeal and accessibility of the site, ensuring easy navigation and readability.
-    </p>
-    
-    <p>
-        <strong>Interactive Elements</strong>: Dynamic features such as smooth hover effects, interactive buttons, and sliding carousels enhance the interactivity of the site.
-    </p>
-    
-    <p>
-        <strong>Technologies & Tools Used:</strong>
-    </p>
-    
-    <p>
-        <strong>HTML5</strong>: For semantic structure and content accessibility.
-    </p>
-    
-    <p>
-        <strong>CSS3</strong>: To create modern layouts, transitions, and responsive designs.
-    </p>
-    
-    <p>
-        <strong>JavaScript</strong>: For dynamic interactivity and improved user engagement.
-    </p>
-    
-    <p>
-        <strong>Flexbox</strong>: To create flexible, responsive layouts with ease.
-    </p>
-    
-    <p>
-        <strong>Google Fonts</strong>: To ensure readability and consistency in typography.
-    </p>
-    
-    <p>
-        <strong>Font Awesome</strong>: For scalable and customizable icons that improve navigation and usability.
-    </p>
-    
-    <p>
-        <strong>Visual Studio Code</strong>: Used as the primary code editor for efficient development.
-    </p>
-    
-    <p>
-        <strong>GitHub</strong>: Version control to manage and collaborate on the project.
-    </p>
-    
-    <p>
-        The website's design is a testament to modern web standards, prioritizing both aesthetics and functionality. It is crafted with attention to detail, offering users a visually appealing and highly intuitive experience, whether browsing from a desktop, tablet, or smartphone. The combination of responsive design, modern styling, and the latest web technologies ensures a polished and professional online presence.
-    </p>
-    
-    </div>
-    <a href="https://qkarpuzi.github.io/V.Z-Entreprenor/" class="button" target="_blank">View Live Project</a>
   </section>
 
-  <!-- Footer Section -->
-  <footer class="footer">
-    <p>&copy; 2025 Qefser Karpuzi. All rights reserved.</p>
+  <!-- Project Gallery -->
+  <section class="project-gallery">
+    <div class="container">
+      <h2 class="section-title">Project Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="01.png" alt="V.Z-Entreprenor Homepage" onclick="openModal('01.png')">
+        </div>
+        <div class="gallery-item">
+          <img src="02.png" alt="V.Z-Entreprenor Services Page" onclick="openModal('02.png')">
+        </div>
+        <div class="gallery-item">
+          <img src="03.png" alt="V.Z-Entreprenor Contact Page" onclick="openModal('03.png')">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Details -->
+  <section class="project-details">
+    <div class="container">
+      <div class="details-container">
+        <div class="details-content">
+          <h2 class="section-title">Project Details</h2>
+          
+          <div class="project-text">
+            <p>V.Z-Entreprenor is a professional construction company based in Oslo, Norway, specializing in high-quality construction services. They needed a modern, responsive website to showcase their projects, services, and establish credibility in the competitive construction market.</p>
+            
+            <p>This website was designed with a focus on clean aesthetics, professional presentation, and mobile responsiveness to appeal to both residential and commercial clients. The design emphasizes the company's portfolio while making it easy for potential clients to get in touch.</p>
+          </div>
+          
+          <div class="features-list">
+            <h3>Key Features</h3>
+            <ul>
+              <li><strong>Fully Responsive Design:</strong> Optimized for all devices from mobile to desktop with adaptive layouts</li>
+              <li><strong>Modern UI/UX:</strong> Clean, professional interface with intuitive navigation and visual hierarchy</li>
+              <li><strong>Performance Optimized:</strong> Fast loading times through optimized assets and efficient code</li>
+              <li><strong>Interactive Elements:</strong> Smooth hover effects, transitions, and responsive navigation</li>
+              <li><strong>Service Showcase:</strong> Well-organized presentation of construction services and specialties</li>
+              <li><strong>Contact Accessibility:</strong> Multiple contact options prominently displayed throughout the site</li>
+            </ul>
+          </div>
+          
+          <div class="features-list">
+            <h3>Technical Implementation</h3>
+            <ul>
+              <li><strong>Semantic HTML5:</strong> Clean, well-structured markup for accessibility and SEO</li>
+              <li><strong>Advanced CSS3:</strong> Modern styling with Flexbox, transitions, and responsive design techniques</li>
+              <li><strong>JavaScript Enhancements:</strong> Interactive elements for improved user engagement</li>
+              <li><strong>Cross-Browser Compatibility:</strong> Thorough testing for consistent performance across browsers</li>
+              <li><strong>Optimized Assets:</strong> Compressed images and minified code for fast loading</li>
+              <li><strong>Mobile-First Approach:</strong> Designed starting with mobile devices then enhanced for larger screens</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="details-sidebar">
+          <div class="tech-stack">
+            <h3>Technologies Used</h3>
+            <div class="tech-items">
+              <span class="tech-item">HTML5</span>
+              <span class="tech-item">CSS3</span>
+              <span class="tech-item">JavaScript</span>
+              <span class="tech-item">Flexbox</span>
+              <span class="tech-item">Google Fonts</span>
+              <span class="tech-item">Font Awesome</span>
+              <span class="tech-item">Git</span>
+              <span class="tech-item">GitHub</span>
+            </div>
+          </div>
+          
+          <div class="project-info">
+            <h3>Project Information</h3>
+            
+            <div class="info-item">
+              <h4>Client</h4>
+              <p>V.Z-Entreprenor</p>
+            </div>
+            
+            <div class="info-item">
+              <h4>Category</h4>
+              <p>Business Website</p>
+            </div>
+            
+            <div class="info-item">
+              <h4>Completion Date</h4>
+              <p>September 2024</p>
+            </div>
+            
+            <div class="info-item">
+              <h4>Project URL</h4>
+              <p><a href="https://qkarpuzi.github.io/V.Z-Entreprenor/" target="_blank">V.Z-Entreprenor</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <p>&copy; 2025 Qefser Karpuzi. All Rights Reserved.</p>
+        </div>
+        <div class="footer-right">
+          <ul class="social-links">
+            <li><a href="https://github.com/qkarpuzi" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://x.com/qefserkarpuzi_" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a></li>
+
+            <li><a href="mailto:qefserkarpuzibusiness@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>Designed & Developed by Qefser Karpuzi</p>
+      </div>
+    </div>
   </footer>
 
   <script>
+    // Navigation scroll effect
+    window.addEventListener('scroll', function() {
+      const nav = document.querySelector('.nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+    
+    // Modal functionality
     function openModal(imageSrc) {
       const modal = document.getElementById("imageModal");
       const modalImg = document.getElementById("modalImg");
+      
       modalImg.src = imageSrc;
-      modal.style.display = "flex"; // Show modal
+      modal.classList.add("show");
+      document.body.style.overflow = "hidden";
     }
-
+    
     function closeModal() {
-      document.getElementById("imageModal").style.display = "none"; // Hide modal
+      const modal = document.getElementById("imageModal");
+      modal.classList.remove("show");
+      document.body.style.overflow = "auto";
     }
-
-    // Ensure modal is hidden on page load (in case of refresh issues)
-    document.addEventListener("DOMContentLoaded", function () {
-      document.getElementById("imageModal").style.display = "none";
+    
+    // Close modal when clicking outside the image
+    document.getElementById("imageModal").addEventListener("click", function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+    
+    // Close modal with ESC key
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        closeModal();
+      }
     });
   </script>
 </body>
