@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Qefser Karpuzi's Web Developer Portfolio - Projects">
+  <meta property="og:title" content="Qefser Karpuzi - Projects">
+  <meta property="og:description" content="Explore the diverse portfolio of web development projects by Qefser Karpuzi.">
+  <meta property="og:image" content="path/to/your/profile-picture.jpg">
+  <meta property="og:url" content="your-portfolio-url/projects.html">
+  <meta name="google-site-verification" content="4elAn1VOrxXYviuZuwuYCIWoDxabypgnGjEjeoeXTl2sg" />
+  <title>Projects - Qefser Karpuzi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="icon" type="image/png" href="unnamed.jpg">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --light-gray: #e2e8f0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    .nav.scrolled {
+      padding: 15px 0;
+      background-color: rgba(255, 255, 255, 0.98);
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo::before {
+      content: "{ }";
+      color: var(--secondary);
+      font-weight: bold;
+    }
+    
+    .nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav ul li {
+      margin-left: 30px;
+    }
+    
+    .nav ul li a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav ul li a:hover {
+      color: var(--primary);
+    }
+    
+    .nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav ul li a:hover::after {
+      width: 100%;
+    }
+    
+    .nav ul li a.active {
+      color: var(--primary);
+    }
+    
+    .nav ul li a.active::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+      z-index: -1;
+    }
+    
+    .hero-content {
+      max-width: 600px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--gray);
+      margin-bottom: 30px;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid var(--primary);
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
+    }
+    
+    .cta-button:hover {
+      background-color: transparent;
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+    
+    .secondary-button {
+      display: inline-block;
+      background-color: transparent;
+      color: var(--primary);
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid var(--primary);
+      margin-left: 15px;
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
+    }
+    
+    .secondary-button:hover {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+    
+    /* Portfolio Section */
+    .portfolio {
+      padding: 100px 0;
+      background-color: white;
+      position: relative;
+    }
+    
+    .portfolio::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to bottom, rgba(37, 99, 235, 0.05), transparent);
+      z-index: 0;
+    }
+    
+    .portfolio h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--dark);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .portfolio h2::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--secondary);
+      border-radius: 2px;
+    }
+    
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .portfolio-item {
+      background-color: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .portfolio-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+    
+    .portfolio-item:hover::before {
+      opacity: 1;
+    }
+    
+    .portfolio-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .portfolio-item-content {
+      padding: 25px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .portfolio-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+    
+    .portfolio-item p {
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+    
+    .portfolio-item a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    
+    .portfolio-item a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .portfolio-item a:hover::after {
+      width: 100%;
+    }
+    
+    /* Back to Home Button */
+    .back-home {
+      text-align: center;
+      margin-top: 50px;
+    }
+    
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 30px;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
+    }
+    
+    .back-home-btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 50px 0 20px;
+      position: relative;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to bottom, rgba(37, 99, 235, 0.1), transparent);
+      z-index: 0;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-left p {
+      color: var(--light-gray);
+    }
+    
+    .social-links-footer {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+    
+    .social-links-footer a {
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .social-links-footer a:hover {
+      color: var(--secondary);
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--light-gray);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Floating Elements */
+    .floating {
+      position: absolute;
+      z-index: 0;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+    
+    .floating-1 {
+      top: 20%;
+      left: 10%;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .floating-2 {
+      top: 60%;
+      right: 10%;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+    
+    .floating-3 {
+      bottom: 10%;
+      left: 20%;
+      animation: float 7s ease-in-out infinite 2s;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+    .delay-5 { animation-delay: 1s; }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav ul {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-button,
+      .secondary-button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+        margin-bottom: 15px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .portfolio h2 {
+        font-size: 2rem;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Elements -->
+  <div class="floating floating-1">
+    <svg width="100" height="100" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" fill="var(--primary)" />
+    </svg>
+  </div>
+  <div class="floating floating-2">
+    <svg width="80" height="80" viewBox="0 0 100 100">
+      <rect x="10" y="10" width="80" height="80" rx="15" fill="var(--secondary)" />
+    </svg>
+  </div>
+  <div class="floating floating-3">
+    <svg width="60" height="60" viewBox="0 0 100 100">
+      <polygon points="50,5 95,95 5,95" fill="var(--primary)" />
+    </svg>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="logo">Qefser Karpuzi</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About Me</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="Projects.html" class="active">My Work</a></li>
+      <li><a href="index.html#contact">Contact Me</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content fade-in">
+        <h1>My <span>Projects</span></h1>
+        <p>Explore my portfolio of web development projects, showcasing a range of technologies and solutions for various industries.</p>
+        <div class="hero-buttons">
+          <a href="#portfolio" class="cta-button">View Projects <i class="fas fa-arrow-down"></i></a>
+          <a href="index.html" class="secondary-button">Back to Home <i class="fas fa-home"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <h2 class="fade-in">Featured Work</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-item fade-in delay-1">
+          <img src="eli.png" alt="Eli Proprete Website">
+          <div class="portfolio-item-content">
+            <h3>Eli Proprete - Cleaning Company Website & Admin Dashboard</h3>
+            <p>A fully responsive website with product filtering, cart functionality, and secure checkout.</p>
+            <a href="Project1.html">View Project <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-item fade-in delay-2">
+          <img src="01.png" alt="V.Z-Entreprenor Website">
+          <div class="portfolio-item-content">
+            <h3>V.Z-Entreprenor</h3>
+            <p>Fully Responsive Website for a Construction Company in Oslo, Norway</p>
+            <a href="Project2.html">View Project <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-item fade-in delay-3">
+          <img src="bookstore.png" alt="Bookstore Website">
+          <div class="portfolio-item-content">
+            <h3>BookStore Project</h3>
+            <p>A fully responsive website with product catalog, shopping cart, and secure checkout.</p>
+            <a href="Project3.html">View Project <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-item fade-in delay-4">
+          <img src="in1.png" alt="Project 4 Website">
+          <div class="portfolio-item-content">
+            <h3>Project 4</h3>
+            <p>A modern and responsive website built with the latest web technologies.</p>
+            <a href="Project4.html">View Project <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="back-home">
+        <a href="index.html" class="back-home-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <p>&copy; 2025 Qefser Karpuzi. All Rights Reserved.</p>
+        </div>
+        <div class="footer-right">
+          <ul class="social-links-footer">
+            <li><a href="https://github.com/qkarpuzi" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://x.com/qefserkarpuzi_" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a></li>
+            <li><a href="https://www.upwork.com/freelancers/~016b955c4aa56c0cc6" target="_blank" aria-label="Upwork"><i class="fas fa-briefcase"></i></a></li>
+            <li><a href="mailto:qefserkarpuzibusiness@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>Designed & Developed by Qefser Karpuzi</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation scroll effect
+    window.addEventListener('scroll', function() {
+      const nav = document.querySelector('.nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Update active link
+          document.querySelectorAll('.nav ul li a').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+    
+    // Intersection Observer for animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>
