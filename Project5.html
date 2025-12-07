@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manual Physio - Physiotherapy Clinic Management System developed by Qefser Karpuzi">
+  <meta property="og:title" content="Manual Physio | Qefser Karpuzi Portfolio">
+  <meta property="og:description" content="Physiotherapy Clinic Management System with Patient Dashboard developed by Qefser Karpuzi">
+  <meta property="og:image" content="m1.png">
+  <meta property="og:url" content="your-portfolio-url/project2.html">
+  <title>Manual Physio Project | Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="unnamed.jpg">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #10b981;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --light-gray: #e2e8f0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    .nav.scrolled {
+      padding: 15px 0;
+      background-color: rgba(255, 255, 255, 0.98);
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo::before {
+      content: "{ }";
+      color: var(--secondary);
+      font-weight: bold;
+    }
+    
+    .nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav ul li {
+      margin-left: 30px;
+    }
+    
+    .nav ul li a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav ul li a:hover {
+      color: var(--primary);
+    }
+    
+    .nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav ul li a:hover::after {
+      width: 100%;
+    }
+    
+    .nav ul li a.active {
+      color: var(--primary);
+    }
+    
+    .nav ul li a.active::after {
+      width: 100%;
+    }
+    
+    /* Project Hero Section */
+    .project-hero {
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);
+      position: relative;
+      overflow: hidden;
+      margin-top: 80px;
+    }
+    
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+      z-index: -1;
+    }
+    
+    .project-hero-content {
+      max-width: 800px;
+    }
+    
+    .project-hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      color: var(--dark);
+    }
+    
+    .project-hero p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 30px;
+    }
+    
+    .project-meta {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .meta-item i {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    
+    .project-cta {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      border: 2px solid var(--primary);
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
+    }
+    
+    .btn-primary:hover {
+      background-color: transparent;
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+    
+    /* Project Gallery */
+    .project-gallery {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .gallery-item {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      cursor: pointer;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Project Details */
+    .project-details {
+      padding: 80px 0;
+      background-color: #f8fafc;
+    }
+    
+    .details-container {
+      display: flex;
+      gap: 50px;
+    }
+    
+    .details-content {
+      flex: 2;
+    }
+    
+    .details-sidebar {
+      flex: 1;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background-color: var(--secondary);
+      border-radius: 2px;
+    }
+    
+    .project-text {
+      margin-bottom: 30px;
+    }
+    
+    .project-text p {
+      margin-bottom: 20px;
+      color: var(--gray);
+    }
+    
+    .features-list {
+      margin: 30px 0;
+    }
+    
+    .features-list h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .features-list ul {
+      list-style: none;
+    }
+    
+    .features-list li {
+      margin-bottom: 15px;
+      padding-left: 25px;
+      position: relative;
+      color: var(--gray);
+    }
+    
+    .features-list li::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+    
+    .tech-stack {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+    }
+    
+    .tech-stack h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .tech-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .tech-item {
+      background-color: var(--light-gray);
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--primary-dark);
+    }
+    
+    .project-info {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    .info-item {
+      margin-bottom: 20px;
+    }
+    
+    .info-item h4 {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 5px;
+    }
+    
+    .info-item p {
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    .info-item a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .info-item a:hover {
+      color: var(--primary-dark);
+    }
+    
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+    
+    .modal-content {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 8px;
+      position: relative;
+    }
+    
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+    
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 50px 0 20px;
+      position: relative;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .footer-left p {
+      color: var(--light-gray);
+    }
+    
+    .social-links {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .social-links a:hover {
+      color: var(--secondary);
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--light-gray);
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .details-container {
+        flex-direction: column;
+      }
+      
+      .project-hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav ul {
+        display: none;
+      }
+      
+      .project-hero {
+        height: auto;
+        padding: 120px 0 80px;
+      }
+      
+      .project-meta {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .project-cta {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .project-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="logo">Qefser Karpuzi</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#portfolio" class="active">Portfolio</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Project Hero Section -->
+  <section class="project-hero">
+    <div class="container">
+      <div class="project-hero-content">
+        <h1>Manual Physio</h1>
+        <p>A comprehensive physiotherapy clinic management system with patient dashboard, appointment scheduling, and treatment tracking.</p>
+        
+        <div class="project-meta">
+          <div class="meta-item">
+            <i class="fas fa-tag"></i>
+            <span>Web Application</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-calendar"></i>
+            <span>Completed: 2025</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-user"></i>
+            <span>Client: Gent Hajrizi & Erjona Karpuzi</span>
+          </div>
+        </div>
+        
+        <div class="project-cta">
+          <a href="http://manualphysio.kesug.com/dashboard.php" class="btn btn-primary" target="_blank">
+            <i class="fas fa-external-link-alt"></i> View Live Project
+          </a>
+          <a href="index.html#portfolio" class="btn btn-outline">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Gallery -->
+  <section class="project-gallery">
+    <div class="container">
+      <h2 class="section-title">Project Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="m1.png" alt="Manual Physio Dashboard" onclick="openModal('m1.png')">
+        </div>
+        <div class="gallery-item">
+          <img src="m2.png" alt="Manual Physio Patient Management" onclick="openModal('m2.png')">
+        </div>
+        <div class="gallery-item">
+          <img src="m3.png" alt="Manual Physio Appointment System" onclick="openModal('m3.png')">
+        </div>
+        <div class="gallery-item">
+          <img src="m4.png" alt="Manual Physio Treatment Tracking" onclick="openModal('m4.png')">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Details -->
+  <section class="project-details">
+    <div class="container">
+      <div class="details-container">
+        <div class="details-content">
+          <h2 class="section-title">Project Details</h2>
+          
+          <div class="project-text">
+            <p>Manual Physio is a comprehensive clinic management system designed specifically for physiotherapy practices. The system manages patient records, appointments, treatment plans, and billing in an integrated platform that streamlines clinic operations and improves patient care coordination.</p>
+            
+            <p>I developed this system to address the unique needs of physiotherapy clinics, which require specialized tracking of patient progress, treatment sessions, and rehabilitation plans. The dashboard provides both clinic administrators and healthcare providers with the tools they need to deliver efficient, high-quality care.</p>
+          </div>
+          
+          <div class="features-list">
+            <h3>Key Features</h3>
+            <ul>
+              <li><strong>Patient Management System:</strong> Complete patient profiles with medical history, treatment plans, and progress tracking</li>
+              <li><strong>Appointment Scheduling:</strong> Intelligent scheduling system with calendar view, reminders, and conflict detection</li>
+              <li><strong>Treatment Dashboard:</strong> Healthcare provider dashboard for tracking patient progress and treatment sessions</li>
+              <li><strong>Electronic Health Records (EHR):</strong> Secure digital records with customizable templates for different conditions</li>
+              <li><strong>Billing & Invoicing:</strong> Integrated billing system with insurance claim support and payment tracking</li>
+              <li><strong>Multi-user Access:</strong> Role-based access control for doctors, therapists, receptionists, and administrators</li>
+              <li><strong>Reporting & Analytics:</strong> Comprehensive reports on patient outcomes, clinic performance, and financial metrics</li>
+            </ul>
+          </div>
+          
+          <div class="features-list">
+            <h3>Technical Implementation</h3>
+            <ul>
+              <li><strong>Frontend Architecture:</strong> Modern, responsive interface built with Bootstrap 5 and custom CSS for optimal healthcare workflows</li>
+              <li><strong>Backend Framework:</strong> Robust PHP backend with MVC architecture for maintainability and scalability</li>
+              <li><strong>Database Design:</strong> MySQL database with complex relationships for patient-treatment-session data modeling</li>
+              <li><strong>Security Compliance:</strong> HIPAA-inspired security measures with data encryption, audit trails, and access controls</li>
+              <li><strong>Real-time Features:</strong> Live appointment updates, notification system, and session tracking</li>
+              <li><strong>API Integration:</strong> RESTful API for potential integration with medical devices and third-party systems</li>
+              <li><strong>Performance Optimization:</strong> Caching strategies and optimized queries for handling large patient datasets</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="details-sidebar">
+          <div class="tech-stack">
+            <h3>Technologies Used</h3>
+            <div class="tech-items">
+              <span class="tech-item">PHP</span>
+              <span class="tech-item">MySQL</span>
+              <span class="tech-item">JavaScript</span>
+              <span class="tech-item">HTML5</span>
+              <span class="tech-item">CSS3</span>
+              <span class="tech-item">Bootstrap 5</span>
+              <span class="tech-item">jQuery</span>
+              <span class="tech-item">AJAX</span>
+              <span class="tech-item">Chart.js</span>
+              <span class="tech-item">FullCalendar</span>
+              <span class="tech-item">DataTables</span>
+              <span class="tech-item">REST API</span>
+            </div>
+          </div>
+          
+          <div class="project-info">
+            <h3>Project Information</h3>
+            
+            <div class="info-item">
+              <h4>Client</h4>
+              <p>Gent Hajrizi & Erjona Karpuzi</p>
+            </div>
+            
+            <div class="info-item">
+              <h4>Category</h4>
+              <p>Healthcare Management System</p>
+            </div>
+            
+            <div class="info-item">
+              <h4>Completion Date</h4>
+              <p>December 2025</p>
+            </div>
+            
+            <div class="info-item">
+              <h4>Project URL</h4>
+              <p><a href="http://manualphysio.kesug.com/dashboard.php" target="_blank">manualphysio.kesug.com</a></p>
+            </div>
+            
+            <div class="info-item">
+              <h4>Project Type</h4>
+              <p>Full-stack Web Application</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <p>&copy; 2025 Qefser Karpuzi. All Rights Reserved.</p>
+        </div>
+        <div class="footer-right">
+          <ul class="social-links">
+            <li><a href="https://github.com/qkarpuzi" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://x.com/qefserkarpuzi_" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a></li>
+            <li><a href="mailto:qefserkarpuzibusiness@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>Designed & Developed by Qefser Karpuzi</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation scroll effect
+    window.addEventListener('scroll', function() {
+      const nav = document.querySelector('.nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+    
+    // Modal functionality
+    function openModal(imageSrc) {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImg");
+      
+      modalImg.src = imageSrc;
+      modal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+    
+    function closeModal() {
+      const modal = document.getElementById("imageModal");
+      modal.classList.remove("show");
+      document.body.style.overflow = "auto";
+    }
+    
+    // Close modal when clicking outside the image
+    document.getElementById("imageModal").addEventListener("click", function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+    
+    // Close modal with ESC key
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
