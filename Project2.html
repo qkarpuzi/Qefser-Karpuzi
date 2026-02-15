@@ -3,765 +3,286 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="V.Z-Entreprenor - Professional Construction Company Website developed by Qefser Karpuzi">
-  <meta property="og:title" content="V.Z-Entreprenor | Qefser Karpuzi Portfolio">
-  <meta property="og:description" content="Professional Construction Company Website developed by Qefser Karpuzi">
-  <meta property="og:image" content="01.png">
-  <meta property="og:url" content="your-portfolio-url/project2.html">
-  <title>V.Z-Entreprenor Project | Qefser Karpuzi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="icon" type="image/png" href="unnamed.jpg">
+  <meta name="description" content="V.Z-Entreprenor – construction company website engineered by Qefser Karpuzi">
+  <title>V.Z-Entreprenor · Qefser Karpuzi · Software Engineer</title>
+  <!-- Tailwind + same professional palette as main portfolio -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- same subtle custom polish as main index -->
   <style>
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --secondary: #f59e0b;
-      --dark: #1e293b;
-      --light: #f8fafc;
-      --gray: #64748b;
-      --light-gray: #e2e8f0;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    /* Navigation */
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      transition: all 0.3s ease;
-    }
-    
-    .nav.scrolled {
-      padding: 15px 0;
-      background-color: rgba(255, 255, 255, 0.98);
-    }
-    
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .logo::before {
-      content: "{ }";
-      color: var(--secondary);
-      font-weight: bold;
-    }
-    
-    .nav ul {
-      display: flex;
-      list-style: none;
-    }
-    
-    .nav ul li {
-      margin-left: 30px;
-    }
-    
-    .nav ul li a {
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    
-    .nav ul li a:hover {
-      color: var(--primary);
-    }
-    
-    .nav ul li a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--primary);
-      transition: width 0.3s ease;
-    }
-    
-    .nav ul li a:hover::after {
-      width: 100%;
-    }
-    
-    .nav ul li a.active {
-      color: var(--primary);
-    }
-    
-    .nav ul li a.active::after {
-      width: 100%;
-    }
-    
-    /* Project Hero Section */
-    .project-hero {
-      height: 70vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
-      position: relative;
-      overflow: hidden;
-      margin-top: 80px;
-    }
-    
-    .project-hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 80%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
-      z-index: -1;
-    }
-    
-    .project-hero-content {
-      max-width: 800px;
-    }
-    
-    .project-hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      line-height: 1.2;
-      color: var(--dark);
-    }
-    
-    .project-hero p {
-      font-size: 1.2rem;
-      color: var(--gray);
-      margin-bottom: 30px;
-    }
-    
-    .project-meta {
-      display: flex;
-      gap: 30px;
-      margin-bottom: 30px;
-    }
-    
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .meta-item i {
-      color: var(--primary);
-      font-size: 1.2rem;
-    }
-    
-    .project-cta {
-      display: flex;
-      gap: 15px;
-    }
-    
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 30px;
-      border-radius: 50px;
+    html { scroll-behavior: smooth; }
+    /* active nav indicator */
+    .nav-link.active { color: #2563eb; border-bottom: 2px solid #2563eb; }
+    /* image & card micro interactions */
+    .hover-elevate { transition: all 0.25s ease; }
+    .hover-elevate:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -10px rgba(0,80,200,0.12); }
+    .img-zoom { transition: transform 0.5s ease; cursor: pointer; }
+    .img-zoom:hover { transform: scale(1.02); }
+    .card-border { border: 1px solid rgba(148, 163, 184, 0.2); }
+    .gradient-role {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 70%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
     }
-    
-    .btn-primary {
-      background-color: var(--primary);
-      color: white;
-      border: 2px solid var(--primary);
-      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
-    }
-    
-    .btn-primary:hover {
-      background-color: transparent;
-      color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-    }
-    
-    .btn-outline {
-      background-color: transparent;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-    }
-    
-    .btn-outline:hover {
-      background-color: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-    }
-    
-    /* Project Gallery */
-    .project-gallery {
-      padding: 80px 0;
-      background-color: white;
-    }
-    
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    
-    .gallery-item {
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    
-    .gallery-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    }
-    
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-      cursor: pointer;
-    }
-    
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
-    
-    /* Project Details */
-    .project-details {
-      padding: 80px 0;
-      background-color: #f8fafc;
-    }
-    
-    .details-container {
-      display: flex;
-      gap: 50px;
-    }
-    
-    .details-content {
-      flex: 2;
-    }
-    
-    .details-sidebar {
-      flex: 1;
-    }
-    
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      position: relative;
-      display: inline-block;
-    }
-    
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 70px;
-      height: 4px;
-      background-color: var(--secondary);
-      border-radius: 2px;
-    }
-    
-    .project-text {
-      margin-bottom: 30px;
-    }
-    
-    .project-text p {
-      margin-bottom: 20px;
-      color: var(--gray);
-    }
-    
-    .features-list {
-      margin: 30px 0;
-    }
-    
-    .features-list h3 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: var(--dark);
-    }
-    
-    .features-list ul {
-      list-style: none;
-    }
-    
-    .features-list li {
-      margin-bottom: 15px;
-      padding-left: 25px;
-      position: relative;
-      color: var(--gray);
-    }
-    
-    .features-list li::before {
-      content: '\f00c';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-    }
-    
-    .tech-stack {
-      background-color: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      margin-bottom: 30px;
-    }
-    
-    .tech-stack h3 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: var(--dark);
-    }
-    
-    .tech-items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    
-    .tech-item {
-      background-color: var(--light-gray);
-      padding: 8px 15px;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--primary-dark);
-    }
-    
-    .project-info {
-      background-color: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    }
-    
-    .info-item {
-      margin-bottom: 20px;
-    }
-    
-    .info-item h4 {
-      font-size: 1rem;
-      color: var(--gray);
-      margin-bottom: 5px;
-    }
-    
-    .info-item p {
-      font-weight: 500;
-      color: var(--dark);
-    }
-    
-    .info-item a {
-      color: var(--primary);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    .info-item a:hover {
-      color: var(--primary-dark);
-    }
-    
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .modal.show {
-      display: flex;
-      opacity: 1;
-    }
-    
-    .modal-content {
-      max-width: 90%;
-      max-height: 90vh;
-      border-radius: 8px;
-      position: relative;
-    }
-    
-    .modal-content img {
-      width: 100%;
-      height: auto;
-      max-height: 80vh;
-      object-fit: contain;
-    }
-    
-    .close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: white;
-      font-size: 3rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .close:hover {
-      color: var(--primary);
-      transform: rotate(90deg);
-    }
-    
-    /* Footer */
-    footer {
-      background-color: var(--dark);
-      color: white;
-      padding: 50px 0 20px;
-      position: relative;
-    }
-    
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-    
-    .footer-left p {
-      color: var(--light-gray);
-    }
-    
-    .social-links {
-      display: flex;
-      list-style: none;
-      gap: 20px;
-    }
-    
-    .social-links a {
-      color: white;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    
-    .social-links a:hover {
-      color: var(--secondary);
-      background-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-3px);
-    }
-    
-    .copyright {
-      text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--light-gray);
-      font-size: 0.9rem;
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 992px) {
-      .details-container {
-        flex-direction: column;
-      }
-      
-      .project-hero h1 {
-        font-size: 2.5rem;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .nav ul {
-        display: none;
-      }
-      
-      .project-hero {
-        height: auto;
-        padding: 120px 0 80px;
-      }
-      
-      .project-meta {
-        flex-direction: column;
-        gap: 15px;
-      }
-      
-      .project-cta {
-        flex-direction: column;
-      }
-      
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .project-hero h1 {
-        font-size: 2rem;
-      }
-      
-      .section-title {
-        font-size: 1.8rem;
-      }
-    }
+    /* modal animation */
+    .modal { transition: opacity 0.2s ease; }
+    .modal.show { opacity: 1; pointer-events: auto; }
   </style>
 </head>
-<body>
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="logo">Qefser Karpuzi</div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#portfolio" class="active">Portfolio</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-    </ul>
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-blue-100">
+
+  <!-- STICKY NAV (exactly as main, with back links) -->
+  <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/60 z-50 shadow-xs">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html#hero" class="text-xl font-semibold tracking-tight text-blue-700 flex items-center gap-1">
+        <span class="text-amber-600 text-2xl">⎧⎭</span> Qefser Karpuzi
+      </a>
+      <ul class="flex space-x-8 text-sm font-medium text-slate-700">
+        <li><a href="index.html#skills" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Skills</a></li>
+        <li><a href="index.html#portfolio" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700 active text-blue-700 border-blue-700">Work</a></li>
+        <li><a href="index.html#contact" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- Project Hero Section -->
-  <section class="project-hero">
-    <div class="container">
-      <div class="project-hero-content">
-        <h1>V.Z-Entreprenor</h1>
-        <p>A modern, responsive website for a construction company based in Oslo, Norway.</p>
-        
-        <div class="project-meta">
-          <div class="meta-item">
-            <i class="fas fa-tag"></i>
-            <span>Web Development</span>
-          </div>
-          <div class="meta-item">
-            <i class="fas fa-calendar"></i>
-            <span>Completed: 2024</span>
-          </div>
-          <div class="meta-item">
-            <i class="fas fa-user"></i>
-            <span>Client: Agron Z, V.Z-Entreprenor</span>
-          </div>
+  <!-- PROJECT HERO (engineering / web dual identity) -->
+  <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+    <div class="absolute top-20 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-5"></div>
+    <div class="absolute bottom-10 left-10 w-72 h-72 bg-amber-500/5 rounded-full blur-3xl"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="max-w-3xl">
+        <!-- breadcrumb / category chip -->
+        <div class="inline-block px-4 py-1.5 bg-blue-50 rounded-full text-blue-700 text-sm font-medium mb-6 border border-blue-200/50 shadow-sm">
+          <i class="fas fa-hard-hat mr-1"></i>  V.Z-Entreprenor  <span class="mx-2 text-slate-400">|</span>  <i class="fas fa-paint-brush mr-1"></i> corporate web
         </div>
-        
-        <div class="project-cta">
-          <a href="https://qkarpuzi.github.io/V.Z-Entreprenor/" class="btn btn-primary" target="_blank">
-            <i class="fas fa-external-link-alt"></i> View Live Project
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+          Construction presence <span class="gradient-role">engineered</span>
+        </h1>
+        <p class="text-slate-600 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
+          A modern, responsive website for a construction company based in Oslo, Norway. 
+          Clean aesthetics, fast performance, and seamless user experience.
+        </p>
+        <!-- meta row (client, date, role) -->
+        <div class="flex flex-wrap gap-6 mt-8 text-slate-600">
+          <div class="flex items-center gap-2"><i class="fas fa-user text-blue-600"></i> Client: <span class="font-medium text-slate-800">Agron Z, V.Z-Entreprenor</span></div>
+          <div class="flex items-center gap-2"><i class="fas fa-calendar-alt text-amber-600"></i> Completed: <span class="font-medium text-slate-800">Sep 2024</span></div>
+          <div class="flex items-center gap-2"><i class="fas fa-code-branch text-emerald-600"></i> Role: <span class="font-medium text-slate-800">Frontend engineer</span></div>
+        </div>
+        <!-- action buttons -->
+        <div class="flex flex-wrap gap-4 mt-10">
+          <a href="https://qkarpuzi.github.io/V.Z-Entreprenor/" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-medium shadow-md shadow-blue-200 transition flex items-center gap-2">
+            <i class="fas fa-external-link-alt"></i> View live project
           </a>
-          <a href="index.html#portfolio" class="btn btn-outline">
-            <i class="fas fa-arrow-left"></i> Back to Portfolio
+          <a href="index.html#portfolio" class="border border-slate-300 hover:border-blue-400 bg-white/90 text-slate-700 px-8 py-3.5 rounded-full font-medium transition flex items-center gap-2">
+            <i class="fas fa-arrow-left"></i> Back to portfolio
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Project Gallery -->
-  <section class="project-gallery">
-    <div class="container">
-      <h2 class="section-title">Project Gallery</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="01.png" alt="V.Z-Entreprenor Homepage" onclick="openModal('01.png')">
+  <!-- GALLERY SECTION (with exact image names: 01.png, 02.png, 03.png) -->
+  <section class="py-20 bg-white border-y border-slate-200/60">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center">
+        <span class="text-blue-600 text-sm font-semibold tracking-wider uppercase">project gallery</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Screens & design</h2>
+        <p class="text-slate-600 max-w-2xl mx-auto mt-3">Click any image to enlarge.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
+        <!-- 01.png -->
+        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
+          <img src="01.png" alt="V.Z-Entreprenor homepage" onclick="openModal('01.png')" class="w-full h-64 object-cover cursor-pointer img-zoom">
         </div>
-        <div class="gallery-item">
-          <img src="02.png" alt="V.Z-Entreprenor Services Page" onclick="openModal('02.png')">
+        <!-- 02.png -->
+        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
+          <img src="02.png" alt="V.Z-Entreprenor services" onclick="openModal('02.png')" class="w-full h-64 object-cover cursor-pointer img-zoom">
         </div>
-        <div class="gallery-item">
-          <img src="03.png" alt="V.Z-Entreprenor Contact Page" onclick="openModal('03.png')">
+        <!-- 03.png -->
+        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
+          <img src="03.png" alt="V.Z-Entreprenor contact" onclick="openModal('03.png')" class="w-full h-64 object-cover cursor-pointer img-zoom">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Project Details -->
-  <section class="project-details">
-    <div class="container">
-      <div class="details-container">
-        <div class="details-content">
-          <h2 class="section-title">Project Details</h2>
-          
-          <div class="project-text">
-            <p>V.Z-Entreprenor is a professional construction company based in Oslo, Norway, specializing in high-quality construction services. They needed a modern, responsive website to showcase their projects, services, and establish credibility in the competitive construction market.</p>
-            
-            <p>This website was designed with a focus on clean aesthetics, professional presentation, and mobile responsiveness to appeal to both residential and commercial clients. The design emphasizes the company's portfolio while making it easy for potential clients to get in touch.</p>
+  <!-- PROJECT DETAILS (split view, same engineering tone) -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row gap-16">
+        <!-- left: main description -->
+        <div class="flex-1">
+          <span class="text-amber-600 text-sm font-semibold tracking-wider uppercase">deep dive</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Engineering V.Z-Entreprenor</h2>
+          <div class="mt-8 space-y-6 text-slate-700 leading-relaxed">
+            <p>
+              V.Z-Entreprenor is a professional construction company based in Oslo, Norway. 
+              They needed a modern, responsive website to showcase their projects, services, and establish credibility 
+              in the competitive construction market.
+            </p>
+            <p>
+              I designed and built the site with a focus on <span class="font-medium text-blue-700">clean aesthetics, professional presentation, and mobile responsiveness</span>. 
+              The design emphasizes the company's portfolio while making it easy for potential clients to get in touch.
+            </p>
+            <p>
+              Every component was crafted with performance and maintainability in mind — from semantic HTML5 
+              to optimized CSS and lightweight JavaScript interactions.
+            </p>
           </div>
-          
-          <div class="features-list">
-            <h3>Key Features</h3>
-            <ul>
-              <li><strong>Fully Responsive Design:</strong> Optimized for all devices from mobile to desktop with adaptive layouts</li>
-              <li><strong>Modern UI/UX:</strong> Clean, professional interface with intuitive navigation and visual hierarchy</li>
-              <li><strong>Performance Optimized:</strong> Fast loading times through optimized assets and efficient code</li>
-              <li><strong>Interactive Elements:</strong> Smooth hover effects, transitions, and responsive navigation</li>
-              <li><strong>Service Showcase:</strong> Well-organized presentation of construction services and specialties</li>
-              <li><strong>Contact Accessibility:</strong> Multiple contact options prominently displayed throughout the site</li>
+
+          <!-- feature grid (two columns) -->
+          <div class="grid sm:grid-cols-2 gap-6 mt-10">
+            <div class="bg-white p-6 rounded-xl card-border">
+              <i class="fas fa-mobile-alt text-2xl text-blue-600 mb-3"></i>
+              <h3 class="font-semibold text-lg">Fully responsive</h3>
+              <p class="text-sm text-slate-600 mt-1">Flawless experience on mobile, tablet, desktop.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl card-border">
+              <i class="fas fa-tachometer-alt text-2xl text-amber-600 mb-3"></i>
+              <h3 class="font-semibold text-lg">Performance optimized</h3>
+              <p class="text-sm text-slate-600 mt-1">Fast loading, minified assets, efficient code.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl card-border">
+              <i class="fas fa-paint-brush text-2xl text-emerald-600 mb-3"></i>
+              <h3 class="font-semibold text-lg">Modern UI/UX</h3>
+              <p class="text-sm text-slate-600 mt-1">Intuitive navigation, smooth transitions.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl card-border">
+              <i class="fas fa-project-diagram text-2xl text-indigo-600 mb-3"></i>
+              <h3 class="font-semibold text-lg">Project showcase</h3>
+              <p class="text-sm text-slate-600 mt-1">Well‑organized presentation of services and work.</p>
+            </div>
+          </div>
+
+          <!-- full feature list with icons (matching original content) -->
+          <div class="mt-12 bg-white p-8 rounded-2xl card-border">
+            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-list-check text-blue-600"></i> Key features</h3>
+            <ul class="grid sm:grid-cols-2 gap-3">
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Fully responsive design (mobile‑first)</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Modern UI/UX with visual hierarchy</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Performance optimized (fast loading)</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Interactive hover effects & transitions</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Service showcase & portfolio presentation</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Prominent contact options</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Semantic HTML5, cross‑browser compatible</span></li>
             </ul>
           </div>
-          
-          <div class="features-list">
-            <h3>Technical Implementation</h3>
-            <ul>
-              <li><strong>Semantic HTML5:</strong> Clean, well-structured markup for accessibility and SEO</li>
-              <li><strong>Advanced CSS3:</strong> Modern styling with Flexbox, transitions, and responsive design techniques</li>
-              <li><strong>JavaScript Enhancements:</strong> Interactive elements for improved user engagement</li>
-              <li><strong>Cross-Browser Compatibility:</strong> Thorough testing for consistent performance across browsers</li>
-              <li><strong>Optimized Assets:</strong> Compressed images and minified code for fast loading</li>
-              <li><strong>Mobile-First Approach:</strong> Designed starting with mobile devices then enhanced for larger screens</li>
+
+          <!-- technical implementation (from original) -->
+          <div class="mt-8 bg-white p-8 rounded-2xl card-border">
+            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-microchip text-purple-600"></i> Technical implementation</h3>
+            <ul class="grid sm:grid-cols-2 gap-3">
+              <li class="flex items-start gap-2"><i class="fas fa-code text-slate-500 mt-1 text-sm"></i> <span>Semantic HTML5</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-paint-brush text-slate-500 mt-1 text-sm"></i> <span>Advanced CSS3 (Flexbox, transitions)</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-mouse-pointer text-slate-500 mt-1 text-sm"></i> <span>JavaScript enhancements</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-globe text-slate-500 mt-1 text-sm"></i> <span>Cross‑browser compatibility</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-compress-alt text-slate-500 mt-1 text-sm"></i> <span>Optimized assets (minified)</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-mobile text-slate-500 mt-1 text-sm"></i> <span>Mobile‑first approach</span></li>
             </ul>
           </div>
         </div>
-        
-        <div class="details-sidebar">
-          <div class="tech-stack">
-            <h3>Technologies Used</h3>
-            <div class="tech-items">
-              <span class="tech-item">HTML5</span>
-              <span class="tech-item">CSS3</span>
-              <span class="tech-item">JavaScript</span>
-              <span class="tech-item">Flexbox</span>
-              <span class="tech-item">Google Fonts</span>
-              <span class="tech-item">Font Awesome</span>
-              <span class="tech-item">Git</span>
-              <span class="tech-item">GitHub</span>
+
+        <!-- right sidebar (tech stack + project info) -->
+        <div class="lg:w-80 space-y-8">
+          <!-- tech stack card -->
+          <div class="bg-white p-8 rounded-2xl card-border shadow-sm">
+            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-microchip text-blue-600"></i> Tech stack</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">HTML5</span>
+              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">CSS3</span>
+              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">JavaScript</span>
+              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Flexbox</span>
+              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Google Fonts</span>
+              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Font Awesome</span>
+              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Git</span>
+              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">GitHub</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-5 flex items-center gap-1"><i class="fas fa-crown text-amber-400"></i> responsive, cross‑browser, accessible</p>
+          </div>
+
+          <!-- project info card (client, date, url) -->
+          <div class="bg-white p-8 rounded-2xl card-border shadow-sm">
+            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-circle-info text-amber-600"></i> Project info</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="text-xs text-slate-500 uppercase tracking-wide">Client</p>
+                <p class="font-medium">V.Z-Entreprenor (Agron Z)</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500 uppercase tracking-wide">Category</p>
+                <p class="font-medium">Business website</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500 uppercase tracking-wide">Completion</p>
+                <p class="font-medium">September 2024</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500 uppercase tracking-wide">Project URL</p>
+                <a href="https://qkarpuzi.github.io/V.Z-Entreprenor/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium break-all">qkarpuzi.github.io/V.Z-Entreprenor <i class="fas fa-external-link-alt text-xs ml-1"></i></a>
+              </div>
             </div>
           </div>
-          
-          <div class="project-info">
-            <h3>Project Information</h3>
-            
-            <div class="info-item">
-              <h4>Client</h4>
-              <p>V.Z-Entreprenor</p>
-            </div>
-            
-            <div class="info-item">
-              <h4>Category</h4>
-              <p>Business Website</p>
-            </div>
-            
-            <div class="info-item">
-              <h4>Completion Date</h4>
-              <p>September 2024</p>
-            </div>
-            
-            <div class="info-item">
-              <h4>Project URL</h4>
-              <p><a href="https://qkarpuzi.github.io/V.Z-Entreprenor/" target="_blank">V.Z-Entreprenor</a></p>
-            </div>
-          </div>
+
+          <!-- back link (mobile friendly) -->
+          <a href="Projects.html" class="hidden lg:flex items-center gap-2 text-slate-600 hover:text-blue-700 transition mt-4 text-sm">
+            <i class="fas fa-arrow-left"></i> Back to all projects
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Image Modal -->
-  <div id="imageModal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modalImg">
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-left">
-          <p>&copy; 2025 Qefser Karpuzi. All Rights Reserved.</p>
-        </div>
-        <div class="footer-right">
-          <ul class="social-links">
-            <li><a href="https://github.com/qkarpuzi" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://x.com/qefserkarpuzi_" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a></li>
-
-            <li><a href="mailto:qefserkarpuzibusiness@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="copyright">
-        <p>Designed & Developed by Qefser Karpuzi</p>
-      </div>
+  <!-- FOOTER (identical to main) -->
+  <footer class="bg-slate-900 text-slate-400 py-12">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm">© 2026 Qefser Karpuzi · software engineer & web developer</p>
+      <p class="text-sm mt-3 md:mt-0">Designed & developed by Qefser Karpuzi</p>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 text-center text-xs text-slate-600 mt-5">
+      <span>⚡ V.Z-Entreprenor case study</span>
     </div>
   </footer>
 
+  <!-- MODAL (full-size image viewer) -->
+  <div id="imageModal" class="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center opacity-0 pointer-events-none modal">
+    <span class="absolute top-5 right-8 text-white text-5xl font-light cursor-pointer hover:text-blue-400 transition" onclick="closeModal()">&times;</span>
+    <img id="modalImg" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl">
+  </div>
+
+  <!-- scripts -->
   <script>
-    // Navigation scroll effect
+    // Modal functions
+    function openModal(src) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      modalImg.src = src;
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
+    // close on background click
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+    // ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // optional nav highlight on scroll
     window.addEventListener('scroll', function() {
       const nav = document.querySelector('.nav');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-    
-    // Modal functionality
-    function openModal(imageSrc) {
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImg");
-      
-      modalImg.src = imageSrc;
-      modal.classList.add("show");
-      document.body.style.overflow = "hidden";
-    }
-    
-    function closeModal() {
-      const modal = document.getElementById("imageModal");
-      modal.classList.remove("show");
-      document.body.style.overflow = "auto";
-    }
-    
-    // Close modal when clicking outside the image
-    document.getElementById("imageModal").addEventListener("click", function(e) {
-      if (e.target === this) {
-        closeModal();
-      }
-    });
-    
-    // Close modal with ESC key
-    document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape") {
-        closeModal();
-      }
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
     });
   </script>
 </body>

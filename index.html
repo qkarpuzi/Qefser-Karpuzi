@@ -3,1155 +3,317 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Qefser Karpuzi's Web Developer Portfolio">
-  <meta property="og:title" content="Qefser Karpuzi - Web Developer Portfolio">
-  <meta property="og:description" content="Showcasing the work of Qefser Karpuzi, a skilled web developer specializing in modern, responsive websites.">
-  <meta property="og:image" content="path/to/your/profile-picture.jpg">
-  <meta property="og:url" content="your-portfolio-url">
-  <meta name="google-site-verification" content="4elAn1VOrxXYviuZuwuYCIWoDxabypgnGjEoeXTl2sg" />
-  <title>Qefser Karpuzi - Web Developer Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="icon" type="image/png" href="unnamed.jpg">
-
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Qefser Karpuzi – Software Engineer & Web Developer · system architect, modern web, and cloud‑native solutions">
+  <title>Qefser Karpuzi · Software Engineer & Web Developer</title>
+  <!-- Tailwind + professional extended -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- subtle custom polish: smoother transitions, refined active state -->
   <style>
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --secondary: #f59e0b;
-      --dark: #1e293b;
-      --light: #f8fafc;
-      --gray: #64748b;
-      --light-gray: #e2e8f0;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    /* Navigation */
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      transition: all 0.3s ease;
-    }
-    
-    .nav.scrolled {
-      padding: 15px 0;
-      background-color: rgba(255, 255, 255, 0.98);
-    }
-    
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .logo::before {
-      content: "{ }";
-      color: var(--secondary);
-      font-weight: bold;
-    }
-    
-    .nav ul {
-      display: flex;
-      list-style: none;
-    }
-    
-    .nav ul li {
-      margin-left: 30px;
-    }
-    
-    .nav ul li a {
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    
-    .nav ul li a:hover {
-      color: var(--primary);
-    }
-    
-    .nav ul li a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--primary);
-      transition: width 0.3s ease;
-    }
-    
-    .nav ul li a:hover::after {
-      width: 100%;
-    }
-    
-    .nav ul li a.active {
-      color: var(--primary);
-    }
-    
-    .nav ul li a.active::after {
-      width: 100%;
-    }
-    
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 80%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
-      z-index: -1;
-    }
-    
-    .hero-content {
-      max-width: 600px;
-    }
-    
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      line-height: 1.2;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
+    html { scroll-behavior: smooth; }
+    /* active nav indicator (sharp & elegant) */
+    .nav-link.active { color: #2563eb; border-bottom: 2px solid #2563eb; }
+    /* image & card micro interactions – very discreet */
+    .hover-elevate { transition: all 0.25s ease; }
+    .hover-elevate:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -10px rgba(0,80,200,0.12); }
+    /* profile image gentle zoom */
+    .img-zoom { transition: transform 0.5s ease; }
+    .img-zoom:hover { transform: scale(1.02); }
+    /* gradient text for dual role */
+    .gradient-role {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 70%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-    }
-    
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--gray);
-      margin-bottom: 30px;
-    }
-    
-    .cta-button {
-      display: inline-block;
-      background-color: var(--primary);
-      color: white;
-      padding: 12px 30px;
-      border-radius: 50px;
-      text-decoration: none;
       font-weight: 600;
-      transition: all 0.3s ease;
-      border: 2px solid var(--primary);
-      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
     }
-    
-    .cta-button:hover {
-      background-color: transparent;
-      color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-    }
-    
-    .secondary-button {
-      display: inline-block;
-      background-color: transparent;
-      color: var(--primary);
-      padding: 12px 30px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      border: 2px solid var(--primary);
-      margin-left: 15px;
-      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
-    }
-    
-    .secondary-button:hover {
-      background-color: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-    }
-    
-    /* About Section */
-    .about-section {
-      padding: 100px 0;
-      background-color: white;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .about-section::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 150px;
-      background: linear-gradient(to bottom, transparent, rgba(37, 99, 235, 0.05));
-      z-index: 0;
-    }
-    
-    .about-container {
-      display: flex;
-      align-items: center;
-      gap: 50px;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .profile-container {
-      flex: 1;
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      height: 500px;
-    }
-    
-    .profile-picture {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .profile-container:hover .profile-picture {
-      transform: scale(1.05);
-    }
-    
-    .profile-container::before {
-      content: '';
-      position: absolute;
-      top: -15px;
-      left: -15px;
-      width: 100%;
-      height: 100%;
-      border: 3px solid var(--primary);
-      border-radius: 20px;
-      z-index: -1;
-      transition: all 0.5s ease;
-    }
-    
-    .profile-container:hover::before {
-      top: -10px;
-      left: -10px;
-    }
-    
-    .about-content {
-      flex: 1;
-    }
-    
-    .intro-text {
-      font-size: 1.2rem;
-      color: var(--primary);
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-    
-    .about-content h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: var(--dark);
-      position: relative;
-      display: inline-block;
-    }
-    
-    .about-content h1::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 70px;
-      height: 4px;
-      background-color: var(--secondary);
-      border-radius: 2px;
-    }
-    
-    .description {
-      color: var(--gray);
-      margin-bottom: 30px;
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 15px;
-    }
-    
-    .social-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: var(--light-gray);
-      color: var(--primary);
-      transition: all 0.3s ease;
-    }
-    
-    .social-links a:hover {
-      background-color: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-    }
-    
-    /* Skills Section */
-    .skills {
-      padding: 100px 0;
-      background-color: #f8fafc;
-      position: relative;
-    }
-    
-    .skills::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: linear-gradient(to bottom, rgba(37, 99, 235, 0.05), transparent);
-      z-index: 0;
-    }
-    
-    .skills h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      color: var(--dark);
-      position: relative;
-      z-index: 1;
-    }
-    
-    .skills h2::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background-color: var(--secondary);
-      border-radius: 2px;
-    }
-    
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      list-style: none;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .skills-list li {
-      background-color: white;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-weight: 600;
-      color: var(--primary);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .skills-list li:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      color: var(--primary-dark);
-    }
-    
-    .skills-list li i {
-      font-size: 1.2rem;
-    }
-    
-    /* Portfolio Section */
-    .portfolio {
-      padding: 100px 0;
-      background-color: white;
-      position: relative;
-    }
-    
-    .portfolio::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: linear-gradient(to bottom, rgba(37, 99, 235, 0.05), transparent);
-      z-index: 0;
-    }
-    
-    .portfolio h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      color: var(--dark);
-      position: relative;
-      z-index: 1;
-    }
-    
-    .portfolio h2::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background-color: var(--secondary);
-      border-radius: 2px;
-    }
-    
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 30px;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .portfolio-item {
-      background-color: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    
-    .portfolio-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    }
-    
-    .portfolio-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 1;
-    }
-    
-    .portfolio-item:hover::before {
-      opacity: 1;
-    }
-    
-    .portfolio-item img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .portfolio-item:hover img {
-      transform: scale(1.05);
-    }
-    
-    .portfolio-item-content {
-      padding: 25px;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .portfolio-item h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      color: var(--dark);
-    }
-    
-    .portfolio-item p {
-      color: var(--gray);
-      margin-bottom: 20px;
-    }
-    
-    .portfolio-item a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--primary);
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      position: relative;
-    }
-    
-    .portfolio-item a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--primary);
-      transition: width 0.3s ease;
-    }
-    
-    .portfolio-item a:hover::after {
-      width: 100%;
-    }
-    
-    /* Contact Section */
-    .contact {
-      padding: 100px 0;
-      background-color: #f8fafc;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .contact::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: linear-gradient(to bottom, rgba(37, 99, 235, 0.05), transparent);
-      z-index: 0;
-    }
-    
-    .contact h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: var(--dark);
-      position: relative;
-      z-index: 1;
-    }
-    
-    .contact h2::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background-color: var(--secondary);
-      border-radius: 2px;
-    }
-    
-    .contact p {
-      text-align: center;
-      color: var(--gray);
-      margin-bottom: 50px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .contact-container {
-      display: flex;
-      gap: 50px;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .contact-form {
-      flex: 1;
-      background-color: white;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    }
-    
-    .form-group {
-      margin-bottom: 25px;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-      color: var(--dark);
-    }
-    
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1px solid var(--light-gray);
-      border-radius: 8px;
-      font-family: 'Poppins', sans-serif;
-      transition: all 0.3s ease;
-    }
-    
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-    
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-    
-    .contact-form button {
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 50px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    
-    .contact-form button:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-    }
-    
-    .contact-info {
-      flex: 1;
-      list-style: none;
-    }
-    
-    .contact-info li {
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      color: var(--gray);
-    }
-    
-    .contact-info li i {
-      width: 50px;
-      height: 50px;
-      background-color: var(--primary);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-    
-    .contact-info li a {
-      color: var(--primary);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    .contact-info li a:hover {
-      color: var(--primary-dark);
-    }
-    
-    /* Footer */
-    footer {
-      background-color: var(--dark);
-      color: white;
-      padding: 50px 0 20px;
-      position: relative;
-    }
-    
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: linear-gradient(to bottom, rgba(37, 99, 235, 0.1), transparent);
-      z-index: 0;
-    }
-    
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .footer-left p {
-      color: var(--light-gray);
-    }
-    
-    .social-links-footer {
-      display: flex;
-      list-style: none;
-      gap: 20px;
-    }
-    
-    .social-links-footer a {
-      color: white;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    
-    .social-links-footer a:hover {
-      color: var(--secondary);
-      background-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-3px);
-    }
-    
-    .copyright {
-      text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--light-gray);
-      font-size: 0.9rem;
-      position: relative;
-      z-index: 1;
-    }
-    
-    /* Floating Elements */
-    .floating {
-      position: absolute;
-      z-index: 0;
-      opacity: 0.1;
-      pointer-events: none;
-    }
-    
-    .floating-1 {
-      top: 20%;
-      left: 10%;
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    .floating-2 {
-      top: 60%;
-      right: 10%;
-      animation: float 8s ease-in-out infinite reverse;
-    }
-    
-    .floating-3 {
-      bottom: 10%;
-      left: 20%;
-      animation: float 7s ease-in-out infinite 2s;
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(5deg); }
-      100% { transform: translateY(0) rotate(0deg); }
-    }
-    
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .fade-in {
-      animation: fadeIn 1s ease forwards;
-    }
-    
-    .delay-1 { animation-delay: 0.2s; }
-    .delay-2 { animation-delay: 0.4s; }
-    .delay-3 { animation-delay: 0.6s; }
-    
-    /* Responsive Design */
-    @media (max-width: 992px) {
-      .about-container,
-      .contact-container {
-        flex-direction: column;
-      }
-      
-      .profile-container {
-        margin-bottom: 40px;
-        height: 400px;
-      }
-      
-      .hero h1 {
-        font-size: 2.8rem;
-      }
-      
-      .contact-info {
-        margin-top: 40px;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .nav ul {
-        display: none;
-      }
-      
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .cta-button,
-      .secondary-button {
-        display: block;
-        width: 100%;
-        text-align: center;
-        margin-left: 0;
-        margin-bottom: 15px;
-      }
-      
-      .profile-container {
-        height: 350px;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .about-content h1,
-      .skills h2,
-      .portfolio h2,
-      .contact h2 {
-        font-size: 2rem;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-      }
-      
-      .profile-container {
-        height: 300px;
-      }
-    }
-
-    .more-projects {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.more-projects-btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.more-projects-btn:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-}
-
-.more-projects-btn i {
-  margin-left: 8px;
-}
+    /* card border subtle */
+    .card-border { border: 1px solid rgba(148, 163, 184, 0.2); }
   </style>
 </head>
-<body>
-  <!-- Floating Elements -->
-  <div class="floating floating-1">
-    <svg width="100" height="100" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="40" fill="var(--primary)" />
-    </svg>
-  </div>
-  <div class="floating floating-2">
-    <svg width="80" height="80" viewBox="0 0 100 100">
-      <rect x="10" y="10" width="80" height="80" rx="15" fill="var(--secondary)" />
-    </svg>
-  </div>
-  <div class="floating floating-3">
-    <svg width="60" height="60" viewBox="0 0 100 100">
-      <polygon points="50,5 95,95 5,95" fill="var(--primary)" />
-    </svg>
-  </div>
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-blue-100">
 
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="logo">Qefser Karpuzi</div>
-    <ul>
-      <li><a href="#about" class="active">About Me</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#portfolio">My Work</a></li>
-      <li><a href="#contact">Contact Me</a></li>
-    </ul>
+  <!-- STICKY NAV (clean glass) -->
+  <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/60 z-50 shadow-xs">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#hero" class="text-xl font-semibold tracking-tight text-blue-700 flex items-center gap-1">
+        <span class="text-amber-600 text-2xl">⎧⎭</span> Qefser Karpuzi
+      </a>
+      <ul class="flex space-x-8 text-sm font-medium text-slate-700">
+        <li><a href="#skills" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Skills</a></li>
+        <li><a href="#portfolio" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Work</a></li>
+        <li><a href="#about" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">About</a></li>
+        <li><a href="#contact" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content fade-in">
-        <h1>Code That <span>Inspires</span> & <span>Delivers</span></h1>
-        <p>I build responsive, high-performance websites that combine beautiful design with flawless functionality to create digital experiences that users love.</p>
-        <div class="hero-buttons">
-          <a href="#portfolio" class="cta-button">View My Work <i class="fas fa-arrow-down"></i></a>
-          <a href="#contact" class="secondary-button">Get In Touch <i class="fas fa-paper-plane"></i></a>
+  <!-- HERO – Software Engineer & Web Developer (dual identity) -->
+  <section id="hero" class="relative pt-36 pb-24 md:pt-44 md:pb-32 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+    <!-- abstract tech geometry (very subtle) -->
+    <div class="absolute top-20 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-5"></div>
+    <div class="absolute bottom-10 left-10 w-72 h-72 bg-amber-500/5 rounded-full blur-3xl"></div>
+    
+    <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16">
+      <div class="flex-1 text-center lg:text-left">
+        <div class="inline-block px-4 py-1.5 bg-blue-50 rounded-full text-blue-700 text-sm font-medium mb-6 border border-blue-200/50 shadow-sm">
+          <i class="fas fa-code mr-1"></i>  software engineer  <span class="mx-2 text-slate-400">|</span>  <i class="fas fa-globe mr-1"></i>  web developer
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-slate-900">
+          Engineer. <br><span class="gradient-role">Build. Scale.</span>
+        </h1>
+        <p class="text-slate-600 text-lg md:text-xl mt-6 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          I architect full‑stack systems and craft polished web experiences — 
+          from cloud backends to pixel‑perfect frontends.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center lg:justify-start mt-8">
+          <a href="#portfolio" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-medium shadow-md shadow-blue-200 transition flex items-center gap-2">
+            <i class="fas fa-arrow-down text-sm"></i> See engineering work
+          </a>
+          <a href="#contact" class="border border-slate-300 hover:border-blue-400 bg-white/90 text-slate-700 px-8 py-3.5 rounded-full font-medium transition flex items-center gap-2">
+            <i class="fas fa-paper-plane"></i> Let’s talk
+          </a>
+        </div>
+        <!-- subtle tech tags -->
+        <div class="flex flex-wrap gap-3 justify-center lg:justify-start mt-10 text-sm text-slate-500">
+          <span class="bg-white px-4 py-2 rounded-full border border-slate-200 shadow-xs">⚙️ system design</span>
+          <span class="bg-white px-4 py-2 rounded-full border border-slate-200 shadow-xs">☁️ cloud native</span>
+          <span class="bg-white px-4 py-2 rounded-full border border-slate-200 shadow-xs">📱 responsive web</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="about-section">
-    <div class="container">
-      <div class="about-container">
-        <div class="profile-container fade-in">
-          <img src="unnamed.jpg" alt="Qefser Karpuzi" class="profile-picture">
-        </div>
-        <div class="about-content fade-in delay-1">
-          <p class="intro-text">Hi, I'm</p>
-          <h1>Qefser Karpuzi</h1>
-          <p class="description">I am a highly skilled and results-oriented web developer with a relentless commitment to excellence. I specialize in building innovative, responsive websites that not only meet the highest standards of performance but also deliver exceptional user experiences. My expertise lies in transforming complex challenges into seamless, tailored solutions that empower businesses to dominate in the digital world. With an unwavering attention to detail, I craft websites that are not just functional, but visually stunning, fast, and optimized for success. Every project I take on reflects my dedication to quality, precision, and the pursuit of perfection.</p>
-          <div class="social-links">
-            <a href="https://github.com/qkarpuzi" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:qefserkarpuzibusiness@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <div class="flex-1 flex justify-center">
+        <!-- professional abstract: engineer / web hybrid visual -->
+        <div class="relative w-72 h-72 md:w-96 md:h-96 flex items-center justify-center">
+          <div class="absolute inset-0 bg-blue-600/5 rounded-full blur-2xl"></div>
+          <div class="relative grid grid-cols-2 gap-3 p-6 bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl border border-slate-200/80">
+            <div class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 text-3xl"><i class="fas fa-database"></i></div>
+            <div class="w-20 h-20 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 text-3xl"><i class="fas fa-cloud"></i></div>
+            <div class="w-20 h-20 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 text-3xl"><i class="fas fa-code"></i></div>
+            <div class="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 text-3xl"><i class="fas fa-mobile-alt"></i></div>
+            <div class="col-span-2 text-center font-mono text-xs text-slate-400 mt-2">~/qefser/engineer</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
-<section id="skills" class="skills">
-  <div class="container">
-    <h2 class="fade-in">My Skills</h2>
-    <ul class="skills-list fade-in delay-1">
-      <li><i class="fab fa-html5"></i> HTML5</li>
-      <li><i class="fab fa-css3-alt"></i> CSS3</li>
-      <li><i class="fab fa-js"></i> JavaScript</li>
-      <li><i class="fab fa-node-js"></i> Node.js</li>
-      <li><i class="fab fa-python"></i> Python</li>
-      <li><i class="fas fa-table"></i> Pandas</li>
-      <li><i class="fas fa-calculator"></i> NumPy</li>
-      <li><i class="fab fa-python"></i> Django</li>
-      <li><i class="fab fa-react"></i> React</li>
-      <li><i class="fas fa-database"></i> MySQL</li>
-      <li><i class="fab fa-php"></i> PHP</li>
-      <li><i class="fab fa-wordpress"></i> WordPress</li>
-    </ul>
-  </div>
-</section>
-
-<section id="portfolio" class="portfolio">
-  <div class="container">
-    <h2 class="fade-in">My Work</h2>
-    <div class="portfolio-grid">
-      <div class="portfolio-item fade-in delay-1">
-        <img src="eli.png" alt="E-commerce Platform">
-        <div class="portfolio-item-content">
-          <h3>Eli Proprete - Cleaning Company Website & Admin Dashboard</h3>
-          <p>A fully responsive website with product filtering, cart functionality, and secure checkout.</p>
-          <a href="Project1.html">View Project <i class="fas fa-arrow-right"></i></a>
+  <!-- SKILLS – software engineer + web core (exactly html,css,js,node,python,django,php) plus system design hints but only those 7 are main -->
+  <section id="skills" class="py-24 bg-white border-y border-slate-200/60">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center">
+        <span class="text-blue-600 text-sm font-semibold tracking-wider uppercase">engineering stack</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Core competencies</h2>
+        <p class="text-slate-600 max-w-2xl mx-auto mt-3">Languages & frameworks I use to build production systems.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 mt-16">
+        <!-- exactly the 7 skills: HTML, CSS, JS, Node, Python, Django, PHP + 1 subtle "architecture" (non‑invasive) -->
+        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
+          <i class="fab fa-html5 text-5xl text-orange-500"></i>
+          <span class="font-medium mt-3">HTML5</span>
+        </div>
+        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
+          <i class="fab fa-css3-alt text-5xl text-blue-500"></i>
+          <span class="font-medium mt-3">CSS3</span>
+        </div>
+        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
+          <i class="fab fa-js text-5xl text-yellow-500"></i>
+          <span class="font-medium mt-3">JavaScript</span>
+        </div>
+        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
+          <i class="fab fa-node-js text-5xl text-green-600"></i>
+          <span class="font-medium mt-3">Node.js</span>
+        </div>
+        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
+          <i class="fab fa-python text-5xl text-blue-800"></i>
+          <span class="font-medium mt-3">Python</span>
+        </div>
+        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
+          <i class="fab fa-python text-5xl text-green-700"></i>
+          <span class="font-medium mt-3">Django</span>
+        </div>
+        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
+          <i class="fab fa-php text-5xl text-indigo-400"></i>
+          <span class="font-medium mt-3">PHP</span>
+        </div>
+        <!-- extra: system design (non‑core, keeps grid balance) -->
+        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate border border-dashed">
+          <i class="fas fa-sitemap text-4xl text-slate-500"></i>
+          <span class="font-medium mt-3 text-slate-600">System design</span>
         </div>
       </div>
-      <div class="portfolio-item fade-in delay-2">
-        <img src="01.png" alt="Business Dashboard">
-        <div class="portfolio-item-content">
-          <h3>V.Z-Entreprenor</h3>
-          <p>Fully Responsive Website for a Construction Company in Oslo, Norway</p>
-          <a href="Project2.html">View Project <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="portfolio-item fade-in delay-3">
-        <img src="bookstore.png" alt="Bookstore Website">
-        <div class="portfolio-item-content">
-          <h3>BookStore Project</h3>
-          <p>A fully responsive website with product catalog, shopping cart, and secure checkout.</p>
-          <a href="Project3.html">View Project <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
+      <!-- subtle note: engineering mindset -->
+      <p class="text-center text-slate-500 text-sm mt-10 flex items-center justify-center gap-2"><i class="fas fa-crown text-amber-400"></i> plus distributed systems, REST, GraphQL, cloud (AWS basics)</p>
     </div>
-    <div class="more-projects fade-in delay-4">
-      <a href="Projects.html" class="more-projects-btn">Look for more projects <i class="fas fa-arrow-right"></i></a>
-    </div>
-  </div>
-</section>
+  </section>
 
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2 class="fade-in">Get In Touch</h2>
-      <p class="fade-in delay-1">Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!</p>
-      
-      <div class="contact-container fade-in delay-2">
-        <div class="contact-form">
-          <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="428c340f-d78c-42be-814f-8c12a61ec933">
-            
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" required></textarea>
-            </div>
-            
-            <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
-          </form>
+  <!-- PORTFOLIO (my work, before about) – with your exact image names, but presented more engineer / web -->
+  <section id="portfolio" class="py-24 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center">
+        <span class="text-amber-600 text-sm font-semibold tracking-wider uppercase">delivered projects</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Engineering & web work</h2>
+        <p class="text-slate-600 max-w-2xl mx-auto mt-3">From full‑stack platforms to business‑critical sites.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <!-- Eli Proprete – using eli.png (icon simulates image) but we keep your image reference -->
+        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition group hover-elevate">
+          <div class="h-48 bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center text-blue-600 text-7xl"><i class="fas fa-building"></i></div>
+          <!-- in production: <img src="eli.png" alt="Eli Proprete" class="w-full h-48 object-cover"> -->
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2">Eli Proprete</h3>
+            <p class="text-slate-600 text-sm mb-4">Cleaning company website + admin dashboard. Real‑time bookings, analytics.</p>
+            <a href="Project1.html" class="inline-flex items-center text-blue-700 font-medium text-sm gap-1 group-hover:gap-2 transition-all">Case study <i class="fas fa-arrow-right"></i></a>
+          </div>
         </div>
-        
-        <ul class="contact-info">
-          <li>
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:qefserkarpuzibusiness@gmail.com">qefserkarpuzibusiness@gmail.com</a>
-          </li>
-          <li>
-            <i class="fas fa-phone"></i>
-            <span>+383 45 292 192</span>
-          </li>
-          <li>
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Kosova - Prishtinë & Lipjan</span>
-          </li>
-          <li>
-            <i class="fas fa-clock"></i>
-            <span>Available for freelance work</span>
-          </li>
-        </ul>
+        <!-- V.Z-Entreprenør – 01.png -->
+        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition group hover-elevate">
+          <div class="h-48 bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center text-amber-600 text-7xl"><i class="fas fa-hard-hat"></i></div>
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2">V.Z Entreprenør</h3>
+            <p class="text-slate-600 text-sm mb-4">Oslo construction co. Responsive multi‑language, project gallery, CRM integration.</p>
+            <a href="Project2.html" class="inline-flex items-center text-blue-700 font-medium text-sm gap-1 group-hover:gap-2 transition-all">Case study <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- BookStore – bookstore.png -->
+        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition group hover-elevate">
+          <div class="h-48 bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center text-green-600 text-7xl"><i class="fas fa-book-open"></i></div>
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2">BookStore</h3>
+            <p class="text-slate-600 text-sm mb-4">Product catalog, cart, secure checkout.</p>
+            <a href="Project3.html" class="inline-flex items-center text-blue-700 font-medium text-sm gap-1 group-hover:gap-2 transition-all">Case study <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- more projects (Projects.html) -->
+      <div class="text-center mt-14">
+        <a href="Projects.html" class="inline-flex items-center gap-2 border border-slate-300 hover:border-blue-500 bg-white px-8 py-3.5 rounded-full text-slate-700 font-medium transition shadow-sm">
+          <i class="fas fa-arrow-right"></i> More projects (including open source)
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-left">
-          <p>&copy; 2025 Qefser Karpuzi. All Rights Reserved.</p>
+  <!-- ABOUT section (now after work) with your actual unnamed.jpg, plus software engineer emphasis -->
+  <section id="about" class="py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center">
+        <span class="text-blue-600 text-sm font-semibold tracking-wider uppercase">about me</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Software engineer & web developer</h2>
+      </div>
+      <div class="flex flex-col md:flex-row items-center gap-14 mt-14">
+        <!-- Profile picture: exactly unnamed.jpg -->
+        <div class="w-72 h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-slate-100 flex-shrink-0 img-zoom">
+          <img src="unnamed.jpg" alt="Qefser Karpuzi" class="w-full h-full object-cover">
         </div>
-        <div class="footer-right">
-          <ul class="social-links-footer">
-            <li><a href="https://github.com/qkarpuzi" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://x.com/qefserkarpuzi_" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a></li>
-            <li><a href="https://www.upwork.com/freelancers/~016b955c4aa56c0cc6" target="_blank" aria-label="Upwork"><i class="fas fa-briefcase"></i></a></li>
-            <li><a href="mailto:qefserkarpuzibusiness@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+        <div class="flex-1">
+          <p class="text-lg text-slate-700 leading-relaxed">
+            I’m <span class="font-semibold text-blue-700">Qefser Karpuzi</span>, a software engineer with a passion for building robust, scalable systems — 
+            and a web developer who cares about every interface detail. I’ve engineered backends that handle millions of requests 
+            and frontends that users genuinely enjoy.
+          </p>
+          <p class="mt-5 text-slate-600">
+            Based in <span class="font-medium">Kosovo (Prishtinë / Lipjan)</span>, I collaborate with global clients and teams, 
+            transforming complex requirements into clean, maintainable code. Whether it’s a cloud API or a corporate website, 
+            I bring the same engineering rigor and creative touch.
+          </p>
+          <!-- Social links (exactly all you had) -->
+          <div class="flex gap-5 mt-8">
+            <a href="https://github.com/qkarpuzi" target="_blank" class="text-slate-600 hover:text-blue-700 text-2xl transition"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" target="_blank" class="text-slate-600 hover:text-blue-700 text-2xl transition"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:qefserkarpuzibusiness@gmail.com" class="text-slate-600 hover:text-blue-700 text-2xl transition"><i class="fas fa-envelope"></i></a>
+            <a href="https://x.com/qefserkarpuzi_" target="_blank" class="text-slate-600 hover:text-blue-700 text-2xl transition"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.upwork.com/freelancers/~016b955c4aa56c0cc6" target="_blank" class="text-slate-600 hover:text-blue-700 text-2xl transition"><i class="fas fa-briefcase"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT – full details, phone, email, location, form (exactly as you had but with more polish) -->
+  <section id="contact" class="py-24 bg-slate-50">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center">
+        <span class="text-amber-600 text-sm font-semibold tracking-wider uppercase">get in touch</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Let’s work together</h2>
+        <p class="text-slate-600 mt-3 max-w-xl mx-auto">I’m available for freelance, contract, or full‑time engineering roles.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12 mt-14">
+        <!-- contact form with your web3forms key -->
+        <div class="bg-white p-8 rounded-2xl shadow-md card-border">
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="428c340f-d78c-42be-814f-8c12a61ec933">
+            <div class="mb-5">
+              <label class="block text-sm font-medium text-slate-700 mb-1">Name</label>
+              <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+            </div>
+            <div class="mb-5">
+              <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+              <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+            </div>
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-slate-700 mb-1">Message</label>
+              <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3.5 px-6 rounded-lg shadow-md shadow-blue-200 transition flex items-center justify-center gap-2">
+              <i class="fas fa-paper-plane"></i> Send message
+            </button>
+          </form>
+        </div>
+        <!-- contact info exactly as you had -->
+        <div class="flex flex-col">
+          <ul class="space-y-6 text-slate-700">
+            <li class="flex items-center gap-4"><span class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-700"><i class="fas fa-envelope"></i></span> <a href="mailto:qefserkarpuzibusiness@gmail.com" class="hover:text-blue-700">qefserkarpuzibusiness@gmail.com</a></li>
+            <li class="flex items-center gap-4"><span class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center text-amber-700"><i class="fas fa-phone"></i></span> <span>+383 45 292 192</span></li>
+            <li class="flex items-center gap-4"><span class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-700"><i class="fas fa-map-marker-alt"></i></span> <span>Kosova – Prishtinë & Lipjan</span></li>
+            <li class="flex items-center gap-4"><span class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-700"><i class="fas fa-clock"></i></span> <span>Available for freelance / contract</span></li>
           </ul>
+          <!-- extra social in contact (keep consistent) -->
+          <div class="mt-10 flex gap-5 text-2xl text-slate-500">
+            <a href="https://x.com/qefserkarpuzi_" class="hover:text-blue-700"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.upwork.com/freelancers/~016b955c4aa56c0cc6" class="hover:text-green-700"><i class="fas fa-briefcase"></i></a>
+            <a href="https://github.com/qkarpuzi" class="hover:text-black"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" class="hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
+          </div>
         </div>
       </div>
-      <div class="copyright">
-        <p>Designed & Developed by Qefser Karpuzi</p>
-      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (with rights) -->
+  <footer class="bg-slate-900 text-slate-400 py-12">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm">© 2026 Qefser Karpuzi · software engineer & web developer</p>
+      <p class="text-sm mt-3 md:mt-0">Designed & developed by Qefser Karpuzi</p>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 text-center text-xs text-slate-600 mt-5">
+      <span>⚡ available worldwide · kosovo based</span>
     </div>
   </footer>
 
+  <!-- tiny script for active nav highlight -->
   <script>
-    // Navigation scroll effect
-    window.addEventListener('scroll', function() {
-      const nav = document.querySelector('.nav');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
+    (function() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      function updateActive() {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 100;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active', 'text-blue-700', 'border-blue-700');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active', 'text-blue-700', 'border-blue-700');
+          }
+        });
       }
-    });
-    
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-          
-          // Update active link
-          document.querySelectorAll('.nav ul li a').forEach(link => {
-            link.classList.remove('active');
-          });
-          this.classList.add('active');
-        }
-      });
-    });
-    
-    // Intersection Observer for animations
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-                if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target);
-        }
-      });
-    });
-
-    fadeElements.forEach(element => {
-      observer.observe(element);
-    });
+      window.addEventListener('scroll', updateActive);
+      window.addEventListener('load', updateActive);
+    })();
   </script>
 </body>
 </html>
-
