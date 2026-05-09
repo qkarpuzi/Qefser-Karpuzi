@@ -1,257 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Eli Proprete – professional cleaning platform & admin dashboard engineered by Qefser Karpuzi">
-  <title>Eli Proprete · Qefser Karpuzi · Software Engineer</title>
-  <!-- Tailwind + same professional palette as main portfolio -->
+  <meta name="description" content="Eli Proprete – Case Study: Full-stack operational hub and admin dashboard engineering.">
+  <title>System Registry: Eli Proprete · Qefser Karpuzi</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- same subtle custom polish as main index -->
-  <style>
-    html { scroll-behavior: smooth; }
-    /* active nav indicator (matching main) */
-    .nav-link.active { color: #2563eb; border-bottom: 2px solid #2563eb; }
-    /* image & card micro interactions */
-    .hover-elevate { transition: all 0.25s ease; }
-    .hover-elevate:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -10px rgba(0,80,200,0.12); }
-    /* image zoom for gallery items */
-    .img-zoom { transition: transform 0.5s ease; cursor: pointer; }
-    .img-zoom:hover { transform: scale(1.02); }
-    /* card border subtle */
-    .card-border { border: 1px solid rgba(148, 163, 184, 0.2); }
-    /* modal animation */
-    .modal { transition: opacity 0.2s ease; }
-    .modal.show { opacity: 1; pointer-events: auto; }
-    /* gradient text for role (optional) */
-    .gradient-role {
-      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 70%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 600;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            engine: {
+              bg: '#060608',
+              surface: '#0E0E12',
+              card: '#14141A',
+              border: '#1F1F26',
+              accent: '#2563EB',
+            }
+          }
+        }
+      }
     }
+  </script>
+  <style>
+    .matrix-border { transition: border-color 0.2s ease; border: 1px solid #1F1F26; }
+    .matrix-border:hover { border-color: #3B82F6; }
+    .img-zoom { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: crosshair; }
+    .img-zoom:hover { transform: scale(1.03); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #060608; }
+    ::-webkit-scrollbar-thumb { background: #1F1F26; }
+    .modal { transition: opacity 0.3s ease; }
+    .modal.show { opacity: 1; pointer-events: auto; }
   </style>
 </head>
-<body class="bg-white text-slate-800 font-sans antialiased selection:bg-blue-100">
+<body class="bg-engine-bg text-zinc-400 font-sans antialiased">
 
-  <!-- STICKY NAV (exactly as main, with back links) -->
-  <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/60 z-50 shadow-xs">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="index.html#hero" class="text-xl font-semibold tracking-tight text-blue-700 flex items-center gap-1">
-        <span class="text-amber-600 text-2xl">⎧⎭</span> Qefser Karpuzi
+  <div class="bg-engine-surface border-b border-engine-border font-mono text-[10px] text-zinc-500 py-1.5 px-6 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <span class="text-blue-500">PROJECT_ID: ELI_PROPRETE_V1</span>
+        <span class="text-engine-border">|</span>
+        <span>STATUS: DEPLOYED_PRODUCTION</span>
+      </div>
+      <a href="index.html" class="hover:text-white transition-colors uppercase tracking-widest text-[9px]">
+        <i class="fas fa-arrow-left mr-1"></i> Return to Terminal
       </a>
-      <ul class="flex space-x-8 text-sm font-medium text-slate-700">
-        <li><a href="index.html#skills" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Skills</a></li>
-        <li><a href="index.html#portfolio" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700 active text-blue-700 border-blue-700">Work</a></li>
-        <li><a href="index.html#contact" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Contact</a></li>
-      </ul>
     </div>
-  </nav>
+  </div>
 
-  <!-- PROJECT HERO (engineering / web dual identity) -->
-  <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-    <div class="absolute top-20 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-5"></div>
-    <div class="absolute bottom-10 left-10 w-72 h-72 bg-amber-500/5 rounded-full blur-3xl"></div>
+  <header class="pt-24 pb-16 border-b border-engine-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-engine-card border border-engine-border text-blue-500 text-[10px] font-mono mb-6 uppercase tracking-wider">
+        <i class="fas fa-microchip"></i>
+        <span>Full-Stack Operational Deployment</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
+        Eli Proprete <span class="text-zinc-600">/</span> <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-400">Operational Logic & ERP</span>
+      </h1>
+      <p class="text-zinc-400 text-lg font-light max-w-2xl leading-relaxed">
+        Engineered a centralized business operating system. Beyond a service website, this deployment handles high-integrity booking transactions, staff scheduling, and a secure administrative kernel for business intelligence.
+      </p>
+      
+      <div class="flex flex-wrap gap-8 mt-12 py-6 border-t border-engine-border font-mono text-[11px] uppercase tracking-widest">
+        <div>
+          <span class="block text-zinc-600 mb-1">Client Entity</span>
+          <span class="text-white">Mexhide Karpuzi / Eli Proprete</span>
+        </div>
+        <div>
+          <span class="block text-zinc-600 mb-1">Architecture</span>
+          <span class="text-white">Relational / MVC</span>
+        </div>
+        <div>
+          <span class="block text-zinc-600 mb-1">Location</span>
+          <span class="text-white">Kosovo / France Service</span>
+        </div>
+        <div class="ml-auto">
+          <a href="https://eliiproprete.com/" target="_blank" class="text-blue-500 hover:text-white transition-colors flex items-center gap-2">
+            <span>Live System</span>
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-      <div class="max-w-3xl">
-        <!-- breadcrumb / category chip -->
-        <div class="inline-block px-4 py-1.5 bg-blue-50 rounded-full text-blue-700 text-sm font-medium mb-6 border border-blue-200/50 shadow-sm">
-          <i class="fas fa-broom mr-1"></i>  Eli Proprete  <span class="mx-2 text-slate-400">|</span>  <i class="fas fa-database mr-1"></i> full‑stack platform
+  <section class="py-20 border-b border-engine-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-engine-surface border border-engine-border p-2 rounded-lg matrix-border group overflow-hidden">
+          <img src="eli.png" alt="Public Interface" onclick="openModal('eli.png')" class="rounded img-zoom w-full h-48 object-cover opacity-80 group-hover:opacity-100">
+          <div class="p-4 font-mono text-[10px] tracking-widest text-zinc-500">
+            [IMG_01] :: CLIENT_FACING_PORTAL
+          </div>
         </div>
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
-          Cleaning service <span class="gradient-role">engineered</span>
-        </h1>
-        <p class="text-slate-600 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
-          A complete business operating system: customer‑facing website, booking engine, and admin dashboard.
-          Built for real‑world scale and simplicity.
-        </p>
-        <!-- meta row (client, date, role) -->
-        <div class="flex flex-wrap gap-6 mt-8 text-slate-600">
-          <div class="flex items-center gap-2"><i class="fas fa-user text-blue-600"></i> Client: <span class="font-medium text-slate-800">Eli Proprete / Mexhide Karpuzi</span></div>
-          <div class="flex items-center gap-2"><i class="fas fa-calendar-alt text-amber-600"></i> Completed: <span class="font-medium text-slate-800">Feb 2025</span></div>
-          <div class="flex items-center gap-2"><i class="fas fa-code-branch text-emerald-600"></i> Role: <span class="font-medium text-slate-800">Lead full‑stack engineer</span></div>
+        <div class="bg-engine-surface border border-engine-border p-2 rounded-lg matrix-border group overflow-hidden">
+          <img src="eli12.png" alt="Service Registry" onclick="openModal('eli12.png')" class="rounded img-zoom w-full h-48 object-cover opacity-80 group-hover:opacity-100">
+          <div class="p-4 font-mono text-[10px] tracking-widest text-zinc-500">
+            [IMG_02] :: DYNAMIC_SERVICE_CATALOG
+          </div>
         </div>
-        <!-- action buttons -->
-        <div class="flex flex-wrap gap-4 mt-10">
-          <a href="https://eliiproprete.com/" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-medium shadow-md shadow-blue-200 transition flex items-center gap-2">
-            <i class="fas fa-external-link-alt"></i> View live project
-          </a>
-          <a href="index.html#portfolio" class="border border-slate-300 hover:border-blue-400 bg-white/90 text-slate-700 px-8 py-3.5 rounded-full font-medium transition flex items-center gap-2">
-            <i class="fas fa-arrow-left"></i> Back to portfolio
-          </a>
+        <div class="bg-engine-surface border border-engine-border p-2 rounded-lg matrix-border group overflow-hidden">
+          <img src="elicon.png" alt="Admin Control" onclick="openModal('elicon.png')" class="rounded img-zoom w-full h-48 object-cover opacity-80 group-hover:opacity-100">
+          <div class="p-4 font-mono text-[10px] tracking-widest text-zinc-500">
+            [IMG_03] :: ADMIN_KERNEL_DASHBOARD
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GALLERY SECTION (with your exact image names) -->
-  <section class="py-20 bg-white border-y border-slate-200/60">
+  <section class="py-24 bg-engine-surface/30">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center">
-        <span class="text-blue-600 text-sm font-semibold tracking-wider uppercase">project gallery</span>
-        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Screens & dashboards</h2>
-        <p class="text-slate-600 max-w-2xl mx-auto mt-3">Click any image to enlarge.</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
-        <!-- eli.png -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
-          <img src="eli.png" alt="Eli Proprete homepage" onclick="openModal('eli.png')" class="w-full h-64 object-cover cursor-pointer img-zoom">
-        </div>
-        <!-- eli12.png -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
-          <img src="eli12.png" alt="Eli Proprete services" onclick="openModal('eli12.png')" class="w-full h-64 object-cover cursor-pointer img-zoom">
-        </div>
-        <!-- elicon.png (admin dashboard) -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
-          <img src="elicon.png" alt="Eli Proprete admin dashboard" onclick="openModal('elicon.png')" class="w-full h-64 object-cover cursor-pointer img-zoom">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECT DETAILS (split view, same engineering tone) -->
-  <section class="py-20 bg-slate-50">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row gap-16">
-        <!-- left: main description -->
-        <div class="flex-1">
-          <span class="text-amber-600 text-sm font-semibold tracking-wider uppercase">deep dive</span>
-          <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Engineering behind Eli Proprete</h2>
-          <div class="mt-8 space-y-6 text-slate-700 leading-relaxed">
+      <div class="grid lg:grid-cols-12 gap-16">
+        
+        <div class="lg:col-span-8">
+          <h2 class="text-3xl font-bold text-white mb-8 tracking-tight font-sans italic">// Technical Brief</h2>
+          <div class="space-y-6 text-zinc-400 font-light leading-relaxed">
             <p>
-              Eli Proprete is a Kosovo‑based cleaning company that needed more than a brochure site — 
-              they needed a <span class="font-medium text-blue-700">complete operational hub</span>. I designed and built a system 
-              that handles online bookings, employee scheduling, customer management, and an admin dashboard with real‑time analytics.
+              The challenge was to replace a fragmented manual booking process with an automated, 
+              <span class="text-white font-medium">highly available system</span>. This solution focuses on 
+              <span class="text-blue-500">atomic consistency</span> in scheduling—ensuring that 
+              labor allocation never conflicts across different geographic service zones.
             </p>
             <p>
-              The customer‑facing site is fully responsive and focuses on conversion: clear service presentation, 
-              easy booking flow, and automated email confirmations. The admin area (password protected) gives 
-              the owner full control over services, staff assignments, and financial overview.
+              The backend leverages a <span class="text-white font-medium">normalized MySQL schema</span>, with 
+              all ingress points protected via strictly parameterized queries and multi-layered server-side 
+              validation to mitigate injection and XSS vulnerabilities.
             </p>
-            <p>
-              Every part was built with <span class="font-medium">security and maintainability</span> in mind: 
-              prepared statements, input validation, and a clean separation of concerns.
-            </p>
-          </div>
-
-          <!-- feature grid (two columns) -->
-          <div class="grid sm:grid-cols-2 gap-6 mt-10">
-            <div class="bg-white p-6 rounded-xl card-border">
-              <i class="fas fa-calendar-check text-2xl text-blue-600 mb-3"></i>
-              <h3 class="font-semibold text-lg">Booking system</h3>
-              <p class="text-sm text-slate-600 mt-1">Date/time selection, automated confirmations, reminder emails.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl card-border">
-              <i class="fas fa-chart-pie text-2xl text-amber-600 mb-3"></i>
-              <h3 class="font-semibold text-lg">Admin dashboard</h3>
-              <p class="text-sm text-slate-600 mt-1">Manage services, employees, bookings, and revenue.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl card-border">
-              <i class="fas fa-shield-alt text-2xl text-emerald-600 mb-3"></i>
-              <h3 class="font-semibold text-lg">Auth & roles</h3>
-              <p class="text-sm text-slate-600 mt-1">Secure login, role‑based access (admin / staff).</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl card-border">
-              <i class="fas fa-database text-2xl text-indigo-600 mb-3"></i>
-              <h3 class="font-semibold text-lg">MySQL backend</h3>
-              <p class="text-sm text-slate-600 mt-1">Optimized queries, relational integrity, daily backups.</p>
+            <div class="bg-engine-bg border-l-2 border-blue-600 p-6 my-10 font-mono text-xs text-zinc-300">
+              <span class="text-zinc-600 uppercase tracking-widest block mb-4">Core Infrastructure Features:</span>
+              <ul class="space-y-3">
+                <li class="flex items-center gap-3">
+                  <span class="text-blue-500">→</span> 
+                  <span>Role-Based Access Control (RBAC) for Admin & Staff hierarchies.</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="text-blue-500">→</span> 
+                  <span>Automated Transactional Emails via SMTP integration (PHPMailer).</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="text-blue-500">→</span> 
+                  <span>AJAX-driven booking engine for zero-refresh UX.</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="text-blue-500">→</span> 
+                  <span>Revenue Analytics and Service performance tracking.</span>
+                </li>
+              </ul>
             </div>
           </div>
+        </div>
 
-          <!-- full feature list with icons (matching original content) -->
-          <div class="mt-12 bg-white p-8 rounded-2xl card-border">
-            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-list-check text-blue-600"></i> Key features</h3>
-            <ul class="grid sm:grid-cols-2 gap-3">
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Responsive website (mobile first)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Online booking with date/time picker</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Admin dashboard with full CRUD</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>User authentication (admin/staff)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Dynamic service catalog</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Email notifications (PHPMailer)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Employee scheduling module</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>MySQL database with prepared statements</span></li>
+        <div class="lg:col-span-4 space-y-6">
+          <div class="bg-engine-card border border-engine-border p-8 rounded-lg">
+            <h3 class="text-white font-bold text-sm font-mono uppercase tracking-widest mb-6 pb-2 border-b border-engine-border">
+              System Stack
+            </h3>
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="px-3 py-1 bg-engine-bg border border-engine-border text-[10px] font-mono text-zinc-300 rounded uppercase">PHP 8.x</span>
+              <span class="px-3 py-1 bg-engine-bg border border-engine-border text-[10px] font-mono text-zinc-300 rounded uppercase">MySQL</span>
+              <span class="px-3 py-1 bg-engine-bg border border-engine-border text-[10px] font-mono text-zinc-300 rounded uppercase">jQuery</span>
+              <span class="px-3 py-1 bg-engine-bg border border-engine-border text-[10px] font-mono text-zinc-300 rounded uppercase">Linux/Apache</span>
+              <span class="px-3 py-1 bg-engine-bg border border-engine-border text-[10px] font-mono text-zinc-300 rounded uppercase">REST Patterns</span>
+              <span class="px-3 py-1 bg-engine-bg border border-engine-border text-[10px] font-mono text-zinc-300 rounded uppercase">SMTP</span>
+            </div>
+            
+            <h3 class="text-white font-bold text-sm font-mono uppercase tracking-widest mb-4">Architecture Patterns</h3>
+            <ul class="text-[11px] font-mono space-y-3 text-zinc-500">
+              <li>- Singleton Database Class</li>
+              <li>- MVC Directory Structure</li>
+              <li>- Prepared Statement Factory</li>
+              <li>- Session Hijack Prevention</li>
             </ul>
           </div>
-        </div>
 
-        <!-- right sidebar (tech stack + project info) -->
-        <div class="lg:w-80 space-y-8">
-          <!-- tech stack card -->
-          <div class="bg-white p-8 rounded-2xl card-border shadow-sm">
-            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-microchip text-blue-600"></i> Tech stack</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">PHP</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">MySQL</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">JavaScript</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">HTML5</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">CSS3</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">jQuery</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">AJAX</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Bootstrap</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Linux</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Apache</span>
-            </div>
-            <!-- architecture note -->
-            <p class="text-xs text-slate-500 mt-5 flex items-center gap-1"><i class="fas fa-crown text-amber-400"></i> MVC pattern, prepared statements, session security</p>
-          </div>
-
-          <!-- project info card (client, date, url) -->
-          <div class="bg-white p-8 rounded-2xl card-border shadow-sm">
-            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-circle-info text-amber-600"></i> Project info</h3>
-            <div class="space-y-4">
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Client</p>
-                <p class="font-medium">Eli Proprete (Mexhide Karpuzi)</p>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Category</p>
-                <p class="font-medium">Business website + admin dashboard</p>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Completion</p>
-                <p class="font-medium">February 2025</p>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Project URL</p>
-                <a href="https://eliiproprete.com/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium break-all">eliiproprete.com <i class="fas fa-external-link-alt text-xs ml-1"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <!-- back link (mobile friendly) -->
-          <a href="Projects.html" class="hidden lg:flex items-center gap-2 text-slate-600 hover:text-blue-700 transition mt-4 text-sm">
-            <i class="fas fa-arrow-left"></i> Back to all projects
+          <a href="index.html#deployments" class="block text-center border border-engine-border hover:border-blue-600 p-4 rounded text-xs font-mono uppercase tracking-widest transition-all">
+            Back to Registry
           </a>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- FOOTER (identical to main) -->
-  <footer class="bg-slate-900 text-slate-400 py-12">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-      <p class="text-sm">© 2026 Qefser Karpuzi · software engineer & web developer</p>
-      <p class="text-sm mt-3 md:mt-0">Designed & developed by Qefser Karpuzi</p>
-    </div>
-    <div class="max-w-6xl mx-auto px-6 text-center text-xs text-slate-600 mt-5">
-      <span>⚡ Eli Proprete case study</span>
+  <footer class="py-12 border-t border-engine-border text-center font-mono text-[10px] text-zinc-600">
+    <div class="max-w-6xl mx-auto px-6">
+      <p>© 2026 Qefser Karpuzi. CASE_STUDY // ELI_PROPRETE. ALL RIGHTS RESERVED.</p>
     </div>
   </footer>
 
-  <!-- MODAL (full-size image viewer) -->
-  <div id="imageModal" class="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center opacity-0 pointer-events-none modal">
-    <span class="absolute top-5 right-8 text-white text-5xl font-light cursor-pointer hover:text-blue-400 transition" onclick="closeModal()">&times;</span>
-    <img id="modalImg" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl">
+  <div id="imageModal" class="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center opacity-0 pointer-events-none modal">
+    <span class="absolute top-5 right-8 text-white text-3xl font-mono cursor-pointer hover:text-blue-500" onclick="closeModal()">[X]</span>
+    <img id="modalImg" class="max-w-[90vw] max-h-[80vh] object-contain border border-engine-border shadow-2xl">
   </div>
 
-  <!-- scripts -->
   <script>
-    // Modal functions (exactly as before but using the same modal)
     function openModal(src) {
       const modal = document.getElementById('imageModal');
       const modalImg = document.getElementById('modalImg');
@@ -264,20 +215,11 @@
       modal.classList.remove('show');
       document.body.style.overflow = 'auto';
     }
-    // close on background click
-    document.getElementById('imageModal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
+    document.getElementById('imageModal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('imageModal')) closeModal();
     });
-    // ESC key
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeModal();
-    });
-
-    // optional nav highlight on scroll (mirror main)
-    window.addEventListener('scroll', function() {
-      const nav = document.querySelector('.nav');
-      if (window.scrollY > 50) nav.classList.add('scrolled');
-      else nav.classList.remove('scrolled');
     });
   </script>
 </body>

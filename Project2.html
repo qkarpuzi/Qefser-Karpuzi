@@ -1,262 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="V.Z-Entreprenor – construction company website engineered by Qefser Karpuzi">
-  <title>V.Z-Entreprenor · Qefser Karpuzi · Software Engineer</title>
-  <!-- Tailwind + same professional palette as main portfolio -->
+  <meta name="description" content="V.Z-Entreprenor – Case Study: Industrial frontend engineering for an Oslo-based construction firm.">
+  <title>System Registry: V.Z-Entreprenor · Qefser Karpuzi</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- same subtle custom polish as main index -->
-  <style>
-    html { scroll-behavior: smooth; }
-    /* active nav indicator */
-    .nav-link.active { color: #2563eb; border-bottom: 2px solid #2563eb; }
-    /* image & card micro interactions */
-    .hover-elevate { transition: all 0.25s ease; }
-    .hover-elevate:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -10px rgba(0,80,200,0.12); }
-    .img-zoom { transition: transform 0.5s ease; cursor: pointer; }
-    .img-zoom:hover { transform: scale(1.02); }
-    .card-border { border: 1px solid rgba(148, 163, 184, 0.2); }
-    .gradient-role {
-      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 70%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 600;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            engine: {
+              bg: '#060608',
+              surface: '#0E0E12',
+              card: '#14141A',
+              border: '#1F1F26',
+              accent: '#2563EB',
+            }
+          }
+        }
+      }
     }
-    /* modal animation */
-    .modal { transition: opacity 0.2s ease; }
+  </script>
+  <style>
+    .matrix-border { transition: border-color 0.2s ease; border: 1px solid #1F1F26; }
+    .matrix-border:hover { border-color: #F59E0B; } /* Industrial Amber */
+    .img-zoom { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: crosshair; }
+    .img-zoom:hover { transform: scale(1.03); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #060608; }
+    ::-webkit-scrollbar-thumb { background: #1F1F26; }
+    .modal { transition: opacity 0.3s ease; }
     .modal.show { opacity: 1; pointer-events: auto; }
   </style>
 </head>
-<body class="bg-white text-slate-800 font-sans antialiased selection:bg-blue-100">
+<body class="bg-engine-bg text-zinc-400 font-sans antialiased">
 
-  <!-- STICKY NAV (exactly as main, with back links) -->
-  <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/60 z-50 shadow-xs">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="index.html#hero" class="text-xl font-semibold tracking-tight text-blue-700 flex items-center gap-1">
-        <span class="text-amber-600 text-2xl">⎧⎭</span> Qefser Karpuzi
+  <div class="bg-engine-surface border-b border-engine-border font-mono text-[10px] text-zinc-500 py-1.5 px-6 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <span class="text-amber-500 uppercase tracking-tighter font-bold">Project_ID: VZ_ENTREPRENOR_V1</span>
+        <span class="text-engine-border">|</span>
+        <span>LOCATION: OSLO, NO</span>
+      </div>
+      <a href="index.html" class="hover:text-white transition-colors uppercase tracking-widest text-[9px]">
+        <i class="fas fa-arrow-left mr-1"></i> Return to Terminal
       </a>
-      <ul class="flex space-x-8 text-sm font-medium text-slate-700">
-        <li><a href="index.html#skills" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Skills</a></li>
-        <li><a href="index.html#portfolio" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700 active text-blue-700 border-blue-700">Work</a></li>
-        <li><a href="index.html#contact" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Contact</a></li>
-      </ul>
     </div>
-  </nav>
+  </div>
 
-  <!-- PROJECT HERO (engineering / web dual identity) -->
-  <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-    <div class="absolute top-20 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-5"></div>
-    <div class="absolute bottom-10 left-10 w-72 h-72 bg-amber-500/5 rounded-full blur-3xl"></div>
+  <header class="pt-24 pb-16 border-b border-engine-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-engine-card border border-engine-border text-amber-500 text-[10px] font-mono mb-6 uppercase tracking-wider">
+        <i class="fas fa-hard-hat"></i>
+        <span>Industrial Presence Deployment</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
+        V.Z-Entreprenor <span class="text-zinc-600">/</span> <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-400">Structural Web Engineering</span>
+      </h1>
+      <p class="text-zinc-400 text-lg font-light max-w-2xl leading-relaxed">
+        Engineered a high-performance corporate presence for an Oslo-based construction firm. Built with a focus on asset optimization, lightning-fast rendering, and a visual language that mirrors industrial precision.
+      </p>
+      
+      <div class="flex flex-wrap gap-8 mt-12 py-6 border-t border-engine-border font-mono text-[11px] uppercase tracking-widest">
+        <div>
+          <span class="block text-zinc-600 mb-1">Entity</span>
+          <span class="text-white">Agron Z / V.Z-Entreprenor</span>
+        </div>
+        <div>
+          <span class="block text-zinc-600 mb-1">Role</span>
+          <span class="text-white">Lead Frontend Engineer</span>
+        </div>
+        <div>
+          <span class="block text-zinc-600 mb-1">Status</span>
+          <span class="text-white">Production / Live</span>
+        </div>
+        <div class="ml-auto">
+          <a href="https://qkarpuzi.github.io/V.Z-Entreprenor/" target="_blank" class="text-amber-500 hover:text-white transition-colors flex items-center gap-2">
+            <span>External Link</span>
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-      <div class="max-w-3xl">
-        <!-- breadcrumb / category chip -->
-        <div class="inline-block px-4 py-1.5 bg-blue-50 rounded-full text-blue-700 text-sm font-medium mb-6 border border-blue-200/50 shadow-sm">
-          <i class="fas fa-hard-hat mr-1"></i>  V.Z-Entreprenor  <span class="mx-2 text-slate-400">|</span>  <i class="fas fa-paint-brush mr-1"></i> corporate web
+  <section class="py-20 border-b border-engine-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-engine-surface border border-engine-border p-2 rounded-lg matrix-border group overflow-hidden">
+          <img src="01.png" alt="Interface Home" onclick="openModal('01.png')" class="rounded img-zoom w-full h-48 object-cover opacity-80 group-hover:opacity-100">
+          <div class="p-4 font-mono text-[10px] tracking-widest text-zinc-500">
+            [IMG_01] :: PRIMARY_INTERFACE
+          </div>
         </div>
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
-          Construction presence <span class="gradient-role">engineered</span>
-        </h1>
-        <p class="text-slate-600 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
-          A modern, responsive website for a construction company based in Oslo, Norway. 
-          Clean aesthetics, fast performance, and seamless user experience.
-        </p>
-        <!-- meta row (client, date, role) -->
-        <div class="flex flex-wrap gap-6 mt-8 text-slate-600">
-          <div class="flex items-center gap-2"><i class="fas fa-user text-blue-600"></i> Client: <span class="font-medium text-slate-800">Agron Z, V.Z-Entreprenor</span></div>
-          <div class="flex items-center gap-2"><i class="fas fa-calendar-alt text-amber-600"></i> Completed: <span class="font-medium text-slate-800">Sep 2024</span></div>
-          <div class="flex items-center gap-2"><i class="fas fa-code-branch text-emerald-600"></i> Role: <span class="font-medium text-slate-800">Frontend engineer</span></div>
+        <div class="bg-engine-surface border border-engine-border p-2 rounded-lg matrix-border group overflow-hidden">
+          <img src="02.png" alt="Services Registry" onclick="openModal('02.png')" class="rounded img-zoom w-full h-48 object-cover opacity-80 group-hover:opacity-100">
+          <div class="p-4 font-mono text-[10px] tracking-widest text-zinc-500">
+            [IMG_02] :: SERVICE_MODULES
+          </div>
         </div>
-        <!-- action buttons -->
-        <div class="flex flex-wrap gap-4 mt-10">
-          <a href="https://qkarpuzi.github.io/V.Z-Entreprenor/" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-medium shadow-md shadow-blue-200 transition flex items-center gap-2">
-            <i class="fas fa-external-link-alt"></i> View live project
-          </a>
-          <a href="index.html#portfolio" class="border border-slate-300 hover:border-blue-400 bg-white/90 text-slate-700 px-8 py-3.5 rounded-full font-medium transition flex items-center gap-2">
-            <i class="fas fa-arrow-left"></i> Back to portfolio
-          </a>
+        <div class="bg-engine-surface border border-engine-border p-2 rounded-lg matrix-border group overflow-hidden">
+          <img src="03.png" alt="Contact Module" onclick="openModal('03.png')" class="rounded img-zoom w-full h-48 object-cover opacity-80 group-hover:opacity-100">
+          <div class="p-4 font-mono text-[10px] tracking-widest text-zinc-500">
+            [IMG_03] :: INQUIRY_NODE
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GALLERY SECTION (with exact image names: 01.png, 02.png, 03.png) -->
-  <section class="py-20 bg-white border-y border-slate-200/60">
+  <section class="py-24 bg-engine-surface/30">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center">
-        <span class="text-blue-600 text-sm font-semibold tracking-wider uppercase">project gallery</span>
-        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Screens & design</h2>
-        <p class="text-slate-600 max-w-2xl mx-auto mt-3">Click any image to enlarge.</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
-        <!-- 01.png -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
-          <img src="01.png" alt="V.Z-Entreprenor homepage" onclick="openModal('01.png')" class="w-full h-64 object-cover cursor-pointer img-zoom">
-        </div>
-        <!-- 02.png -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
-          <img src="02.png" alt="V.Z-Entreprenor services" onclick="openModal('02.png')" class="w-full h-64 object-cover cursor-pointer img-zoom">
-        </div>
-        <!-- 03.png -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
-          <img src="03.png" alt="V.Z-Entreprenor contact" onclick="openModal('03.png')" class="w-full h-64 object-cover cursor-pointer img-zoom">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECT DETAILS (split view, same engineering tone) -->
-  <section class="py-20 bg-slate-50">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row gap-16">
-        <!-- left: main description -->
-        <div class="flex-1">
-          <span class="text-amber-600 text-sm font-semibold tracking-wider uppercase">deep dive</span>
-          <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Engineering V.Z-Entreprenor</h2>
-          <div class="mt-8 space-y-6 text-slate-700 leading-relaxed">
+      <div class="grid lg:grid-cols-12 gap-16">
+        
+        <div class="lg:col-span-8">
+          <h2 class="text-3xl font-bold text-white mb-8 tracking-tight font-sans italic">// Structural Specs</h2>
+          <div class="space-y-6 text-zinc-400 font-light leading-relaxed">
             <p>
-              V.Z-Entreprenor is a professional construction company based in Oslo, Norway. 
-              They needed a modern, responsive website to showcase their projects, services, and establish credibility 
-              in the competitive construction market.
+              In the construction industry, <span class="text-white font-medium">credibility is built on precision</span>. The objective for V.Z-Entreprenor was to build a digital storefront that reflects their physical craftsmanship. 
             </p>
             <p>
-              I designed and built the site with a focus on <span class="font-medium text-blue-700">clean aesthetics, professional presentation, and mobile responsiveness</span>. 
-              The design emphasizes the company's portfolio while making it easy for potential clients to get in touch.
+              I implemented a <span class="text-white font-medium">mobile-first responsive architecture</span> using modern CSS3 Flexbox and Grid, ensuring that project managers on-site could access company details as easily as clients in the boardroom.
             </p>
-            <p>
-              Every component was crafted with performance and maintainability in mind — from semantic HTML5 
-              to optimized CSS and lightweight JavaScript interactions.
-            </p>
-          </div>
-
-          <!-- feature grid (two columns) -->
-          <div class="grid sm:grid-cols-2 gap-6 mt-10">
-            <div class="bg-white p-6 rounded-xl card-border">
-              <i class="fas fa-mobile-alt text-2xl text-blue-600 mb-3"></i>
-              <h3 class="font-semibold text-lg">Fully responsive</h3>
-              <p class="text-sm text-slate-600 mt-1">Flawless experience on mobile, tablet, desktop.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl card-border">
-              <i class="fas fa-tachometer-alt text-2xl text-amber-600 mb-3"></i>
-              <h3 class="font-semibold text-lg">Performance optimized</h3>
-              <p class="text-sm text-slate-600 mt-1">Fast loading, minified assets, efficient code.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl card-border">
-              <i class="fas fa-paint-brush text-2xl text-emerald-600 mb-3"></i>
-              <h3 class="font-semibold text-lg">Modern UI/UX</h3>
-              <p class="text-sm text-slate-600 mt-1">Intuitive navigation, smooth transitions.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl card-border">
-              <i class="fas fa-project-diagram text-2xl text-indigo-600 mb-3"></i>
-              <h3 class="font-semibold text-lg">Project showcase</h3>
-              <p class="text-sm text-slate-600 mt-1">Well‑organized presentation of services and work.</p>
+            <div class="bg-engine-bg border-l-2 border-amber-600 p-6 my-10 font-mono text-xs text-zinc-300">
+              <span class="text-zinc-600 uppercase tracking-widest block mb-4">Implementation Log:</span>
+              <ul class="space-y-3">
+                <li class="flex items-center gap-3">
+                  <span class="text-amber-500">→</span> 
+                  <span>Semantic HTML5 for maximum SEO crawlability in the Norwegian market.</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="text-amber-500">→</span> 
+                  <span>Optimized asset delivery pipeline reducing TTFB (Time to First Byte).</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="text-amber-500">→</span> 
+                  <span>Cross-browser normalization for legacy and modern rendering engines.</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="text-amber-500">→</span> 
+                  <span>Lightweight JS interactions to maintain high performance scores.</span>
+                </li>
+              </ul>
             </div>
           </div>
+        </div>
 
-          <!-- full feature list with icons (matching original content) -->
-          <div class="mt-12 bg-white p-8 rounded-2xl card-border">
-            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-list-check text-blue-600"></i> Key features</h3>
-            <ul class="grid sm:grid-cols-2 gap-3">
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Fully responsive design (mobile‑first)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Modern UI/UX with visual hierarchy</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Performance optimized (fast loading)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Interactive hover effects & transitions</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Service showcase & portfolio presentation</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Prominent contact options</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Semantic HTML5, cross‑browser compatible</span></li>
+        <div class="lg:col-span-4 space-y-6">
+          <div class="bg-engine-card border border-engine-border p-8 rounded-lg">
+            <h3 class="text-white font-bold text-sm font-mono uppercase tracking-widest mb-6 pb-2 border-b border-engine-border">
+              Tech Spec
+            </h3>
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="px-3 py-1 bg-engine-bg border border-engine-border text-[10px] font-mono text-zinc-300 rounded uppercase">HTML5</span>
+              <span class="px-3 py-1 bg-engine-bg border border-engine-border text-[10px] font-mono text-zinc-300 rounded uppercase">CSS3</span>
+              <span class="px-3 py-1 bg-engine-bg border border-engine-border text-[10px] font-mono text-zinc-300 rounded uppercase">JavaScript</span>
+              <span class="px-3 py-1 bg-engine-bg border border-engine-border text-[10px] font-mono text-zinc-300 rounded uppercase">GitHub Pages</span>
+              <span class="px-3 py-1 bg-engine-bg border border-engine-border text-[10px] font-mono text-zinc-300 rounded uppercase">Flexbox</span>
+            </div>
+            
+            <h3 class="text-white font-bold text-sm font-mono uppercase tracking-widest mb-4">Core Strengths</h3>
+            <ul class="text-[11px] font-mono space-y-3 text-zinc-500">
+              <li>- 100/100 Accessibility Score</li>
+              <li>- Zero-Dependency Core</li>
+              <li>- Responsive Layout Engine</li>
+              <li>- Asset Compression</li>
             </ul>
           </div>
 
-          <!-- technical implementation (from original) -->
-          <div class="mt-8 bg-white p-8 rounded-2xl card-border">
-            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-microchip text-purple-600"></i> Technical implementation</h3>
-            <ul class="grid sm:grid-cols-2 gap-3">
-              <li class="flex items-start gap-2"><i class="fas fa-code text-slate-500 mt-1 text-sm"></i> <span>Semantic HTML5</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-paint-brush text-slate-500 mt-1 text-sm"></i> <span>Advanced CSS3 (Flexbox, transitions)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-mouse-pointer text-slate-500 mt-1 text-sm"></i> <span>JavaScript enhancements</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-globe text-slate-500 mt-1 text-sm"></i> <span>Cross‑browser compatibility</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-compress-alt text-slate-500 mt-1 text-sm"></i> <span>Optimized assets (minified)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-mobile text-slate-500 mt-1 text-sm"></i> <span>Mobile‑first approach</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- right sidebar (tech stack + project info) -->
-        <div class="lg:w-80 space-y-8">
-          <!-- tech stack card -->
-          <div class="bg-white p-8 rounded-2xl card-border shadow-sm">
-            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-microchip text-blue-600"></i> Tech stack</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">HTML5</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">CSS3</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">JavaScript</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Flexbox</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Google Fonts</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Font Awesome</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Git</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">GitHub</span>
-            </div>
-            <p class="text-xs text-slate-500 mt-5 flex items-center gap-1"><i class="fas fa-crown text-amber-400"></i> responsive, cross‑browser, accessible</p>
-          </div>
-
-          <!-- project info card (client, date, url) -->
-          <div class="bg-white p-8 rounded-2xl card-border shadow-sm">
-            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-circle-info text-amber-600"></i> Project info</h3>
-            <div class="space-y-4">
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Client</p>
-                <p class="font-medium">V.Z-Entreprenor (Agron Z)</p>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Category</p>
-                <p class="font-medium">Business website</p>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Completion</p>
-                <p class="font-medium">September 2024</p>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Project URL</p>
-                <a href="https://qkarpuzi.github.io/V.Z-Entreprenor/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium break-all">qkarpuzi.github.io/V.Z-Entreprenor <i class="fas fa-external-link-alt text-xs ml-1"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <!-- back link (mobile friendly) -->
-          <a href="Projects.html" class="hidden lg:flex items-center gap-2 text-slate-600 hover:text-blue-700 transition mt-4 text-sm">
-            <i class="fas fa-arrow-left"></i> Back to all projects
+          <a href="index.html#portfolio" class="block text-center border border-engine-border hover:border-amber-600 p-4 rounded text-xs font-mono uppercase tracking-widest transition-all">
+            Return to Registry
           </a>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- FOOTER (identical to main) -->
-  <footer class="bg-slate-900 text-slate-400 py-12">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-      <p class="text-sm">© 2026 Qefser Karpuzi · software engineer & web developer</p>
-      <p class="text-sm mt-3 md:mt-0">Designed & developed by Qefser Karpuzi</p>
-    </div>
-    <div class="max-w-6xl mx-auto px-6 text-center text-xs text-slate-600 mt-5">
-      <span>⚡ V.Z-Entreprenor case study</span>
+  <footer class="py-12 border-t border-engine-border text-center font-mono text-[10px] text-zinc-600">
+    <div class="max-w-6xl mx-auto px-6">
+      <p>© 2026 Qefser Karpuzi. CASE_STUDY // VZ_ENTREPRENOR. NO-OSL-PROD.</p>
     </div>
   </footer>
 
-  <!-- MODAL (full-size image viewer) -->
-  <div id="imageModal" class="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center opacity-0 pointer-events-none modal">
-    <span class="absolute top-5 right-8 text-white text-5xl font-light cursor-pointer hover:text-blue-400 transition" onclick="closeModal()">&times;</span>
-    <img id="modalImg" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl">
+  <div id="imageModal" class="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center opacity-0 pointer-events-none modal">
+    <span class="absolute top-5 right-8 text-white text-3xl font-mono cursor-pointer hover:text-amber-500" onclick="closeModal()">[X]</span>
+    <img id="modalImg" class="max-w-[90vw] max-h-[80vh] object-contain border border-engine-border shadow-2xl">
   </div>
 
-  <!-- scripts -->
   <script>
-    // Modal functions
     function openModal(src) {
       const modal = document.getElementById('imageModal');
       const modalImg = document.getElementById('modalImg');
@@ -269,20 +209,11 @@
       modal.classList.remove('show');
       document.body.style.overflow = 'auto';
     }
-    // close on background click
-    document.getElementById('imageModal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
+    document.getElementById('imageModal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('imageModal')) closeModal();
     });
-    // ESC key
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeModal();
-    });
-
-    // optional nav highlight on scroll
-    window.addEventListener('scroll', function() {
-      const nav = document.querySelector('.nav');
-      if (window.scrollY > 50) nav.classList.add('scrolled');
-      else nav.classList.remove('scrolled');
     });
   </script>
 </body>

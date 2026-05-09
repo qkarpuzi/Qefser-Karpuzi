@@ -1,275 +1,220 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Manual Physio – clinic management system engineered by Qefser Karpuzi">
-  <title>Manual Physio · Qefser Karpuzi · Software Engineer</title>
-  <!-- Tailwind + same professional palette as main portfolio -->
+  <meta name="description" content="Manual Physio – Case Study: Full-stack healthcare management system engineered by Qefser Karpuzi.">
+  <title>System Registry: Manual Physio · Qefser Karpuzi</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- same subtle custom polish as main index -->
-  <style>
-    html { scroll-behavior: smooth; }
-    /* active nav indicator */
-    .nav-link.active { color: #2563eb; border-bottom: 2px solid #2563eb; }
-    /* image & card micro interactions */
-    .hover-elevate { transition: all 0.25s ease; }
-    .hover-elevate:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -10px rgba(0,80,200,0.12); }
-    .img-zoom { transition: transform 0.5s ease; cursor: pointer; }
-    .img-zoom:hover { transform: scale(1.02); }
-    .card-border { border: 1px solid rgba(148, 163, 184, 0.2); }
-    .gradient-role {
-      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 70%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 600;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            clinic: {
+              bg: '#05070A',
+              surface: '#0B0F17',
+              card: '#121826',
+              border: '#1E293B',
+              accent: '#06B6D4', // Cyan focus
+              success: '#10B981', // Emerald focus
+            }
+          }
+        }
+      }
     }
-    /* modal animation */
-    .modal { transition: opacity 0.2s ease; }
+  </script>
+  <style>
+    .data-grid { background-size: 30px 30px; background-image: radial-gradient(circle, #1e293b 1px, transparent 1px); }
+    .matrix-border { transition: all 0.3s ease; border: 1px solid #1E293B; }
+    .matrix-border:hover { border-color: #06B6D4; box-shadow: 0 0 20px -10px #06B6D4; }
+    .img-zoom { transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); cursor: zoom-in; }
+    .img-zoom:hover { transform: scale(1.04); }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #05070A; }
+    ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 10px; }
+    .modal { transition: opacity 0.3s ease; }
     .modal.show { opacity: 1; pointer-events: auto; }
+    .status-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
   </style>
 </head>
-<body class="bg-white text-slate-800 font-sans antialiased selection:bg-blue-100">
+<body class="bg-clinic-bg text-slate-400 font-sans antialiased data-grid">
 
-  <!-- STICKY NAV (exactly as main, with back links) -->
-  <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/60 z-50 shadow-xs">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="index.html#hero" class="text-xl font-semibold tracking-tight text-blue-700 flex items-center gap-1">
-        <span class="text-amber-600 text-2xl">⎧⎭</span> Qefser Karpuzi
+  <div class="bg-clinic-surface/80 backdrop-blur-md border-b border-clinic-border font-mono text-[10px] text-slate-500 py-2 px-6 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-clinic-success status-pulse"></span>
+          <span class="text-white uppercase tracking-tighter">System_Online: Manual_Physio_v2.0</span>
+        </div>
+        <span class="text-clinic-border">|</span>
+        <span class="hidden md:inline">ENCRYPTION: AES-256</span>
+      </div>
+      <a href="index.html#portfolio" class="hover:text-clinic-accent transition-colors flex items-center gap-2 uppercase tracking-widest text-[9px]">
+        <i class="fas fa-chevron-left"></i> Core Portfolio
       </a>
-      <ul class="flex space-x-8 text-sm font-medium text-slate-700">
-        <li><a href="index.html#skills" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Skills</a></li>
-        <li><a href="index.html#portfolio" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700 active text-blue-700 border-blue-700">Work</a></li>
-        <li><a href="index.html#contact" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Contact</a></li>
-      </ul>
     </div>
-  </nav>
+  </div>
 
-  <!-- PROJECT HERO (engineering / healthcare dual identity) -->
-  <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-    <div class="absolute top-20 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-5"></div>
-    <div class="absolute bottom-10 left-10 w-72 h-72 bg-amber-500/5 rounded-full blur-3xl"></div>
+  <header class="pt-24 pb-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-clinic-accent/10 border border-clinic-accent/20 text-clinic-accent text-[11px] font-mono mb-8 uppercase tracking-[0.2em]">
+        <i class="fas fa-microscope"></i>
+        <span>Full-Stack Health Infrastructure</span>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-12 items-end">
+        <div>
+          <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-8">
+            Manual <span class="text-clinic-accent">Physio</span><br>
+            <span class="text-slate-600 font-light">Management.</span>
+          </h1>
+          <p class="text-slate-400 text-lg md:text-xl font-light max-w-xl leading-relaxed">
+            A comprehensive Electronic Health Record (EHR) and clinic operations engine. Engineered to handle complex patient workflows, automated billing, and longitudinal treatment tracking.
+          </p>
+        </div>
+        
+        <div class="flex flex-wrap gap-12 font-mono text-[11px] uppercase tracking-widest border-l border-clinic-border pl-8 mb-2">
+          <div>
+            <span class="block text-slate-600 mb-2">Engineers</span>
+            <span class="text-white">Qefser K.</span>
+          </div>
+          <div>
+            <span class="block text-slate-600 mb-2">Architecture</span>
+            <span class="text-white">PHP / MVC / MySQL</span>
+          </div>
+          <div>
+            <span class="block text-slate-600 mb-2">Environment</span>
+            <span class="text-white">Production Node</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-      <div class="max-w-3xl">
-        <!-- breadcrumb / category chip -->
-        <div class="inline-block px-4 py-1.5 bg-blue-50 rounded-full text-blue-700 text-sm font-medium mb-6 border border-blue-200/50 shadow-sm">
-          <i class="fas fa-clinic-medical mr-1"></i>  Manual Physio  <span class="mx-2 text-slate-400">|</span>  <i class="fas fa-database mr-1"></i> healthcare system
+  <section class="py-12 border-y border-clinic-border bg-clinic-surface/50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="group relative bg-clinic-card rounded-lg overflow-hidden matrix-border">
+          <img src="m1.png" alt="Dashboard" onclick="openModal('m1.png')" class="img-zoom w-full h-40 object-cover opacity-60 group-hover:opacity-100">
+          <div class="absolute bottom-2 left-3 font-mono text-[9px] text-clinic-accent opacity-0 group-hover:opacity-100 transition-opacity">SYS_DASHBOARD</div>
         </div>
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
-          Clinic management <span class="gradient-role">engineered</span>
-        </h1>
-        <p class="text-slate-600 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
-          A comprehensive physiotherapy clinic management system with patient dashboard, 
-          appointment scheduling, treatment tracking, and EHR — built for real‑world healthcare workflows.
-        </p>
-        <!-- meta row (client, date, role) -->
-        <div class="flex flex-wrap gap-6 mt-8 text-slate-600">
-          <div class="flex items-center gap-2"><i class="fas fa-user text-blue-600"></i> Client: <span class="font-medium text-slate-800">Gent Hajrizi & Erjona Karpuzi</span></div>
-          <div class="flex items-center gap-2"><i class="fas fa-calendar-alt text-amber-600"></i> Completed: <span class="font-medium text-slate-800">Dec 2025</span></div>
-          <div class="flex items-center gap-2"><i class="fas fa-code-branch text-emerald-600"></i> Role: <span class="font-medium text-slate-800">Lead full‑stack engineer</span></div>
+        <div class="group relative bg-clinic-card rounded-lg overflow-hidden matrix-border">
+          <img src="m2.png" alt="Patient Records" onclick="openModal('m2.png')" class="img-zoom w-full h-40 object-cover opacity-60 group-hover:opacity-100">
+          <div class="absolute bottom-2 left-3 font-mono text-[9px] text-clinic-accent opacity-0 group-hover:opacity-100 transition-opacity">PATIENT_INDEX</div>
         </div>
-        <!-- action buttons -->
-        <div class="flex flex-wrap gap-4 mt-10">
-          <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-medium shadow-md shadow-blue-200 transition flex items-center gap-2 opacity-60 cursor-not-allowed" title="Live link coming soon">
-            <i class="fas fa-external-link-alt"></i> View live project (soon)
-          </a>
-          <a href="index.html#portfolio" class="border border-slate-300 hover:border-blue-400 bg-white/90 text-slate-700 px-8 py-3.5 rounded-full font-medium transition flex items-center gap-2">
-            <i class="fas fa-arrow-left"></i> Back to portfolio
-          </a>
+        <div class="group relative bg-clinic-card rounded-lg overflow-hidden matrix-border">
+          <img src="m3.png" alt="Scheduler" onclick="openModal('m3.png')" class="img-zoom w-full h-40 object-cover opacity-60 group-hover:opacity-100">
+          <div class="absolute bottom-2 left-3 font-mono text-[9px] text-clinic-accent opacity-0 group-hover:opacity-100 transition-opacity">CHRONO_SCHEDULER</div>
+        </div>
+        <div class="group relative bg-clinic-card rounded-lg overflow-hidden matrix-border">
+          <img src="m4.png" alt="Treatments" onclick="openModal('m4.png')" class="img-zoom w-full h-40 object-cover opacity-60 group-hover:opacity-100">
+          <div class="absolute bottom-2 left-3 font-mono text-[9px] text-clinic-accent opacity-0 group-hover:opacity-100 transition-opacity">TREATMENT_LOG</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GALLERY SECTION (with exact image names: m1.png, m2.png, m3.png, m4.png) -->
-  <section class="py-20 bg-white border-y border-slate-200/60">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center">
-        <span class="text-blue-600 text-sm font-semibold tracking-wider uppercase">project gallery</span>
-        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Dashboard & workflows</h2>
-        <p class="text-slate-600 max-w-2xl mx-auto mt-3">Click any image to enlarge.</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
-        <!-- m1.png (dashboard) -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
-          <img src="m1.png" alt="Manual Physio dashboard" onclick="openModal('m1.png')" class="w-full h-48 object-cover cursor-pointer img-zoom">
-        </div>
-        <!-- m2.png (patient management) -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
-          <img src="m2.png" alt="Manual Physio patient management" onclick="openModal('m2.png')" class="w-full h-48 object-cover cursor-pointer img-zoom">
-        </div>
-        <!-- m3.png (appointment system) -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
-          <img src="m3.png" alt="Manual Physio appointment scheduling" onclick="openModal('m3.png')" class="w-full h-48 object-cover cursor-pointer img-zoom">
-        </div>
-        <!-- m4.png (treatment tracking) -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition hover-elevate">
-          <img src="m4.png" alt="Manual Physio treatment tracking" onclick="openModal('m4.png')" class="w-full h-48 object-cover cursor-pointer img-zoom">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECT DETAILS (split view, same engineering tone) -->
-  <section class="py-20 bg-slate-50">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row gap-16">
-        <!-- left: main description -->
-        <div class="flex-1">
-          <span class="text-amber-600 text-sm font-semibold tracking-wider uppercase">deep dive</span>
-          <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Engineering Manual Physio</h2>
-          <div class="mt-8 space-y-6 text-slate-700 leading-relaxed">
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-12 gap-20">
+        
+        <div class="lg:col-span-7">
+          <h2 class="text-2xl font-bold text-white mb-10 flex items-center gap-4">
+            <span class="text-clinic-accent">01.</span> Logic Framework
+          </h2>
+          <div class="space-y-8 text-slate-400 font-light leading-relaxed text-lg">
             <p>
-              <span class="font-medium text-blue-700">Manual Physio</span> is a comprehensive clinic management system designed specifically for physiotherapy practices. 
-              It manages patient records, appointments, treatment plans, and billing in an integrated platform that streamlines clinic operations.
+              Manual Physio was architected to solve the fragmentation in specialized physiotherapy workflows. Unlike generic EHRs, this system tracks <span class="text-white font-medium italic">Kinetic Progress</span>—allowing clinicians to map recovery arcs over multiple sessions.
             </p>
-            <p>
-              I developed this system to address the unique needs of physiotherapy clinics — requiring specialized tracking of patient progress, 
-              treatment sessions, and rehabilitation plans. The dashboard provides both clinic administrators and healthcare providers 
-              with the tools they need to deliver efficient, high‑quality care.
-            </p>
-            <p>
-              Built with a robust PHP backend (MVC), MySQL database with complex relationships, and a responsive frontend using Bootstrap 5 
-              and custom CSS. Security measures follow HIPAA‑inspired practices (encryption, audit trails, role‑based access).
-            </p>
-          </div>
-
-          <!-- feature grid (two columns) – key feature highlights -->
-          <div class="grid sm:grid-cols-2 gap-6 mt-10">
-            <div class="bg-white p-6 rounded-xl card-border">
-              <i class="fas fa-notes-medical text-2xl text-blue-600 mb-3"></i>
-              <h3 class="font-semibold text-lg">EHR & patient records</h3>
-              <p class="text-sm text-slate-600 mt-1">Secure digital health records with customizable templates.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 mt-12">
+              <div class="p-6 bg-clinic-surface border border-clinic-border rounded-xl">
+                <i class="fas fa-shield-virus text-clinic-accent mb-4 text-xl"></i>
+                <h4 class="text-white font-bold mb-2">Secure EHR</h4>
+                <p class="text-sm text-slate-500">Role-based access control (RBAC) ensures patient data is only visible to authorized medical staff.</p>
+              </div>
+              <div class="p-6 bg-clinic-surface border border-clinic-border rounded-xl">
+                <i class="fas fa-calendar-alt text-clinic-accent mb-4 text-xl"></i>
+                <h4 class="text-white font-bold mb-2">Dynamic Scheduling</h4>
+                <p class="text-sm text-slate-500">Integrated FullCalendar engine with conflict detection and automated session reminders.</p>
+              </div>
             </div>
-            <div class="bg-white p-6 rounded-xl card-border">
-              <i class="fas fa-calendar-check text-2xl text-amber-600 mb-3"></i>
-              <h3 class="font-semibold text-lg">Smart scheduling</h3>
-              <p class="text-sm text-slate-600 mt-1">Appointment booking, reminders, conflict detection.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl card-border">
-              <i class="fas fa-chart-line text-2xl text-emerald-600 mb-3"></i>
-              <h3 class="font-semibold text-lg">Treatment tracking</h3>
-              <p class="text-sm text-slate-600 mt-1">Session logs, progress charts, rehabilitation plans.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl card-border">
-              <i class="fas fa-lock text-2xl text-indigo-600 mb-3"></i>
-              <h3 class="font-semibold text-lg">Role‑based access</h3>
-              <p class="text-sm text-slate-600 mt-1">Multi‑user: doctors, therapists, receptionists, admins.</p>
-            </div>
-          </div>
-
-          <!-- full feature list (key features) -->
-          <div class="mt-12 bg-white p-8 rounded-2xl card-border">
-            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-list-check text-blue-600"></i> Key features</h3>
-            <ul class="grid sm:grid-cols-2 gap-3">
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Complete patient profiles & medical history</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Intelligent appointment scheduling (calendar, reminders)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Treatment dashboard with session tracking</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Electronic Health Records (EHR) with templates</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Billing & invoicing, insurance support</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Multi‑user role‑based access control</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1 text-sm"></i> <span>Reporting & analytics (outcomes, performance, finances)</span></li>
-            </ul>
-          </div>
-
-          <!-- technical implementation -->
-          <div class="mt-8 bg-white p-8 rounded-2xl card-border">
-            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-microchip text-purple-600"></i> Technical implementation</h3>
-            <ul class="grid sm:grid-cols-2 gap-3">
-              <li class="flex items-start gap-2"><i class="fas fa-code text-slate-500 mt-1 text-sm"></i> <span>PHP (MVC architecture)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-database text-slate-500 mt-1 text-sm"></i> <span>MySQL with complex relationships</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-mobile-alt text-slate-500 mt-1 text-sm"></i> <span>Bootstrap 5 + custom CSS (responsive)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-shield-alt text-slate-500 mt-1 text-sm"></i> <span>HIPAA‑inspired security (encryption, audit trails)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-bell text-slate-500 mt-1 text-sm"></i> <span>Real‑time notifications (AJAX)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-chart-pie text-slate-500 mt-1 text-sm"></i> <span>Chart.js & FullCalendar integrations</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-plug text-slate-500 mt-1 text-sm"></i> <span>REST API for future integrations</span></li>
-            </ul>
           </div>
         </div>
 
-        <!-- right sidebar (tech stack + project info) -->
-        <div class="lg:w-80 space-y-8">
-          <!-- tech stack card -->
-          <div class="bg-white p-8 rounded-2xl card-border shadow-sm">
-            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-microchip text-blue-600"></i> Tech stack</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">PHP</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">MySQL</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">JavaScript</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">HTML5</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">CSS3</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Bootstrap 5</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">jQuery</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">AJAX</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">Chart.js</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">FullCalendar</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">DataTables</span>
-              <span class="bg-slate-100 px-4 py-2 rounded-full text-sm font-medium text-slate-700">REST API</span>
-            </div>
-            <p class="text-xs text-slate-500 mt-5 flex items-center gap-1"><i class="fas fa-crown text-amber-400"></i> MVC, secure, scalable</p>
-          </div>
+        <div class="lg:col-span-5">
+          <div class="sticky top-24 space-y-6">
+            <div class="bg-clinic-surface border border-clinic-border p-8 rounded-2xl">
+              <h3 class="text-white font-mono text-xs uppercase tracking-[0.3em] mb-8 pb-4 border-b border-clinic-border flex justify-between">
+                <span>Stack_Manifest</span>
+                <span class="text-clinic-accent">v.2025</span>
+              </h3>
+              
+              <ul class="space-y-4 font-mono text-[11px]">
+                <li class="flex justify-between border-b border-clinic-border/50 pb-2">
+                  <span class="text-slate-600">Core Engine</span>
+                  <span class="text-white">PHP 8.x (MVC)</span>
+                </li>
+                <li class="flex justify-between border-b border-clinic-border/50 pb-2">
+                  <span class="text-slate-600">Database</span>
+                  <span class="text-white">MySQL (Relational)</span>
+                </li>
+                <li class="flex justify-between border-b border-clinic-border/50 pb-2">
+                  <span class="text-slate-600">Interface</span>
+                  <span class="text-white">Bootstrap 5 / SCSS</span>
+                </li>
+                <li class="flex justify-between border-b border-clinic-border/50 pb-2">
+                  <span class="text-slate-600">Dynamics</span>
+                  <span class="text-white">AJAX / jQuery</span>
+                </li>
+              </ul>
 
-          <!-- project info card (client, category, url, type) -->
-          <div class="bg-white p-8 rounded-2xl card-border shadow-sm">
-            <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><i class="fas fa-circle-info text-amber-600"></i> Project info</h3>
-            <div class="space-y-4">
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Client</p>
-                <p class="font-medium">Gent Hajrizi & Erjona Karpuzi</p>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Category</p>
-                <p class="font-medium">Healthcare Management System</p>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Completion</p>
-                <p class="font-medium">December 2025</p>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Project URL</p>
-                <a href="#" class="text-blue-600 hover:text-blue-800 font-medium break-all">manualphysio.kesug.com <span class="text-xs text-slate-400 ml-1">(coming soon)</span></a>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-wide">Project Type</p>
-                <p class="font-medium">Full‑stack web application</p>
+              <div class="mt-8 pt-6 border-t border-clinic-border">
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2 py-1 bg-clinic-bg border border-clinic-border text-[9px] text-slate-500 rounded uppercase">Chart.js</span>
+                  <span class="px-2 py-1 bg-clinic-bg border border-clinic-border text-[9px] text-slate-500 rounded uppercase">REST_API</span>
+                  <span class="px-2 py-1 bg-clinic-bg border border-clinic-border text-[9px] text-slate-500 rounded uppercase">DataTables</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- back link (mobile friendly) -->
-          <a href="Projects.html" class="hidden lg:flex items-center gap-2 text-slate-600 hover:text-blue-700 transition mt-4 text-sm">
-            <i class="fas fa-arrow-left"></i> Back to all projects
-          </a>
+            <div class="p-8 bg-gradient-to-br from-clinic-accent/5 to-transparent border border-clinic-accent/10 rounded-2xl">
+              <span class="block text-[10px] font-mono text-clinic-accent uppercase tracking-widest mb-2">Entity Registry</span>
+              <p class="text-white font-medium mb-1">Gent Hajrizi & Erjona Karpuzi</p>
+              <p class="text-xs text-slate-500">Manual Physio Clinic Deployment</p>
+              <div class="mt-6">
+                <a href="#" class="text-white font-mono text-[10px] hover:text-clinic-accent transition-all flex items-center gap-2">
+                  ACCESS_DOMAIN: manualphysio.kesug.com <i class="fas fa-lock text-[8px]"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- FOOTER (identical to main) -->
-  <footer class="bg-slate-900 text-slate-400 py-12">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-      <p class="text-sm">© 2026 Qefser Karpuzi · software engineer & web developer</p>
-      <p class="text-sm mt-3 md:mt-0">Designed & developed by Qefser Karpuzi</p>
-    </div>
-    <div class="max-w-6xl mx-auto px-6 text-center text-xs text-slate-600 mt-5">
-      <span>⚡ Manual Physio case study</span>
+  <footer class="py-16 border-t border-clinic-border bg-clinic-surface/20">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center font-mono text-[10px] text-slate-600 uppercase tracking-widest">
+      <p>© 2026 Qefser Karpuzi // Clinical Systems Division</p>
+      <p class="mt-4 md:mt-0">Built for precision // manual_physio.log</p>
     </div>
   </footer>
 
-  <!-- MODAL (full-size image viewer) -->
-  <div id="imageModal" class="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center opacity-0 pointer-events-none modal">
-    <span class="absolute top-5 right-8 text-white text-5xl font-light cursor-pointer hover:text-blue-400 transition" onclick="closeModal()">&times;</span>
-    <img id="modalImg" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl">
+  <div id="imageModal" class="fixed inset-0 bg-clinic-bg/95 z-[100] flex items-center justify-center opacity-0 pointer-events-none modal backdrop-blur-xl">
+    <span class="absolute top-10 right-10 text-white text-2xl font-mono cursor-pointer hover:text-clinic-accent transition-colors" onclick="closeModal()">[ CLOSE_TERMINAL ]</span>
+    <img id="modalImg" class="max-w-[90vw] max-h-[80vh] object-contain border border-clinic-border rounded shadow-2xl">
   </div>
 
-  <!-- scripts -->
   <script>
-    // Modal functions
     function openModal(src) {
       const modal = document.getElementById('imageModal');
       const modalImg = document.getElementById('modalImg');
@@ -282,20 +227,11 @@
       modal.classList.remove('show');
       document.body.style.overflow = 'auto';
     }
-    // close on background click
-    document.getElementById('imageModal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
+    document.getElementById('imageModal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('imageModal')) closeModal();
     });
-    // ESC key
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeModal();
-    });
-
-    // optional nav highlight on scroll
-    window.addEventListener('scroll', function() {
-      const nav = document.querySelector('.nav');
-      if (window.scrollY > 50) nav.classList.add('scrolled');
-      else nav.classList.remove('scrolled');
     });
   </script>
 </body>

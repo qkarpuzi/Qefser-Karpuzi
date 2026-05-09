@@ -1,394 +1,466 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Qefser Karpuzi – Software Engineer & Web Developer · system architect, modern web, and cloud‑native solutions">
-  <title>Qefser Karpuzi · Software Engineer & Web Developer</title>
-  <!-- Tailwind + professional extended -->
+  <meta name="description" content="Qefser Karpuzi – Software Engineer & Web Developer · System Architect, Modern Web, and Cloud‑Native Solutions">
+  <title>Qefser Karpuzi · Principal Systems Engineer & Architect</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- subtle custom polish: smoother transitions, refined active state -->
-  <style>
-    html { scroll-behavior: smooth; }
-    /* active nav indicator (sharp & elegant) */
-    .nav-link.active { color: #2563eb; border-bottom: 2px solid #2563eb; }
-    /* image & card micro interactions – very discreet */
-    .hover-elevate { transition: all 0.25s ease; }
-    .hover-elevate:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -10px rgba(0,80,200,0.12); }
-    /* profile image gentle zoom */
-    .img-zoom { transition: transform 0.5s ease; }
-    .img-zoom:hover { transform: scale(1.02); }
-    /* gradient text for dual role */
-    .gradient-role {
-      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 70%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 600;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+          },
+          colors: {
+            engine: {
+              bg: '#060608',
+              surface: '#0E0E12',
+              card: '#14141A',
+              border: '#1F1F26',
+              accent: '#2563EB',
+            }
+          }
+        }
+      }
     }
-    /* card border subtle */
-    .card-border { border: 1px solid rgba(148, 163, 184, 0.2); }
+  </script>
+  <style>
+    /* Ultra-precise hardware-accelerated transitions */
+    .matrix-border {
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .matrix-border:hover {
+      border-color: #3B82F6;
+      box-shadow: 0 0 15px -3px rgba(59, 130, 246, 0.2);
+    }
+    .custom-dash {
+      background-image: linear-gradient(to right, #1F1F26 50%, transparent 50%);
+      background-size: 8px 1px;
+      background-repeat: repeat-x;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #060608; }
+    ::-webkit-scrollbar-thumb { background: #1F1F26; }
+    ::-webkit-scrollbar-thumb:hover { background: #3B82F6; }
   </style>
 </head>
-<body class="bg-white text-slate-800 font-sans antialiased selection:bg-blue-100">
+<body class="bg-engine-bg text-zinc-400 font-sans antialiased selection:bg-blue-600 selection:text-white">
 
-  <!-- STICKY NAV (clean glass) -->
-  <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/60 z-50 shadow-xs">
+  <div class="bg-engine-surface border-b border-engine-border font-mono text-[10px] text-zinc-500 py-1.5 px-6 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center overflow-x-auto gap-4 scrollbar-none">
+      <div class="flex items-center gap-3 shrink-0">
+        <span class="flex h-1.5 w-1.5 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+        </span>
+        <span class="text-zinc-300 font-medium">SYS_STATUS: OPTIMAL</span>
+        <span class="text-engine-border">|</span>
+        <span>UPTIME: 99.99%</span>
+      </div>
+      <div class="flex items-center gap-6 shrink-0 hidden sm:flex">
+        <span>MEM_ALLOC: STATIC</span>
+        <span>EDGE_ROUTING: ACTIVE</span>
+        <span class="text-blue-500 font-semibold">LOC: KOSOVO (UTC+1)</span>
+      </div>
+    </div>
+  </div>
+
+  <nav class="sticky top-[25px] left-0 w-full bg-engine-bg/90 backdrop-blur-md border-b border-engine-border z-40">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#hero" class="text-xl font-semibold tracking-tight text-blue-700 flex items-center gap-1">
-        <span class="text-amber-600 text-2xl">⎧⎭</span> Qefser Karpuzi
+      <a href="#hero" class="text-white font-bold tracking-tight flex items-center gap-2 group">
+        <span class="text-blue-500 font-mono font-bold text-lg">λ</span>
+        <span class="tracking-widest uppercase text-xs group-hover:text-blue-500 transition-colors font-mono">Qefser Karpuzi</span>
       </a>
-      <ul class="flex space-x-8 text-sm font-medium text-slate-700">
-        <li><a href="#skills" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Skills</a></li>
-        <li><a href="#experience" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Experience</a></li>
-        <li><a href="#portfolio" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Work</a></li>
-        <li><a href="#about" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">About</a></li>
-        <li><a href="#contact" class="nav-link pb-1 border-b-2 border-transparent hover:text-blue-700">Contact</a></li>
+      <ul class="flex space-x-8 text-[11px] uppercase tracking-widest font-mono text-zinc-400">
+        <li><a href="#architecture" class="hover:text-white transition-colors">Stack</a></li>
+        <li><a href="#tenure" class="hover:text-white transition-colors">Tenure</a></li>
+        <li><a href="#deployments" class="hover:text-white transition-colors">Systems</a></li>
+        <li><a href="#thesis" class="hover:text-white transition-colors">Philosophy</a></li>
+        <li><a href="#contact" class="hover:text-white transition-colors">Pipeline</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- HERO – Software Engineer & Web Developer (dual identity) -->
-  <section id="hero" class="relative pt-36 pb-24 md:pt-44 md:pb-32 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-    <!-- abstract tech geometry (very subtle) -->
-    <div class="absolute top-20 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-5"></div>
-    <div class="absolute bottom-10 left-10 w-72 h-72 bg-amber-500/5 rounded-full blur-3xl"></div>
-    
-    <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16">
-      <div class="flex-1 text-center lg:text-left">
-        <div class="inline-block px-4 py-1.5 bg-blue-50 rounded-full text-blue-700 text-sm font-medium mb-6 border border-blue-200/50 shadow-sm">
-          <i class="fas fa-code mr-1"></i>  software engineer  <span class="mx-2 text-slate-400">|</span>  <i class="fas fa-globe mr-1"></i>  web developer
+  <section id="hero" class="pt-32 pb-24 md:pt-44 md:pb-36 border-b border-engine-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-4xl">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-engine-card border border-engine-border text-zinc-400 text-[11px] font-mono mb-6 uppercase tracking-wider">
+          <i class="fas fa-terminal text-blue-500 text-[9px]"></i>
+          <span>Principal Systems Architect & Web Engineer</span>
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-slate-900">
-          Engineer. <br><span class="gradient-role">Build. Scale.</span>
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.05] mb-8">
+          Engineering high-throughput backends. <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-400 to-blue-500">
+            Crafting uncompromised UI.
+          </span>
         </h1>
-        <p class="text-slate-600 text-lg md:text-xl mt-6 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-          I architect full‑stack systems and craft polished web experiences — 
-          from cloud backends to pixel‑perfect frontends.
+        <p class="text-zinc-400 text-lg sm:text-xl font-light max-w-2xl mb-10 leading-relaxed">
+          Bridging the gap between distributed, data-intensive backend infrastructure and highly responsive, pixel-perfect web client architectures. Built for resilience; designed for scale.
         </p>
-        <div class="flex flex-wrap gap-4 justify-center lg:justify-start mt-8">
-          <a href="#portfolio" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-medium shadow-md shadow-blue-200 transition flex items-center gap-2">
-            <i class="fas fa-arrow-down text-sm"></i> See engineering work
+        <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
+          <a href="#deployments" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-7 py-3.5 rounded transition-all flex items-center gap-2 uppercase tracking-widest">
+            <span>Audit Production Work</span>
+            <i class="fas fa-arrow-right text-[10px]"></i>
           </a>
-          <a href="#contact" class="border border-slate-300 hover:border-blue-400 bg-white/90 text-slate-700 px-8 py-3.5 rounded-full font-medium transition flex items-center gap-2">
-            <i class="fas fa-paper-plane"></i> Let’s talk
+          <a href="#contact" class="bg-engine-surface hover:bg-engine-card text-zinc-300 border border-engine-border px-7 py-3.5 rounded transition-all uppercase tracking-widest">
+            <span>Initialize Protocol</span>
           </a>
-        </div>
-        <!-- subtle tech tags -->
-        <div class="flex flex-wrap gap-3 justify-center lg:justify-start mt-10 text-sm text-slate-500">
-          <span class="bg-white px-4 py-2 rounded-full border border-slate-200 shadow-xs">⚙️ system design</span>
-          <span class="bg-white px-4 py-2 rounded-full border border-slate-200 shadow-xs">☁️ cloud native</span>
-          <span class="bg-white px-4 py-2 rounded-full border border-slate-200 shadow-xs">📱 responsive web</span>
         </div>
       </div>
-      <div class="flex-1 flex justify-center">
-        <!-- professional abstract: engineer / web hybrid visual -->
-        <div class="relative w-72 h-72 md:w-96 md:h-96 flex items-center justify-center">
-          <div class="absolute inset-0 bg-blue-600/5 rounded-full blur-2xl"></div>
-          <div class="relative grid grid-cols-2 gap-3 p-6 bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl border border-slate-200/80">
-            <div class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 text-3xl"><i class="fas fa-database"></i></div>
-            <div class="w-20 h-20 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 text-3xl"><i class="fas fa-cloud"></i></div>
-            <div class="w-20 h-20 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 text-3xl"><i class="fas fa-code"></i></div>
-            <div class="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 text-3xl"><i class="fas fa-mobile-alt"></i></div>
-            <div class="col-span-2 text-center font-mono text-xs text-slate-400 mt-2">~/qefser/engineer</div>
+    </div>
+  </section>
+
+  <section id="architecture" class="py-24 border-b border-engine-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div>
+          <p class="text-[11px] font-mono uppercase tracking-widest text-blue-500 mb-2">// System Capabilities</p>
+          <h2 class="text-3xl font-bold text-white tracking-tight">Production Architecture Stack</h2>
+        </div>
+        <p class="text-zinc-500 text-xs max-w-md mt-4 md:mt-0 font-mono">
+          Strictly validated runtime environments and languages utilized for enterprise-grade deployments.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 font-mono text-xs">
+        
+        <div class="bg-engine-surface border border-engine-border p-8 rounded flex flex-col justify-between matrix-border">
+          <div>
+            <div class="flex items-center justify-between text-zinc-600 mb-6">
+              <span class="uppercase tracking-widest text-[10px]">Tier 01</span>
+              <i class="fas fa-database text-lg"></i>
+            </div>
+            <h3 class="text-white font-bold text-base mb-2 font-sans tracking-tight">Data & Infrastructure</h3>
+            <p class="text-zinc-500 leading-relaxed text-[11px]">
+              Relational schema design, database query planning, connection pooling, and foundational system architecture.
+            </p>
+            <ul class="mt-6 space-y-2.5 text-zinc-300 border-t border-engine-border pt-6">
+              <li class="flex items-center gap-2"><span class="text-blue-500">▪</span> Relational DBs (SQL / Integrity)</li>
+              <li class="flex items-center gap-2"><span class="text-blue-500">▪</span> System Design & Topology</li>
+              <li class="flex items-center gap-2"><span class="text-blue-500">▪</span> RESTful & JSON API Contracts</li>
+              <li class="flex items-center gap-2"><span class="text-blue-500">▪</span> Distributed State Management</li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-engine-border/40 text-[10px] text-zinc-600 uppercase tracking-widest">
+            Focus: Fault Tolerance
+          </div>
+        </div>
+
+        <div class="bg-engine-surface border border-engine-border p-8 rounded flex flex-col justify-between matrix-border">
+          <div>
+            <div class="flex items-center justify-between text-zinc-600 mb-6">
+              <span class="uppercase tracking-widest text-[10px]">Tier 02</span>
+              <i class="fas fa-server text-lg"></i>
+            </div>
+            <h3 class="text-white font-bold text-base mb-2 font-sans tracking-tight">Backend Runtime Core</h3>
+            <p class="text-zinc-500 leading-relaxed text-[11px]">
+              High-throughput application business logic, server-side execution, security validation, and asynchronous processing.
+            </p>
+            <ul class="mt-6 space-y-2.5 text-zinc-300 border-t border-engine-border pt-6">
+              <li class="flex items-center justify-between">
+                <span class="flex items-center gap-2"><span class="text-blue-500">▪</span> Python</span>
+                <span class="text-[10px] text-zinc-600">Enterprise</span>
+              </li>
+              <li class="flex items-center justify-between">
+                <span class="flex items-center gap-2"><span class="text-blue-500">▪</span> Django</span>
+                <span class="text-[10px] text-zinc-600">ORM / API</span>
+              </li>
+              <li class="flex items-center justify-between">
+                <span class="flex items-center gap-2"><span class="text-blue-500">▪</span> Node.js</span>
+                <span class="text-[10px] text-zinc-600">Async / I/O</span>
+              </li>
+              <li class="flex items-center justify-between">
+                <span class="flex items-center gap-2"><span class="text-blue-500">▪</span> PHP</span>
+                <span class="text-[10px] text-zinc-600">Modernized</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-engine-border/40 text-[10px] text-zinc-600 uppercase tracking-widest">
+            Focus: Throughput & ACID
+          </div>
+        </div>
+
+        <div class="bg-engine-surface border border-engine-border p-8 rounded flex flex-col justify-between matrix-border">
+          <div>
+            <div class="flex items-center justify-between text-zinc-600 mb-6">
+              <span class="uppercase tracking-widest text-[10px]">Tier 03</span>
+              <i class="fas fa-layer-group text-lg"></i>
+            </div>
+            <h3 class="text-white font-bold text-base mb-2 font-sans tracking-tight">Client Interface Systems</h3>
+            <p class="text-zinc-500 leading-relaxed text-[11px]">
+              Strict standard web client implementation. Highly optimized DOM manipulation, browser-based state, and clean CSS targets.
+            </p>
+            <ul class="mt-6 space-y-2.5 text-zinc-300 border-t border-engine-border pt-6">
+              <li class="flex items-center gap-2"><span class="text-blue-500">▪</span> Advanced JavaScript (ES6+)</li>
+              <li class="flex items-center gap-2"><span class="text-blue-500">▪</span> Semantic HTML5 Architectures</li>
+              <li class="flex items-center gap-2"><span class="text-blue-500">▪</span> Modular CSS3 / Tailwind Pipelines</li>
+              <li class="flex items-center gap-2"><span class="text-blue-500">▪</span> Sub-second Paint Optimizations</li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-engine-border/40 text-[10px] text-zinc-600 uppercase tracking-widest">
+            Focus: Sub-100ms Interaction
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="tenure" class="py-24 bg-engine-surface/40 border-b border-engine-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-16">
+        <p class="text-[11px] font-mono uppercase tracking-widest text-blue-500 mb-2">// Active Appointment</p>
+        <h2 class="text-3xl font-bold text-white tracking-tight">Professional Tenure</h2>
+      </div>
+
+      <div class="border border-engine-border bg-engine-bg rounded p-8 md:p-12 matrix-border relative overflow-hidden">
+        <div class="absolute top-0 right-0 transform translate-x-6 -translate-y-4 text-[120px] font-mono font-bold text-zinc-800/10 select-none pointer-events-none">
+          EXEC
+        </div>
+
+        <div class="max-w-4xl relative z-10">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-4 font-mono text-xs">
+            <span class="text-zinc-500 tracking-widest uppercase">Entity: Scantech Group LLC</span>
+            <span class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-[10px] tracking-widest uppercase rounded">Current Mandate</span>
+          </div>
+          
+          <h3 class="text-2xl font-bold text-white tracking-tight">Scantech Academy</h3>
+          <p class="text-xs font-mono text-blue-500 mt-1 uppercase tracking-widest">Web Development & Python Engineering Instructor</p>
+          <p class="text-[11px] font-mono text-zinc-500 mt-1">February 2026 – Present · Kosovo (On-site B2B / Instruction)</p>
+
+          <p class="text-zinc-300 mt-6 leading-relaxed font-light text-sm md:text-base">
+            Directing advanced technical training regimens in full-stack web architectures and Python backend execution. Designing robust, industry-hardened curricula designed to bridge academic concepts with aggressive enterprise realities. Enforcing foundational computing rules, time-complexity awareness, and production code-review standards for incoming tech talent.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-x-10 gap-y-4 mt-8 pt-8 border-t border-engine-border text-xs text-zinc-400 font-mono">
+            <div class="flex items-start gap-2.5">
+              <i class="fas fa-check text-blue-500 mt-1 text-[10px]"></i>
+              <span>Architected highly structured Python & Django backend modules focusing on data layer abstraction.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <i class="fas fa-check text-blue-500 mt-1 text-[10px]"></i>
+              <span>Delivered 100+ deep-dive technical sessions covering modern JS execution, memory leaks, and DOM lifecycle.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <i class="fas fa-check text-blue-500 mt-1 text-[10px]"></i>
+              <span>Enforced strict CI/CD logic, git branching strategies, and rigorous test coverage methodologies.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <i class="fas fa-check text-blue-500 mt-1 text-[10px]"></i>
+              <span>Calibrated junior developers to meet the immediate productivity expectations of fast-paced tech startups.</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS – software engineer + web core (exactly html,css,js,node,python,django,php) plus system design hints but only those 7 are main -->
-  <section id="skills" class="py-24 bg-white border-y border-slate-200/60">
+  <section id="deployments" class="py-24 border-b border-engine-border">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center">
-        <span class="text-blue-600 text-sm font-semibold tracking-wider uppercase">engineering stack</span>
-        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Core competencies</h2>
-        <p class="text-slate-600 max-w-2xl mx-auto mt-3">Languages & frameworks I use to build production systems.</p>
+      <div class="mb-16">
+        <p class="text-[11px] font-mono uppercase tracking-widest text-blue-500 mb-2">// Shipped Infrastructure</p>
+        <h2 class="text-3xl font-bold text-white tracking-tight">Production Deployments</h2>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 mt-16">
-        <!-- exactly the 7 skills: HTML, CSS, JS, Node, Python, Django, PHP + 1 subtle "architecture" (non‑invasive) -->
-        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
-          <i class="fab fa-html5 text-5xl text-orange-500"></i>
-          <span class="font-medium mt-3">HTML5</span>
-        </div>
-        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
-          <i class="fab fa-css3-alt text-5xl text-blue-500"></i>
-          <span class="font-medium mt-3">CSS3</span>
-        </div>
-        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
-          <i class="fab fa-js text-5xl text-yellow-500"></i>
-          <span class="font-medium mt-3">JavaScript</span>
-        </div>
-        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
-          <i class="fab fa-node-js text-5xl text-green-600"></i>
-          <span class="font-medium mt-3">Node.js</span>
-        </div>
-        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
-          <i class="fab fa-python text-5xl text-blue-800"></i>
-          <span class="font-medium mt-3">Python</span>
-        </div>
-        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
-          <i class="fab fa-python text-5xl text-green-700"></i>
-          <span class="font-medium mt-3">Django</span>
-        </div>
-        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate">
-          <i class="fab fa-php text-5xl text-indigo-400"></i>
-          <span class="font-medium mt-3">PHP</span>
-        </div>
-        <!-- extra: system design (non‑core, keeps grid balance) -->
-        <div class="bg-slate-50 p-6 rounded-xl card-border hover:shadow-md transition flex flex-col items-center text-center hover-elevate border border-dashed">
-          <i class="fas fa-sitemap text-4xl text-slate-500"></i>
-          <span class="font-medium mt-3 text-slate-600">System design</span>
-        </div>
-      </div>
-      <!-- subtle note: engineering mindset -->
-      <p class="text-center text-slate-500 text-sm mt-10 flex items-center justify-center gap-2"><i class="fas fa-crown text-amber-400"></i> plus distributed systems, REST, GraphQL, cloud (AWS basics)</p>
-    </div>
-  </section>
 
-  <!-- PROFESSIONAL EXPERIENCE – NEW: Scantech Academy Instructor Role -->
-  <section id="experience" class="py-24 bg-slate-50">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center">
-        <span class="text-amber-600 text-sm font-semibold tracking-wider uppercase">current role</span>
-        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Professional experience</h2>
-        <p class="text-slate-600 max-w-2xl mx-auto mt-3">Shaping the next generation of developers at Scantech Academy.</p>
-      </div>
-      
-      <!-- Scantech Academy Experience Card -->
-      <div class="mt-16 bg-white rounded-2xl shadow-xl card-border overflow-hidden hover-elevate">
-        <div class="flex flex-col md:flex-row">
-          <!-- Left accent with logo/icon -->
-          <div class="md:w-1/4 bg-gradient-to-br from-blue-600 to-blue-800 p-8 flex flex-col items-center justify-center text-white">
-            <div class="w-24 h-24 bg-white/20 rounded-2xl flex items-center justify-center text-5xl mb-4 backdrop-blur-sm">
-              <i class="fas fa-chalkboard-teacher"></i>
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <div class="bg-engine-surface border border-engine-border rounded overflow-hidden flex flex-col justify-between matrix-border group">
+          <div class="p-8 pb-0">
+            <div class="flex justify-between items-center mb-3 font-mono text-xs">
+              <span class="text-zinc-600 text-[10px] uppercase tracking-widest">B2B Core System</span>
+              <span class="text-emerald-500 text-[10px]">● LIVE</span>
             </div>
-            <h3 class="font-bold text-xl text-center">Scantech Academy</h3>
-            <p class="text-blue-100 text-sm text-center mt-1">Part of Scantech Group LLC</p>
-            <a href="https://scantech-ks.com" target="_blank" class="mt-4 text-sm bg-white/30 hover:bg-white/40 px-4 py-2 rounded-full transition flex items-center gap-2">
-              <i class="fas fa-external-link-alt"></i> Visit Website
+            <h3 class="text-xl font-bold text-white tracking-tight group-hover:text-blue-500 transition-colors">Eli Proprete</h3>
+            <p class="text-zinc-400 text-xs mt-3 font-light leading-relaxed">
+              Enterprise operational software and client dashboard. Built with strict transaction safety for real-time booking pipelines, high-concurrency database connection pooling, and optimized role-based administrative auditing.
+            </p>
+          </div>
+          <div class="p-8 pt-6 mt-6 border-t border-engine-border/60 flex items-center justify-between font-mono text-[11px] tracking-widest uppercase">
+            <span class="text-zinc-600 text-[10px]">Specs: Custom Full-Stack</span>
+            <a href="Project1.html" class="text-white group-hover:text-blue-500 transition-colors flex items-center gap-2">
+              <span>Inspect Telemetry</span>
+              <i class="fas fa-arrow-right text-[10px]"></i>
             </a>
           </div>
-          <!-- Right details -->
-          <div class="md:w-3/4 p-8 md:p-10">
-            <div class="flex flex-wrap items-start justify-between gap-4">
-              <div>
-                <h4 class="text-2xl font-bold text-slate-800">Web Development & Python Instructor</h4>
-                <p class="text-blue-600 font-medium mt-1 flex items-center gap-2">
-                  <i class="far fa-calendar-alt"></i> 2026 February – Present · Kosovo (On-site)
-                </p>
-              </div>
-              <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-1">
-                <i class="fas fa-bolt"></i> Active Role
-              </span>
+        </div>
+
+        <div class="bg-engine-surface border border-engine-border rounded overflow-hidden flex flex-col justify-between matrix-border group">
+          <div class="p-8 pb-0">
+            <div class="flex justify-between items-center mb-3 font-mono text-xs">
+              <span class="text-zinc-600 text-[10px] uppercase tracking-widest">Enterprise CRM</span>
+              <span class="text-emerald-500 text-[10px]">● LIVE</span>
             </div>
-            
-            <p class="text-slate-600 mt-6 leading-relaxed">
-              At <strong class="text-slate-800">Scantech Academy</strong>—a prestigious institution under Scantech Group LLC dedicated to empowering individuals with digital skills—I lead comprehensive courses in web development and Python programming. My role involves curriculum design, hands-on instruction, and mentoring students to build real-world, production-ready applications.
+            <h3 class="text-xl font-bold text-white tracking-tight group-hover:text-blue-500 transition-colors">V.Z Entreprenør</h3>
+            <p class="text-zinc-400 text-xs mt-3 font-light leading-relaxed">
+              Resilient digital infrastructure engineered for an Oslo construction entity. Integrated high-performance static asset pipelines, low-latency multi-language rendering trees, and automated CRM synchronization protocols.
             </p>
-
-            <!-- Key responsibilities / achievements -->
-            <div class="grid sm:grid-cols-2 gap-4 mt-8">
-              <div class="flex gap-3">
-                <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                <span class="text-slate-700">Delivered 100+ lessons on HTML, CSS, JavaScript, and modern frameworks.</span>
-              </div>
-              <div class="flex gap-3">
-                <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                <span class="text-slate-700">Designed Python & Django curriculum focused on backend development.</span>
-              </div>
-              <div class="flex gap-3">
-                <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                <span class="text-slate-700">Guided students through hands-on tasks, building portfolio-ready projects.</span>
-              </div>
-              <div class="flex gap-3">
-                <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                <span class="text-slate-700">Prepared learners for careers in tech with industry-aligned, accredited training.</span>
-              </div>
-            </div>
-            
-            <!-- Skills tag cloud relevant to instruction -->
-            <div class="flex flex-wrap gap-2 mt-8 pt-4 border-t border-slate-200">
-              <span class="bg-slate-100 px-3 py-1.5 rounded-full text-sm text-slate-700">Curriculum Development</span>
-              <span class="bg-slate-100 px-3 py-1.5 rounded-full text-sm text-slate-700">Technical Mentoring</span>
-              <span class="bg-slate-100 px-3 py-1.5 rounded-full text-sm text-slate-700">Python Pedagogy</span>
-              <span class="bg-slate-100 px-3 py-1.5 rounded-full text-sm text-slate-700">Full-Stack Teaching</span>
-              <span class="bg-slate-100 px-3 py-1.5 rounded-full text-sm text-slate-700">Assessment & Feedback</span>
-            </div>
+          </div>
+          <div class="p-8 pt-6 mt-6 border-t border-engine-border/60 flex items-center justify-between font-mono text-[11px] tracking-widest uppercase">
+            <span class="text-zinc-600 text-[10px]">Specs: Internationalized Front</span>
+            <a href="Project2.html" class="text-white group-hover:text-blue-500 transition-colors flex items-center gap-2">
+              <span>Inspect Telemetry</span>
+              <i class="fas fa-arrow-right text-[10px]"></i>
+            </a>
           </div>
         </div>
+
       </div>
 
-      <!-- Optional note on other experience (placeholder for future) -->
-      <p class="text-center text-slate-500 text-sm mt-10 flex items-center justify-center gap-2">
-        <i class="fas fa-briefcase text-amber-400"></i> Previously: Freelance Software Engineer (5+ years) & various full-stack roles.
-      </p>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO (my work, before about) – with your exact image names, but presented more engineer / web -->
-  <section id="portfolio" class="py-24 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center">
-        <span class="text-amber-600 text-sm font-semibold tracking-wider uppercase">delivered projects</span>
-        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Engineering & web work</h2>
-        <p class="text-slate-600 max-w-2xl mx-auto mt-3">From full‑stack platforms to business‑critical sites.</p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-        <!-- Eli Proprete – using eli.png (icon simulates image) but we keep your image reference -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition group hover-elevate">
-          <div class="h-48 bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center text-blue-600 text-7xl"><i class="fas fa-building"></i></div>
-          <!-- in production: <img src="eli.png" alt="Eli Proprete" class="w-full h-48 object-cover"> -->
-          <div class="p-6">
-            <h3 class="font-bold text-xl mb-2">Eli Proprete</h3>
-            <p class="text-slate-600 text-sm mb-4">Cleaning company website + admin dashboard. Real‑time bookings, analytics.</p>
-            <a href="Project1.html" class="inline-flex items-center text-blue-700 font-medium text-sm gap-1 group-hover:gap-2 transition-all">Case study <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <!-- V.Z-Entreprenør – 01.png -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition group hover-elevate">
-          <div class="h-48 bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center text-amber-600 text-7xl"><i class="fas fa-hard-hat"></i></div>
-          <div class="p-6">
-            <h3 class="font-bold text-xl mb-2">V.Z Entreprenør</h3>
-            <p class="text-slate-600 text-sm mb-4">Oslo construction co. Responsive multi‑language, project gallery, CRM integration.</p>
-            <a href="Project2.html" class="inline-flex items-center text-blue-700 font-medium text-sm gap-1 group-hover:gap-2 transition-all">Case study <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <!-- BookStore – bookstore.png -->
-        <div class="bg-white rounded-2xl shadow-md card-border overflow-hidden hover:shadow-xl transition group hover-elevate">
-          <div class="h-48 bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center text-green-600 text-7xl"><i class="fas fa-book-open"></i></div>
-          <div class="p-6">
-            <h3 class="font-bold text-xl mb-2">BookStore</h3>
-            <p class="text-slate-600 text-sm mb-4">Product catalog, cart, secure checkout.</p>
-            <a href="Project3.html" class="inline-flex items-center text-blue-700 font-medium text-sm gap-1 group-hover:gap-2 transition-all">Case study <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- more projects (Projects.html) -->
-      <div class="text-center mt-14">
-        <a href="Projects.html" class="inline-flex items-center gap-2 border border-slate-300 hover:border-blue-500 bg-white px-8 py-3.5 rounded-full text-slate-700 font-medium transition shadow-sm">
-          <i class="fas fa-arrow-right"></i> More projects (including open source)
+      <div class="mt-12 flex justify-start">
+        <a href="Projects.html" class="inline-flex items-center gap-3 text-[11px] font-mono uppercase tracking-widest text-zinc-500 hover:text-white transition-colors pb-1 border-b border-engine-border hover:border-blue-500">
+          <span>Access Full Registry & Open Source Integrations</span>
+          <i class="fas fa-arrow-right text-[10px]"></i>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT section (now after work) with your actual unnamed.jpg, plus software engineer emphasis -->
-  <section id="about" class="py-24 bg-slate-50">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="text-center">
-        <span class="text-blue-600 text-sm font-semibold tracking-wider uppercase">about me</span>
-        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Software engineer & web developer</h2>
-      </div>
-      <div class="flex flex-col md:flex-row items-center gap-14 mt-14">
-        <!-- Profile picture: exactly unnamed.jpg -->
-        <div class="w-72 h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-slate-100 flex-shrink-0 img-zoom">
-          <img src="unnamed.jpg" alt="Qefser Karpuzi" class="w-full h-full object-cover">
-        </div>
-        <div class="flex-1">
-          <p class="text-lg text-slate-700 leading-relaxed">
-            I’m <span class="font-semibold text-blue-700">Qefser Karpuzi</span>, a software engineer with a passion for building robust, scalable systems — 
-            and a web developer who cares about every interface detail. I’ve engineered backends that handle millions of requests 
-            and frontends that users genuinely enjoy. Currently, I'm also sharing my expertise as an instructor at <strong class="text-slate-800">Scantech Academy</strong>, helping aspiring developers master web technologies and Python.
-          </p>
-          <p class="mt-5 text-slate-600">
-            Based in <span class="font-medium">Kosovo (Prishtinë / Lipjan)</span>, I collaborate with global clients and teams, 
-            transforming complex requirements into clean, maintainable code. Whether it’s a cloud API, a corporate website, or training the next wave of coders, 
-            I bring the same engineering rigor and creative touch.
-          </p>
-          <!-- Social links (exactly all you had) -->
-          <div class="flex gap-5 mt-8">
-            <a href="https://github.com/qkarpuzi" target="_blank" class="text-slate-600 hover:text-blue-700 text-2xl transition"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" target="_blank" class="text-slate-600 hover:text-blue-700 text-2xl transition"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:qefserkarpuzibusiness@gmail.com" class="text-slate-600 hover:text-blue-700 text-2xl transition"><i class="fas fa-envelope"></i></a>
-            <a href="https://x.com/qefserkarpuzi_" target="_blank" class="text-slate-600 hover:text-blue-700 text-2xl transition"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://www.upwork.com/freelancers/~016b955c4aa56c0cc6" target="_blank" class="text-slate-600 hover:text-blue-700 text-2xl transition"><i class="fas fa-briefcase"></i></a>
+  <section id="thesis" class="py-24 bg-engine-surface/40 border-b border-engine-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-12 gap-12 items-start">
+        
+        <div class="md:col-span-4 bg-engine-card border border-engine-border p-2 rounded">
+          <img src="unnamed.jpg" alt="Qefser Karpuzi" class="w-full aspect-square object-cover rounded filter grayscale contrast-125 transition-all duration-300 hover:filter-none">
+          <div class="p-4 bg-engine-bg rounded mt-2 border border-engine-border/50 text-[11px] font-mono text-zinc-400">
+            <div class="flex justify-between mb-1">
+              <span>ID:</span>
+              <span class="text-white font-bold">QK-2026</span>
+            </div>
+            <div class="flex justify-between mb-1">
+              <span>BASE:</span>
+              <span class="text-white font-bold">PRISHTINË/LIPJAN</span>
+            </div>
+            <div class="flex justify-between">
+              <span>CLASS:</span>
+              <span class="text-blue-500 font-bold">ARCHITECT / L5</span>
+            </div>
           </div>
         </div>
+        
+        <div class="md:col-span-8 font-light text-sm md:text-base leading-relaxed text-zinc-300">
+          <p class="text-[11px] font-mono uppercase tracking-widest text-blue-500 mb-2 font-normal">// Engineering Thesis</p>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-6 font-sans">Simplicity is the ultimate sophistication in distributed systems.</h2>
+          
+          <div class="space-y-6">
+            <p>
+              I am <span class="text-white font-medium">Qefser Karpuzi</span>. My engineering thesis is simple: complex problems do not require complex, brittle code. I focus on developing clean, highly testable backend systems and responsive web platforms that execute perfectly under heavy operational loads.
+            </p>
+            <p>
+              Operating as an instructor at <span class="text-white font-medium">Scantech Academy</span> demands absolute mastery over the core rules of computing. When you are tasked with deconstructing complex data flow, network pipelines, and memory allocation for advanced cohorts, you cannot afford to rely on surface-level framework abstractions. That foundational discipline dictates every line of code I write.
+            </p>
+            <p>
+              Whether scaling database query engines, designing resilient APIs, or rendering fast client interfaces, my focus remains squarely on system reliability, minimal operational overhead, and long-term business viability.
+            </p>
+          </div>
+
+          <div class="mt-8 pt-8 border-t border-engine-border flex flex-wrap gap-6 text-lg text-zinc-500">
+            <a href="https://github.com/qkarpuzi" target="_blank" aria-label="GitHub Registry" class="hover:text-white transition-colors flex items-center gap-2 text-xs font-mono uppercase tracking-widest">
+              <i class="fab fa-github text-base"></i> Registry
+            </a>
+            <a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" target="_blank" aria-label="LinkedIn Node" class="hover:text-white transition-colors flex items-center gap-2 text-xs font-mono uppercase tracking-widest">
+              <i class="fab fa-linkedin text-base"></i> Network
+            </a>
+            <a href="https://x.com/qefserkarpuzi_" target="_blank" aria-label="X Feed" class="hover:text-white transition-colors flex items-center gap-2 text-xs font-mono uppercase tracking-widest">
+              <i class="fab fa-x-twitter text-base"></i> Broadcast
+            </a>
+            <a href="https://www.upwork.com/freelancers/~016b955c4aa56c0cc6" target="_blank" aria-label="Upwork Verification" class="hover:text-white transition-colors flex items-center gap-2 text-xs font-mono uppercase tracking-widest">
+              <i class="fas fa-briefcase text-base text-emerald-500"></i> B2B Retainers
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- CONTACT – full details, phone, email, location, form (exactly as you had but with more polish) -->
-  <section id="contact" class="py-24 bg-white">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="text-center">
-        <span class="text-amber-600 text-sm font-semibold tracking-wider uppercase">get in touch</span>
-        <h2 class="text-3xl md:text-4xl font-bold mt-3 text-slate-900">Let’s work together</h2>
-        <p class="text-slate-600 mt-3 max-w-xl mx-auto">I’m available for freelance, contract, or full‑time engineering roles.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-12 mt-14">
-        <!-- contact form with your web3forms key -->
-        <div class="bg-slate-50 p-8 rounded-2xl shadow-md card-border">
-          <form action="https://api.web3forms.com/submit" method="POST">
+  <section id="contact" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-12 gap-12">
+        
+        <div class="md:col-span-5">
+          <p class="text-[11px] font-mono uppercase tracking-widest text-blue-500 mb-2">// Direct Handshake</p>
+          <h2 class="text-3xl font-bold text-white tracking-tight mb-6">Initialize Pipeline</h2>
+          <p class="text-zinc-400 font-light text-xs mb-8 leading-relaxed font-mono">
+            SECURE DIRECTIVE: Open for contract architectural overhauls, highly optimized web systems builds, and key strategic engineering roles.
+          </p>
+
+          <div class="space-y-4 font-mono text-xs">
+            <div class="p-4 bg-engine-surface border border-engine-border rounded">
+              <span class="block text-[10px] text-zinc-600 uppercase tracking-widest mb-1">Direct Secure Email</span>
+              <a href="mailto:qefserkarpuzibusiness@gmail.com" class="text-white hover:text-blue-500 transition-colors font-medium">qefserkarpuzibusiness@gmail.com</a>
+            </div>
+            <div class="p-4 bg-engine-surface border border-engine-border rounded">
+              <span class="block text-[10px] text-zinc-600 uppercase tracking-widest mb-1">Telephony Network</span>
+              <span class="text-white font-medium">+383 45 292 192</span>
+            </div>
+            <div class="p-4 bg-engine-surface border border-engine-border rounded">
+              <span class="block text-[10px] text-zinc-600 uppercase tracking-widest mb-1">Geographic Node</span>
+              <span class="text-white font-medium">Prishtinë / Lipjan, Kosovo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-7">
+          <form action="https://api.web3forms.com/submit" method="POST" class="bg-engine-surface border border-engine-border rounded p-8 space-y-6 matrix-border">
             <input type="hidden" name="access_key" value="428c340f-d78c-42be-814f-8c12a61ec933">
-            <div class="mb-5">
-              <label class="block text-sm font-medium text-slate-700 mb-1">Name</label>
-              <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+            
+            <div class="grid sm:grid-cols-2 gap-6 font-mono">
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-zinc-500 mb-2 font-bold">Authorized Individual</label>
+                <input type="text" name="name" required placeholder="John Doe" class="w-full bg-engine-bg border border-engine-border rounded px-4 py-3 text-white text-xs focus:outline-none focus:border-blue-500 transition-colors placeholder:text-zinc-700">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-zinc-500 mb-2 font-bold">Return Email Route</label>
+                <input type="email" name="email" required placeholder="john@enterprise.com" class="w-full bg-engine-bg border border-engine-border rounded px-4 py-3 text-white text-xs focus:outline-none focus:border-blue-500 transition-colors placeholder:text-zinc-700">
+              </div>
             </div>
-            <div class="mb-5">
-              <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-              <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+
+            <div class="font-mono">
+              <label class="block text-[10px] uppercase tracking-widest text-zinc-500 mb-2 font-bold">System Scope / Requirements Payload</label>
+              <textarea name="message" rows="5" required placeholder="Outline latency targets, stack targets, or business constraints..." class="w-full bg-engine-bg border border-engine-border rounded px-4 py-3 text-white text-xs focus:outline-none focus:border-blue-500 transition-colors resize-none placeholder:text-zinc-700"></textarea>
             </div>
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-slate-700 mb-1">Message</label>
-              <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"></textarea>
-            </div>
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3.5 px-6 rounded-lg shadow-md shadow-blue-200 transition flex items-center justify-center gap-2">
-              <i class="fas fa-paper-plane"></i> Send message
+
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-mono uppercase tracking-widest text-xs font-bold py-4 rounded transition-colors flex items-center justify-center gap-2">
+              <span>Execute Post Request</span>
+              <i class="fas fa-terminal text-[10px]"></i>
             </button>
           </form>
         </div>
-        <!-- contact info exactly as you had -->
-        <div class="flex flex-col">
-          <ul class="space-y-6 text-slate-700">
-            <li class="flex items-center gap-4"><span class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-700"><i class="fas fa-envelope"></i></span> <a href="mailto:qefserkarpuzibusiness@gmail.com" class="hover:text-blue-700">qefserkarpuzibusiness@gmail.com</a></li>
-            <li class="flex items-center gap-4"><span class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center text-amber-700"><i class="fas fa-phone"></i></span> <span>+383 45 292 192</span></li>
-            <li class="flex items-center gap-4"><span class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-700"><i class="fas fa-map-marker-alt"></i></span> <span>Kosova – Prishtinë & Lipjan</span></li>
-            <li class="flex items-center gap-4"><span class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-700"><i class="fas fa-clock"></i></span> <span>Available for freelance / contract</span></li>
-          </ul>
-          <!-- extra social in contact (keep consistent) -->
-          <div class="mt-10 flex gap-5 text-2xl text-slate-500">
-            <a href="https://x.com/qefserkarpuzi_" class="hover:text-blue-700"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://www.upwork.com/freelancers/~016b955c4aa56c0cc6" class="hover:text-green-700"><i class="fas fa-briefcase"></i></a>
-            <a href="https://github.com/qkarpuzi" class="hover:text-black"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" class="hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- FOOTER (with rights) -->
-  <footer class="bg-slate-900 text-slate-400 py-12">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-      <p class="text-sm">© 2026 Qefser Karpuzi · software engineer & web developer</p>
-      <p class="text-sm mt-3 md:mt-0">Designed & developed by Qefser Karpuzi</p>
-    </div>
-    <div class="max-w-6xl mx-auto px-6 text-center text-xs text-slate-600 mt-5">
-      <span>⚡ available worldwide · kosovo based</span>
+  <footer class="py-12 border-t border-engine-border bg-engine-bg text-zinc-600 font-mono text-[11px]">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-2">
+        <span class="text-blue-500 font-bold">λ</span>
+        <span>© 2026 Qefser Karpuzi. COMPLETE DEPLOYMENT.</span>
+      </div>
+      <p class="tracking-widest uppercase text-zinc-500 text-[10px]">VERIFIED SECURE INFRASTRUCTURE</p>
     </div>
   </footer>
 
-  <!-- tiny script for active nav highlight -->
   <script>
     (function() {
       const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('.nav-link');
+      const navLinks = document.querySelectorAll('nav a');
       function updateActive() {
         let current = '';
         sections.forEach(section => {
-          const sectionTop = section.offsetTop - 100;
+          const sectionTop = section.offsetTop - 150;
           if (window.scrollY >= sectionTop) {
             current = section.getAttribute('id');
           }
         });
         navLinks.forEach(link => {
-          link.classList.remove('active', 'text-blue-700', 'border-blue-700');
+          link.classList.remove('text-white', 'font-bold');
           if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active', 'text-blue-700', 'border-blue-700');
+            link.classList.add('text-white', 'font-bold');
           }
         });
       }
